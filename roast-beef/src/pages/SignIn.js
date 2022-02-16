@@ -16,7 +16,7 @@ const SignIn = () => {
                     <Text>Enter Your Username: </Text>
                     <TextBox type="text" placeholder="Username" /><p/>
                     <Text>Enter Your Password: </Text>
-                    <TextBox type="text" placeholder="Password" /><p/>
+                    <TextBox type="password" placeholder="Password" /><p/>
                     <a href='/'>
                         <NextButton>Back</NextButton>
                         </a>
