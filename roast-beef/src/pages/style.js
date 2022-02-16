@@ -47,9 +47,50 @@ const Button = styled.button`
     color: #69404C;
 `;
 
+const NextButton = styled.button`
+    border-radius: 10px;
+    border: 0px;
+    background: #69404C;
+    margin: 0 1em;
+    padding: 0.25em 1em;
+    position: dynamic;
+    width: 316px;
+    height: 60px;
+    left: 598px;
+    top: 804px;
+
+    transition: 0.2s;
+    &:hover {
+      cursor: pointer;
+      opacity: 0.8;
+    }
+    
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 35px;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+`;
+
+const Text = styled.p`
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 50;
+    font-size: 30px;
+    line-height: 10px;
+    align-items: center;
+    text-align: center;
+    color: #69404C;
+`;
+
 export {
     LandingPage,
     NavBar,
     Button,
+    NextButton,
     LandingPageWrapper,
+    Text,
  }
