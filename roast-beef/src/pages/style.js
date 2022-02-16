@@ -54,7 +54,7 @@ const NextButton = styled.button`
     margin: 0 1em;
     padding: 0.25em 1em;
     position: dynamic;
-    width: 316px;
+    width: 250px;
     height: 60px;
     left: 598px;
     top: 804px;
@@ -73,7 +73,9 @@ const NextButton = styled.button`
     align-items: center;
     text-align: center;
     color: #FFFFFF;
+    text-decoration: none;
 `;
+
 
 const Text = styled.p`
     font-family: Tahoma;
