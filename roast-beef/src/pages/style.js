@@ -18,6 +18,7 @@ const LandingPageWrapper = styled.div`
 `;
 const NavBar = styled.div`
     background: ${colors.white};
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;
 const Button = styled.button`
     border-radius: 10px;
@@ -30,6 +31,7 @@ const Button = styled.button`
     height: 61px;
     left: 448px;
     top: 385px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
     transition: 0.2s;
     &:hover {
@@ -37,6 +39,7 @@ const Button = styled.button`
       opacity: 0.8;
     }
     
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     font-family: Tahoma;
     font-style: normal;
     font-weight: 500;
@@ -104,10 +107,12 @@ const TextBox = styled.input`
   line-height: 35px;
   align-items: center;
   text-align: center;
-  color: ${colors.beefBrown};  
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  text-color: ${colors.beefBrown};  
   ::placeholder {
-    color: palevioletred;
+    color: ${colors.backgroundPink};
     font-weight: 50;
+    font-style: italic;
   }
 `;
 
@@ -122,6 +127,7 @@ const NextButton = styled.button`
     height: 60px;
     left: 598px;
     top: 804px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
     transition: 0.2s;
     &:hover {
