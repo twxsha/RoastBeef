@@ -1,7 +1,6 @@
 import React from 'react';
 import Logo from '../images/logo.png';
-import Fight from '../images/FightSymbol.png';
-import {NavBar, LandingPage, Button, LandingPageWrapper,Post,PostContents,Text, Reply} from '../pages/style';
+import {NavBar, LandingPage, Button, LandingPageWrapper,Post,PostContents,Text} from '../pages/style';
 
 const Home = () => {
     return (
@@ -14,26 +13,22 @@ const Home = () => {
                         </marquee>
                     </a> 
                 </NavBar> <p/>
-                
                 <Post>
-                    <div>
-                        <Text>POST 1</Text>
-                        {/* <img src={Fight} alt="Versus" ></img> */}
-                    </div>
+                    <Text>POST 1</Text> <p/>
                     <PostContents></PostContents> 
-                </Post><p/>                
+                </Post>
                 <Post>
                     <Text>POST 2</Text> <p/>
                     <PostContents></PostContents> 
-                </Post><p/>
+                </Post>
                 <Post>
                     <Text>POST 3</Text> <p/>
                     <PostContents></PostContents> 
-                </Post><p/>
+                </Post>
                 <Post>
                     <Text>POST 4</Text> <p/>
                     <PostContents></PostContents> 
-                </Post><p/>
+                </Post>
             </LandingPageWrapper>
         </LandingPage>
     );
