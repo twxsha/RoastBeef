@@ -1,12 +1,33 @@
 import React from 'react';
-import {NavBar, LandingPage, Button, LandingPageWrapper} from '../pages/style';
+import Logo from '../images/logo.png';
+import {NavBar, LandingPage, Button, LandingPageWrapper,Post,PostContents,Text} from '../pages/style';
 
 const Home = () => {
     return (
         <LandingPage>
-            <div class="container-fluid">
-                <p> This is the home page! </p>
-            </div>
+            <LandingPageWrapper>
+            
+    
+                <NavBar> 
+                    <a href='/' className="NavLogo">
+                        <marquee behavior="alternate" width="300">
+                            <img 
+                            src={Logo} 
+                            alt="Logo" 
+                            align="left"
+                            ></img>
+                        </marquee>
+                    </a> 
+                </NavBar> <p/>
+                
+                
+                <Post>
+                
+                <Text>TITLE</Text> <p/>
+                
+                <PostContents></PostContents> 
+                </Post>
+            </LandingPageWrapper>
         </LandingPage>
     );
 }
