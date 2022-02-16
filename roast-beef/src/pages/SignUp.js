@@ -12,10 +12,15 @@ function SignUp() {
                     </a> 
                 </NavBar> <p/>
                 <LandingPageWrapper>
-                    <Text>Enter Your Username: </Text>
+                <Text>Enter Your Name: </Text>
                     <Button></Button>
-                    <Text>Enter Your Password: </Text>
+                    <Text>Enter Your Email: </Text>
                     <Button></Button>
+                    <Text>Create Username: </Text>
+                    <Button></Button><p/>
+                    <Text>Create Password: </Text>
+                    <Button></Button><p/>
+                    <NextButton>Next</NextButton><p/>
                 </LandingPageWrapper>
             </LandingPageWrapper>
         </LandingPage>

@@ -12,15 +12,10 @@ const SignIn = () => {
                     </a> 
                 </NavBar> <p/>
                 <LandingPageWrapper>
-                    <Text>Enter Your Name: </Text>
+                    <Text>Enter Your Username: </Text>
                     <Button></Button>
-                    <Text>Enter Your Email: </Text>
+                    <Text>Enter Your Password: </Text>
                     <Button></Button>
-                    <Text>Create Username: </Text>
-                    <Button></Button><p/>
-                    <Text>Create Password: </Text>
-                    <Button></Button><p/>
-                    <NextButton>Next</NextButton><p/>
                 </LandingPageWrapper>
             </LandingPageWrapper>
         </LandingPage>
