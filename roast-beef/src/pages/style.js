@@ -37,7 +37,7 @@ const Button = styled.button`
       opacity: 0.8;
     }
     
-    font-family: Roboto;
+    font-family: Tahoma;
     font-style: normal;
     font-weight: 500;
     font-size: 30px;
@@ -65,7 +65,7 @@ const NextButton = styled.button`
       opacity: 0.8;
     }
     
-    font-family: Roboto;
+    font-family: Tahoma;
     font-style: normal;
     font-weight: 500;
     font-size: 30px;
@@ -76,7 +76,7 @@ const NextButton = styled.button`
 `;
 
 const Text = styled.p`
-    font-family: Roboto;
+    font-family: Tahoma;
     font-style: normal;
     font-weight: 50;
     font-size: 30px;
