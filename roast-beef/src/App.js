@@ -10,6 +10,7 @@ function App() {
       <div className="App">
           <Nav />
           <Routes>
+            <Route path='/' exact component={Nav} /> 
             <Route path='/signIn' exact component={SignIn} />
             <Route path="/signUp" exact component={SignUp} />
           </Routes>
