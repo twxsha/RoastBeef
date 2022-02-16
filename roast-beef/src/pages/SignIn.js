@@ -8,7 +8,13 @@ const SignIn = () => {
             <LandingPageWrapper> 
                 <NavBar> 
                     <a href='/' className="NavLogo">
-                        <img src={Logo} alt="Logo"></img>
+                    <marquee behavior="alternate" width="300">
+                            <img 
+                            src={Logo} 
+                            alt="Logo" 
+                            align="left"
+                            ></img>
+                        </marquee>
                     </a> 
                 </NavBar> <p/>
                 <LandingPageWrapper>

@@ -46,6 +46,44 @@ const Button = styled.button`
     text-align: center;
     color: #69404C;
 `;
+const Post = styled.button`
+    border-radius: 10px;
+    border: 0px;
+    background: ${colors.postPink};
+    margin: 0 1em;
+    padding: 0.25em 1em;
+    position: dynamic;
+    width: 1000px;
+    height: 400px;
+    left: 57px;
+    top: 245px;
+
+    transition: 0.2s;
+    &:hover {
+      cursor: pointer;
+      opacity: 0.8;
+    }
+    
+`;
+const PostContents = styled.button`
+    border-radius: 10px;
+    border: 0px;
+    background: ${colors.white};
+    margin: 0 1em;
+    padding: 0.25em 1em;
+    position: dynamic;
+    width: 750px;
+    height: 250px;
+    left: 448px;
+    top: 385px;
+
+    transition: 0.2s;
+    &:hover {
+      cursor: pointer;
+      opacity: 0.8;
+    }
+    
+`;
 
 
 const TextBox = styled.input`
@@ -132,6 +170,8 @@ export {
     NextButton,
     LandingPageWrapper,
     Text,
+    Post,
+    PostContents,
     HeaderText,
     TextBox,
  }
