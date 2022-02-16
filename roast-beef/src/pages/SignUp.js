@@ -21,7 +21,12 @@ function SignUp() {
                     <Button></Button><p/>
                     <Text>Create Password: </Text>
                     <Button></Button><p/>
-                    <NextButton>Next</NextButton><p/>
+                    <a href='/'>
+                        <NextButton>Back</NextButton>
+                        </a>
+                    <a href='/signIn'>
+                        <NextButton>Next</NextButton>
+                        </a> <p/>
                 </LandingPageWrapper>
             </LandingPageWrapper>
         </LandingPage>

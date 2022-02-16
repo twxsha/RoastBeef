@@ -16,7 +16,13 @@ const SignIn = () => {
                     <Text>Enter Your Username: </Text>
                     <Button></Button>
                     <Text>Enter Your Password: </Text>
-                    <Button></Button>
+                    <Button></Button><p/>
+                    <a href='/'>
+                        <NextButton>Back</NextButton>
+                        </a>
+                    <a href='/home'>
+                        <NextButton>Next</NextButton>
+                        </a> <p/>
                 </LandingPageWrapper>
             </LandingPageWrapper>
         </LandingPage>
