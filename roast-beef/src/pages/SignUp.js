@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavBar, LandingPage, Button, NextButton, Text, LandingPageWrapper, HeaderText} from '../pages/style';
+import {NavBar, LandingPage, Button, NextButton, Text, LandingPageWrapper, HeaderText, TextBox,} from '../pages/style';
 import Logo from '../images/logo.png';
 
 function SignUp() {
@@ -13,14 +13,14 @@ function SignUp() {
                 </NavBar> <p/>
                 <LandingPageWrapper>
                     <HeaderText>CREATE ACCOUNT</HeaderText>
-                    <Text>Enter Your Name: </Text>
-                    <Button></Button>
+                   <Text>Enter Your Name: </Text>
+                    <TextBox type="text" placeholder="Name" /><p/>
                     <Text>Enter Your Email: </Text>
-                    <Button></Button>
+                    <TextBox type="text" placeholder="Email" /><p/>
                     <Text>Create Username: </Text>
-                    <Button></Button><p/>
+                    <TextBox type="text" placeholder="Username" /><p/>
                     <Text>Create Password: </Text>
-                    <Button></Button><p/>
+                    <TextBox type="text" placeholder="Password" /><p/>
                     <NextButton>Next</NextButton><p/>
                 </LandingPageWrapper>
             </LandingPageWrapper>
