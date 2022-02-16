@@ -47,6 +47,32 @@ const Button = styled.button`
     color: #69404C;
 `;
 
+
+const TextBox = styled.input`
+  font-size: 18px;
+  padding: 0.25em 1em;
+  margin: 0 1em;
+  background: white;
+  border: 10px;
+  border-radius: 10px;
+  width: 615px;
+  height: 61px;
+  left: 448px;
+  top: 385px;  
+  font-family: Tahoma;
+  font-style: normal;
+  font-weight: 50;
+  font-size: 30px;
+  line-height: 35px;
+  align-items: center;
+  text-align: center;
+  color: ${colors.beefBrown};  
+  ::placeholder {
+    color: palevioletred;
+    font-weight: 50;
+  }
+`;
+
 const NextButton = styled.button`
     border-radius: 10px;
     border: 0px;
@@ -107,4 +133,5 @@ export {
     LandingPageWrapper,
     Text,
     HeaderText,
+    TextBox,
  }
