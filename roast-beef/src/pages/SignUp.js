@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavBar, LandingPage, Button, NextButton, Text, LandingPageWrapper} from '../pages/style';
+import {NavBar, LandingPage, Button, NextButton, Text, LandingPageWrapper, HeaderText} from '../pages/style';
 import Logo from '../images/logo.png';
 
 function SignUp() {
@@ -12,7 +12,8 @@ function SignUp() {
                     </a> 
                 </NavBar> <p/>
                 <LandingPageWrapper>
-                <Text>Enter Your Name: </Text>
+                    <HeaderText>CREATE ACCOUNT</HeaderText>
+                    <Text>Enter Your Name: </Text>
                     <Button></Button>
                     <Text>Enter Your Email: </Text>
                     <Button></Button>
