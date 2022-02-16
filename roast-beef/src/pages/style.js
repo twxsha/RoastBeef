@@ -8,7 +8,9 @@ export const colors = {
 }
 const LandingPage = styled.div`
     background: ${colors.backgroundPink};
+    overflow: scroll;
 `;
+
 const LandingPageWrapper = styled.div`
   margin: 0 auto;
   width: 100%;
@@ -16,9 +18,12 @@ const LandingPageWrapper = styled.div`
   min-height: 100vh;
   padding: 0px 100vw 0 0vw;
 `;
+
 const NavBar = styled.div`
     background: ${colors.white};
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;
+
 const Button = styled.button`
     border-radius: 10px;
     border: 0px;
@@ -46,6 +51,7 @@ const Button = styled.button`
     text-align: center;
     color: #69404C;
 `;
+
 const Post = styled.button`
     border-radius: 10px;
     border: 0px;
@@ -63,8 +69,28 @@ const Post = styled.button`
       cursor: pointer;
       opacity: 0.8;
     }
-    
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;
+
+const Reply = styled.button`
+    border-radius: 10px;
+    border: 0px;
+    background: ${colors.white};
+    margin: 0 1em;
+    padding: 0.25em 1em;
+    position: dynamic;
+    width: 1000px;
+    height: 300px;
+    left: 100px;
+    top: 245px;
+
+    transition: 0.2s;
+    &:hover {
+      cursor: pointer;
+      opacity: 0.8;
+    }
+`;
+
 const PostContents = styled.button`
     border-radius: 10px;
     border: 0px;
@@ -84,7 +110,6 @@ const PostContents = styled.button`
     }
     
 `;
-
 
 const TextBox = styled.input`
   font-size: 18px;
@@ -140,7 +165,6 @@ const NextButton = styled.button`
     text-decoration: none;
 `;
 
-
 const Text = styled.p`
     font-family: Tahoma;
     font-style: normal;
@@ -174,4 +198,5 @@ export {
     PostContents,
     HeaderText,
     TextBox,
+    Reply,
  }
