@@ -37,7 +37,7 @@ const Button = styled.button`
       opacity: 0.8;
     }
     
-    font-family: Roboto;
+    font-family: Tahoma;
     font-style: normal;
     font-weight: 500;
     font-size: 30px;
@@ -92,7 +92,7 @@ const NextButton = styled.button`
     margin: 0 1em;
     padding: 0.25em 1em;
     position: dynamic;
-    width: 316px;
+    width: 250px;
     height: 60px;
     left: 598px;
     top: 804px;
@@ -103,7 +103,7 @@ const NextButton = styled.button`
       opacity: 0.8;
     }
     
-    font-family: Roboto;
+    font-family: Tahoma;
     font-style: normal;
     font-weight: 500;
     font-size: 30px;
@@ -111,10 +111,12 @@ const NextButton = styled.button`
     align-items: center;
     text-align: center;
     color: #FFFFFF;
+    text-decoration: none;
 `;
 
+
 const Text = styled.p`
-    font-family: Roboto;
+    font-family: Tahoma;
     font-style: normal;
     font-weight: 50;
     font-size: 30px;
@@ -124,8 +126,16 @@ const Text = styled.p`
     color: #69404C;
 `;
 
-
-
+const HeaderText = styled.p`
+    font-family: Tahoma;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 55px;
+    line-height: 58.59px;
+    align-items: center;
+    text-align: center;
+    color: #69404C;
+`;
 
 export {
     LandingPage,
@@ -136,4 +146,5 @@ export {
     Text,
     Post,
     PostContents,
+    HeaderText,
  }
