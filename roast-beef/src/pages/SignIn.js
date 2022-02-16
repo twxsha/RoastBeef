@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavBar, LandingPage, Button, NextButton, Text, LandingPageWrapper} from '../pages/style';
+import {NavBar, LandingPage, Button, NextButton, Text, LandingPageWrapper, HeaderText} from '../pages/style';
 import Logo from '../images/logo.png';
 
 const SignIn = () => {
@@ -12,6 +12,7 @@ const SignIn = () => {
                     </a> 
                 </NavBar> <p/>
                 <LandingPageWrapper>
+                    <HeaderText>LOG IN</HeaderText>
                     <Text>Enter Your Username: </Text>
                     <Button></Button>
                     <Text>Enter Your Password: </Text>

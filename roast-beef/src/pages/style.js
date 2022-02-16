@@ -86,6 +86,17 @@ const Text = styled.p`
     color: #69404C;
 `;
 
+const HeaderText = styled.p`
+    font-family: Tahoma;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 55px;
+    line-height: 58.59px;
+    align-items: center;
+    text-align: center;
+    color: #69404C;
+`;
+
 export {
     LandingPage,
     NavBar,
@@ -93,4 +104,5 @@ export {
     NextButton,
     LandingPageWrapper,
     Text,
+    HeaderText,
  }
