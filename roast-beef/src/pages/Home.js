@@ -5,26 +5,21 @@ import {NavBar, LandingPage, Button, LandingPageWrapper,Post,PostContents,Text} 
 const Home = () => {
     return (
         <LandingPage>
-            <LandingPageWrapper>
-            
-    
-                <NavBar> 
-                    <a href='/' className="NavLogo">
-                        <marquee behavior="alternate" width="300">
-                            <img 
-                            src={Logo} 
-                            alt="Logo" 
+            <NavBar>
+                <a href='/' className="NavLogo">
+                    <marquee behavior="alternate" width="300">
+                        <img
+                            src={Logo}
+                            alt="Logo"
                             align="left"
-                            ></img>
-                        </marquee>
-                    </a> 
-                </NavBar> <p/>
-                
-                
+                            width="200" height="133"
+                        ></img>
+                    </marquee>
+                </a>
+            </NavBar> <p />
+            <LandingPageWrapper>
                 <Post>
-                
                 <Text>TITLE</Text> <p/>
-                
                 <PostContents></PostContents> 
                 </Post>
             </LandingPageWrapper>
