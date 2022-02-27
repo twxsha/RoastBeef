@@ -8,12 +8,7 @@ const Home = () => {
             <NavBar>
                 <a href='/' className="NavLogo">
                     <marquee behavior="alternate" width="300">
-                        <img
-                            src={Logo}
-                            alt="Logo"
-                            align="left"
-                            width="200" height="133"
-                        ></img>
+                        <img src={Logo} alt="Logo" align="left" width="200" height="133" ></img>
                     </marquee>
                 </a>
             </NavBar> <p />
