@@ -10,15 +10,23 @@ const LandingPage = styled.div`
     background: ${colors.backgroundPink};
 `;
 const LandingPageWrapper = styled.div`
-  margin: 0 auto;
+  margin: 0px auto;
   width: 100%;
   justify-content: center;
   min-height: 100vh;
   padding: 20px 100vw 0 0vw;
 `;
+
 const NavBar = styled.div`
     background: ${colors.white};
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    position: fixed;
+    width: 100%;
+`;
+
+const NavPadding = styled.div`
+    background: ${colors.white};
+    padding-top: 133px;
 `;
 const LandingButton = styled.button`
     border-radius: 10px;
@@ -202,6 +210,7 @@ const HeaderText = styled.p`
 export {
     LandingPage,
     NavBar,
+    NavPadding,
     Button,
     LandingButton,
     NextButton,
