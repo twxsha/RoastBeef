@@ -1,6 +1,6 @@
 import React from 'react';
 import Logo from '../images/logo.png';
-import {NavBar, LandingPage, Button, LandingPageWrapper,Post,PostContents,Text} from '../pages/style';
+import {NavBar, NavPadding, LandingPage, Button, LandingPageWrapper,Post,PostContents,Text} from '../pages/style';
 
 const Home = () => {
     return (
@@ -11,7 +11,9 @@ const Home = () => {
                         <img src={Logo} alt="Logo" align="left" width="200" height="133" ></img>
                     </marquee>
                 </a>
-            </NavBar> <p />
+            </NavBar>
+            <NavPadding>
+            </NavPadding> <p />
             <LandingPageWrapper>
                 <Post>
                 <Text>TITLE</Text> <p/>
