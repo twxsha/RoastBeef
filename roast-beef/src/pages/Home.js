@@ -13,12 +13,7 @@ const Home = () => {
             <NavBar>
             <div class="outer">
                     <div>
-                        
                         <NextButton> Create Post </NextButton>
-
-                        
-                       
-
                     </div>
                 </div>
 

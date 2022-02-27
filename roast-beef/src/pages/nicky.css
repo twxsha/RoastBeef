@@ -5,6 +5,10 @@
     
   }
 
+.outer2{
+    float:right;
+}
+
 .stayput{
     margin: auto;
     position: relative;
