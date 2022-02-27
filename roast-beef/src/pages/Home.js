@@ -1,8 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Logo from '../images/logo.png';
 import {NavBar, LandingPage, Button, LandingPageWrapper,Post,PostContents,Text} from '../pages/style';
+import PostD from './Post';
 
 const Home = () => {
+    {/* posts stored in an array */}
+    const [posts, setPosts] = useState ([
+        {
+            username1: "paul eggert",
+            username2: "students",
+            postText: "students deserve a harder project"
+        },
+        {
+            username1: "nicky",
+            username2: "shravan",
+            postText: "we hate sank"
+        },
+    ]);
+
     return (
         <LandingPage>
             <NavBar>
@@ -18,12 +33,15 @@ const Home = () => {
                 </a>
             </NavBar> <p />
             <LandingPageWrapper>
-                <Post>
-                <Text>TITLE</Text> <p/>
-                <PostContents></PostContents> 
-                </Post>
+                {
+                    posts.map(post => (
+                        <PostD username1={post.username1} username2={post.username2} postText={post.postText}></PostD>
+                    ))
+                }
+                <p></p>
             </LandingPageWrapper>
         </LandingPage>
+        
     );
 }
 export default Home;

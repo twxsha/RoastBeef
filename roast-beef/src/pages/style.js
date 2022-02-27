@@ -95,9 +95,9 @@ const Post = styled.button`
     &:hover {
       cursor: pointer;
       opacity: 0.8;
-    }
-    
+    }   
 `;
+
 const PostContents = styled.button`
     border-radius: 10px;
     border: 0px;
@@ -105,10 +105,14 @@ const PostContents = styled.button`
     margin: 0 1em;
     padding: 0.25em 1em;
     position: dynamic;
-    width: 750px;
+    width: 950px;
     height: 250px;
     left: 448px;
     top: 385px;
+    font-family: Tahoma;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
 
     transition: 0.2s;
     &:hover {
@@ -118,8 +122,45 @@ const PostContents = styled.button`
     
 `;
 
+const PostText = styled.p`
+    font-family: Tahoma;
+    font-style: normal;
+    font-weight: 50;
+    font-size: 20px;
+    line-height: 10px;
+    align-items: center;
+    text-align: center;
+    color: #69404C;
+`;
 
-const TextBox = styled.input`
+const PostHeaderText = styled.p`
+    font-family: Tahoma;
+    font-style: normal;
+    font-weight: 50;
+    font-size: 20px;
+    line-height: 10px;
+    align-items: center;
+    text-align: center;
+    color: #69404C;
+`;
+
+const PostUsername = styled.p`
+    font-family: Tahoma;
+    font-style: normal;
+    font-weight: 50;
+    font-size: 20px;
+    text-align: center;
+    padding: 10px 0px 10px 
+    margin: 25px
+    color: #69404C;
+    display: inline;
+`;
+
+const fightSymbolStyle = styled.p`
+    padding: 10px 0px 10px 0px
+`;
+
+const TextBox = styled.input`  //HAS AN ISSUE
   font-size: 18px;
   padding: 0.25em 1em;
   margin: 0 1em;
@@ -209,6 +250,10 @@ export {
     Text,
     Post,
     PostContents,
+    PostText,
+    PostHeaderText,
+    PostUsername,
     HeaderText,
+    fightSymbolStyle,
     TextBox,
  }
