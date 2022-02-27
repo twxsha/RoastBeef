@@ -9,10 +9,10 @@ function Nav() {
                 <LandingPageWrapper>
                     <a href='/' className="NavLogo">
                         <img src={Logo} alt="Logo" width="621" height="394"></img>
-                    </a> <p/>
+                    </a> <br/> <br/> <br/> <br/>
                     <a href="/signUp">
                         <LandingButton>Create Account</LandingButton>
-                    </a> <p/> 
+                    </a> <br/> <br/> <br/> 
                     <a href="/signIn">
                         <LandingButton>Log In</LandingButton>
                     </a> <p/> 

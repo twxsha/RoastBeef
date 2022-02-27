@@ -16,7 +16,7 @@ const SignIn = () => {
                         ></img>
                     </marquee>
                 </a>
-            </NavBar> <p />
+            </NavBar> 
             <LandingPageWrapper>
                 <HeaderText>LOG IN</HeaderText>
                 <Text>Enter Your Username: </Text>
