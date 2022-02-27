@@ -78,6 +78,9 @@ const Button = styled.button`
     text-align: center;
     color: #69404C;
 `;
+
+
+
 const Post = styled.button`
     border-radius: 10px;
     border: 0px;
@@ -198,6 +201,9 @@ const HeaderText = styled.p`
     text-align: center;
     color: #69404C;
 `;
+
+
+
 
 export {
     LandingPage,

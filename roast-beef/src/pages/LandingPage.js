@@ -1,6 +1,6 @@
 import React from 'react';
 import Logo from '../images/logo.png';
-import {NavBar, LandingPage, LandingButton, LandingPageWrapper} from './style';
+import {LandingPage, LandingButton, LandingPageWrapper} from './style';
 
 function Nav() {
     return(

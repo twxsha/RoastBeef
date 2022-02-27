@@ -1,0 +1,14 @@
+
+
+
+.outer {
+    
+    float: right;
+    position:absolute;
+    
+  }
+
+.stayput{
+    margin: auto;
+    position: relative;
+}
