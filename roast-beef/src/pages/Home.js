@@ -1,8 +1,20 @@
-import React from 'react';
+import {useState, useEffect, React} from 'react';
+import db from '../firebase-config';
+// import {collection, getDocs} from '@firebase/firestore';
 import Logo from '../images/logo.png';
 import {NavBar, LandingPage, Button, LandingPageWrapper,Post,PostContents,Text} from '../pages/style';
 
 const Home = () => {
+    // const [users,setUsers] = useState([]);
+    // const userCollection = collection(db, "users");
+
+    // useEffect ( () => {
+    //     const getUsers = async () => {
+    //         const data = await getDocs(userCollection);
+    //         // console.log(data);
+    //     }
+    // },[]);
+
     return (
         <LandingPage>
             <NavBar>
