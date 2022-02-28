@@ -1,7 +1,8 @@
 import React from 'react';
+
 import './nicky.css';
 import  './Popup.css';
-import {NavBar, LandingPage, LandingPageWrapper,Post,PostContents,Text,TextBox,BiggerTextBox,NextButton} from '../pages/style';
+import {TextBox,BiggerTextBox,NickyButton} from '../pages/style';
 
 function Popup(props){
     return (props.trigger) ? (
@@ -13,16 +14,16 @@ function Popup(props){
                 <TextBox type="text" placeholder="Tag" />
                 <br></br><br></br>
                 <BiggerTextBox type="text" placeholder="Your text here" ></BiggerTextBox>
-                <br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+                <br></br><br></br>
                     <div class="outer">
                        <div>
-                            <NextButton> Cancel </NextButton>   
+                            <NickyButton onClick={() => props.setTrigger(false)}> Cancel </NickyButton>   
                                    
                         </div>
                     </div>
 
                     <div class="outer2">
-                        <NextButton> Post </NextButton> 
+                        <NickyButton onClick={() => props.setTrigger(false)}> Post </NickyButton> 
                     </div>
                     
                     {props.children}

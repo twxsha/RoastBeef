@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './nicky.css';
 import Logo from '../images/logo.png';
 import Popup from './Popup'
-import {NavBar, NavPadding, LandingPage, Button, LandingPageWrapper, Post, PostContents, Text, NextButton} from '../pages/style';
+import {NavBar, NavPadding, LandingPage, Button, LandingPageWrapper, Post, PostContents, Text, NextButton, NickyButton} from '../pages/style';
 import PostD from './Post';
 
 const Home = () => {
@@ -20,15 +20,17 @@ const Home = () => {
         },
     ]);
 
+    const [buttonPopup, setButtonPopup] = useState(false);
     return (
 
         <LandingPage>
-            <Popup trigger={true}>
+            <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
             </Popup>              
             <NavBar>
+            <br></br>
             <div class="outer">
                     <div>
-                        <NextButton> Create Post </NextButton>
+                        <NickyButton onClick={() => setButtonPopup(true)}> Create Post </NickyButton>
                     </div>
                 </div>
 

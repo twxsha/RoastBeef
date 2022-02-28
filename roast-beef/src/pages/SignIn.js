@@ -18,9 +18,9 @@ const SignIn = () => {
                 </a>
             </NavBar>
             <NavPadding>
-            </NavPadding> <p />
+            </NavPadding> 
             <LandingPageWrapper>
-                <HeaderText>LOG IN</HeaderText>
+                <HeaderText>Log in</HeaderText>
                 <Text>Enter Your Username: </Text>
                 <TextBox type="text" placeholder="Username" /><p />
                 <Text>Enter Your Password: </Text>

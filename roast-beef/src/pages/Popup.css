@@ -13,8 +13,9 @@
 }
 
 .popup-inner{
-    position: relative;
-    height: 70%;
+    position: fixed;
+    top: 180px;
+    height: 62%;
     width: 70%;
     max-width: 100%;
     background-color: #FCF1F1;

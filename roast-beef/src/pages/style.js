@@ -25,7 +25,7 @@ const NavBar = styled.div`
 
 const NavPadding = styled.div`
     background: ${colors.white};
-    padding-top: 133px;
+    padding-top: 130px;
 `;
 
 const LandingButton = styled.button`
@@ -256,6 +256,35 @@ const NextButton = styled.button`
     text-decoration: none;
 `;
 
+const NickyButton = styled.button`
+    border-radius: 10px;
+    border: 0px;
+    background: #69404C;
+    margin: 0 1em;
+    padding: 0.25em 1em;
+    position: dynamic;
+    width: 220px;
+    height: 50px;
+    left: 598px;
+    top: 804px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+    transition: 0.2s;
+    &:hover {
+      cursor: pointer;
+      opacity: 0.8;
+    }
+    
+    font-family: Tahoma;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 35px;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+    text-decoration: none;
+`;
 
 const Text = styled.p`
     font-family: Tahoma;
@@ -300,4 +329,5 @@ export {
     fightSymbolStyle,
     TextBox,
     BiggerTextBox,
+    NickyButton,
  }
