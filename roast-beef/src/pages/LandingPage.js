@@ -1,6 +1,8 @@
-import React from 'react';
+import {useState, useEffect, React} from 'react';
 import Logo from '../images/logo.png';
 import {NavBar, LandingPage, LandingButton, LandingPageWrapper} from './style';
+import { collection, addDoc, getDocs } from "firebase/firestore";
+import {db} from "../firebase-config";
 
 function Nav() {
     return(

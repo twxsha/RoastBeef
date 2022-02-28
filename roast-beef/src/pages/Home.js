@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import {useState, useEffect, React} from 'react';
+import db from '../firebase-config';
 import Logo from '../images/logo.png';
 import {NavBar, NavPadding, LandingPage, Button, LandingPageWrapper, Post, PostContents, Text} from '../pages/style';
 import PostD from './Post';
