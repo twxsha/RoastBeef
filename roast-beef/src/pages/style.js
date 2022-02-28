@@ -19,7 +19,15 @@ const LandingPageWrapper = styled.div`
 const NavBar = styled.div`
     background: ${colors.white};
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    position: fixed;
+    width: 100%
 `;
+
+const NavPadding = styled.div`
+    background: ${colors.white};
+    padding-top: 133px;
+`;
+
 const LandingButton = styled.button`
     border-radius: 10px;
     border: 0px;
@@ -82,7 +90,7 @@ const Post = styled.button`
     border-radius: 10px;
     border: 0px;
     background: ${colors.postPink};
-    margin: 0 1em;
+    margin: 0 1em 3em;
     padding: 0.25em 1em;
     position: dynamic;
     width: 1000px;
@@ -90,14 +98,9 @@ const Post = styled.button`
     left: 57px;
     top: 245px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
-    transition: 0.2s;
-    &:hover {
-      cursor: pointer;
-      opacity: 0.8;
-    }
-    
+  
 `;
+
 const PostContents = styled.button`
     border-radius: 10px;
     border: 0px;
@@ -105,21 +108,56 @@ const PostContents = styled.button`
     margin: 0 1em;
     padding: 0.25em 1em;
     position: dynamic;
-    width: 750px;
+    width: 950px;
     height: 250px;
     left: 448px;
     top: 385px;
-
-    transition: 0.2s;
-    &:hover {
-      cursor: pointer;
-      opacity: 0.8;
-    }
+    font-family: Tahoma;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
     
 `;
 
+const PostText = styled.p`
+    font-family: Tahoma;
+    font-style: normal;
+    font-weight: 50;
+    font-size: 20px;
+    line-height: 10px;
+    align-items: center;
+    text-align: center;
+    color: #69404C;
+`;
 
-const TextBox = styled.input`
+const PostHeaderText = styled.p`
+    font-family: Tahoma;
+    font-style: normal;
+    font-weight: 50;
+    font-size: 20px;
+    line-height: 10px;
+    align-items: center;
+    text-align: center;
+    color: #69404C;
+`;
+
+const PostUsername = styled.p`
+    font-family: Tahoma;
+    font-style: normal;
+    font-weight: 50;
+    font-size: 20px;
+    text-align: center;
+    padding: 10px 0px 10px 
+    margin: 25px
+    color: #69404C;
+    display: inline;
+`;
+
+const fightSymbolStyle = styled.p`
+    padding: 10px 0px 10px 0px
+`;
+
+const TextBox = styled.input`  //HAS AN ISSUE
   font-size: 18px;
   padding: 0.25em 1em;
   margin: 0 1em;
@@ -202,6 +240,7 @@ const HeaderText = styled.p`
 export {
     LandingPage,
     NavBar,
+    NavPadding,
     Button,
     LandingButton,
     NextButton,
@@ -209,6 +248,10 @@ export {
     Text,
     Post,
     PostContents,
+    PostText,
+    PostHeaderText,
+    PostUsername,
     HeaderText,
+    fightSymbolStyle,
     TextBox,
  }

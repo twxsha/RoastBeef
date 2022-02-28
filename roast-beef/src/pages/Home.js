@@ -1,19 +1,23 @@
 import {useState, useEffect, React} from 'react';
 import db from '../firebase-config';
-// import {collection, getDocs} from '@firebase/firestore';
 import Logo from '../images/logo.png';
-import {NavBar, LandingPage, Button, LandingPageWrapper,Post,PostContents,Text} from '../pages/style';
+import {NavBar, NavPadding, LandingPage, Button, LandingPageWrapper, Post, PostContents, Text} from '../pages/style';
+import PostD from './Post';
 
 const Home = () => {
-    // const [users,setUsers] = useState([]);
-    // const userCollection = collection(db, "users");
-
-    // useEffect ( () => {
-    //     const getUsers = async () => {
-    //         const data = await getDocs(userCollection);
-    //         // console.log(data);
-    //     }
-    // },[]);
+    {/* posts stored in an array */}
+    const [posts, setPosts] = useState ([
+        {
+            username1: "paul eggert",
+            username2: "students",
+            postText: "students deserve a harder project"
+        },
+        {
+            username1: "nicky",
+            username2: "shravan",
+            postText: "we hate sank"
+        },
+    ]);
 
     return (
         <LandingPage>
@@ -23,14 +27,19 @@ const Home = () => {
                         <img src={Logo} alt="Logo" align="left" width="200" height="133" ></img>
                     </marquee>
                 </a>
-            </NavBar> <p />
+            </NavBar>
+            <NavPadding>
+            </NavPadding> <p />
             <LandingPageWrapper>
-                <Post>
-                <Text>TITLE</Text> <p/>
-                <PostContents></PostContents> 
-                </Post>
+                {
+                    posts.map(post => (
+                        <PostD username1={post.username1} username2={post.username2} postText={post.postText}></PostD>
+                    ))
+                }
+                <p></p>
             </LandingPageWrapper>
         </LandingPage>
+        
     );
 }
 export default Home;
