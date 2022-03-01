@@ -1,0 +1,16 @@
+.stayPut{
+    margin-left: 500px;
+    margin-right: 500px;
+    position: relative;
+}
+
+.outerleft{
+    float: left;
+    position: absolute;
+}
+
+#results{
+    position: absolute;
+    width: inherit;
+    margin: 80px 0;
+}

@@ -4,11 +4,13 @@ export const colors = {
     backgroundPink: "#F3DFE3",
     buttonBrown: "#69404C",
     white: "#FFFFFF",
+    grey: "#DEDEDE",
     postPink: "#FCF1F1",
 }
 const LandingPage = styled.div`
     background: ${colors.backgroundPink};
 `;
+
 const LandingPageWrapper = styled.div`
   margin: 0 auto;
   width: 100%;
@@ -16,10 +18,12 @@ const LandingPageWrapper = styled.div`
   min-height: 100vh;
   padding: 20px 100vw 0 0vw;
 `;
+
 const NavBar = styled.div`
     background: ${colors.white};
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;
+
 const LandingButton = styled.button`
     border-radius: 10px;
     border: 0px;
@@ -49,6 +53,7 @@ const LandingButton = styled.button`
     text-align: center;
     color: #69404C;
 `;
+
 const Button = styled.button`
     border-radius: 10px;
     border: 0px;
@@ -78,6 +83,11 @@ const Button = styled.button`
     text-align: center;
     color: #69404C;
 `;
+
+const List = styled.datalist`
+`;
+
+
 const Post = styled.button`
     border-radius: 10px;
     border: 0px;
@@ -98,6 +108,7 @@ const Post = styled.button`
     }
     
 `;
+
 const PostContents = styled.button`
     border-radius: 10px;
     border: 0px;
@@ -145,6 +156,59 @@ const TextBox = styled.input`
     font-style: italic;
   }
 `;
+
+const SearchBar = styled.input`
+  font-size: 16px;
+  padding: 0.5em 1em;
+  margin: 35px 35px;
+  background: ${colors.grey};
+  float: left;
+  border: 10px;
+  border-radius: 10px;
+  width: 400px;
+  height: 30px;
+  left: 448px;
+  top: 385px;  
+  font-family: Tahoma;
+  font-style: normal;
+  font-weight: 50;
+  font-size: 30px;
+  line-height: 35px;
+  text-align: center;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  text-color: ${colors.buttonBrown}; 
+  ::placeholder {
+    color: ${colors.white};
+    font-weight: 50;
+    font-style: italic;
+  }
+  &:hover {
+    cursor: pointer;
+    color: ${colors.buttonBrown}
+  }
+`;
+
+
+const DDButton = styled.button`
+    border: 10px;
+    border-radius: 10px;
+    background: ${colors.white};
+    height: 40px;
+    transition: 0.2s;
+    &:hover {
+      cursor: pointer;
+      color: red;
+    }
+    font-family: Tahoma;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 35px;
+    align-items: center;
+    text-align: center;
+    color: #69404C;
+`;
+
 
 const NextButton = styled.button`
     border-radius: 10px;
@@ -203,6 +267,7 @@ export {
     LandingPage,
     NavBar,
     Button,
+    DDButton,
     LandingButton,
     NextButton,
     LandingPageWrapper,
@@ -211,4 +276,6 @@ export {
     PostContents,
     HeaderText,
     TextBox,
+    SearchBar,
+    List,
  }
