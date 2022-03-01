@@ -1,14 +1,17 @@
 import React from 'react';
-
 import './HomePage.css';
 import  './Popup.css';
-import {TextBox,BiggerTextBox,NickyButton} from '../pages/style';
+import {TextBox,Text,BiggerTextBox,NickyButton} from '../pages/style';
+import {db} from '../firebase-config';
 
 function Popup(props){
     return (props.trigger) ? (
         <div className="popup">
             <div className="popup-inner">
                 <br></br>
+                
+                <Text>Create Post</Text>
+                
                 <TextBox type="text" placeholder="Enter title here" />
                 <br></br><br></br>
                 <TextBox type="text" placeholder="Tag" />

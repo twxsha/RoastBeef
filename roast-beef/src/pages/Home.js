@@ -1,12 +1,17 @@
 import {useState, useEffect, React} from 'react';
 import './HomePage.css';
-import db from '../firebase-config';
+import {db, auth} from "../firebase-config";
 import Logo from '../images/logo.png';
-import Popup from './Popup'
+import Popup from './Popup';
 import {NavBar, NavPadding, LandingPage, Button, LandingPageWrapper, Post, PostContents, Text, NextButton, NickyButton} from '../pages/style';
 import PostD from './Post';
+import './Popup';
+import { collection, getDocs} from "firebase/firestore";
 
 const Home = () => {
+
+    //database shit
+
     {/* posts stored in an array */}
     const [posts, setPosts] = useState ([
         {
@@ -21,10 +26,15 @@ const Home = () => {
         },
     ]);
 
+       
+
     const [buttonPopup, setButtonPopup] = useState(false);
     return (
-
+        
         <LandingPage>
+
+         
+
             <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
             </Popup>              
             <NavBar>
