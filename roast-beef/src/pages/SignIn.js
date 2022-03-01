@@ -1,19 +1,15 @@
 import { useState, React } from "react";
 import {
   NavBar,
-  NavPadding,
   LandingPage,
-  Button,
   NextButton,
   Text,
   LandingPageWrapper,
   HeaderText,
   TextBox,
 } from "../pages/style";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import {signInWithEmailAndPassword } from "firebase/auth";
 import Logo from "../images/logo.png";
-
-import { initializeApp } from "firebase/app";
 import {auth} from "../firebase-config";
 
 function SignIn() {

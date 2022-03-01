@@ -1,7 +1,7 @@
 import {useState, useEffect, React} from 'react';
-import { NavBar, LandingPage, Button, NextButton, Text, LandingPageWrapper, HeaderText, TextBox } from '../pages/style';
+import { NavPadding, NavBar, LandingPage, NextButton, Text, LandingPageWrapper, HeaderText, TextBox } from '../pages/style';
 import Logo from '../images/logo.png';
-import { collection, addDoc, getDocs } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import {createUserWithEmailAndPassword } from "firebase/auth";
 
 import {db, auth} from "../firebase-config";
@@ -38,8 +38,7 @@ function SignUp() {
                     </marquee>
                 </a>
             </NavBar>
-            <NavPadding>
-            </NavPadding> <p />
+            <NavPadding></NavPadding> <p />
             <LandingPageWrapper>
                 <HeaderText>CREATE ACCOUNT</HeaderText>
                 <Text>Enter Your Name: </Text>
