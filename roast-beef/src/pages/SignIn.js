@@ -1,6 +1,7 @@
 import { useState, React } from "react";
 import {
   NavBar,
+  NavPadding,
   LandingPage,
   NextButton,
   Text,
@@ -46,7 +47,8 @@ function SignIn() {
             ></img>
           </marquee>
         </a>
-      </NavBar> <p />
+      </NavBar>
+      <NavPadding></NavPadding> <p />
       <LandingPageWrapper>
         <HeaderText>LOG IN</HeaderText>
         <Text>Enter Your Username: </Text>
