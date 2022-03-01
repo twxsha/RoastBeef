@@ -1,15 +1,13 @@
 .outer {
-    
     float: right;
     position:absolute;
-    
   }
 
-.outer2{
+.outer2 {
     float:right;
 }
 
-.stayput{
+.stayput {
     margin: auto;
     position: relative;
 }

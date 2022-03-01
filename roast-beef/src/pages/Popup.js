@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './nicky.css';
+import './HomePage.css';
 import  './Popup.css';
 import {TextBox,BiggerTextBox,NickyButton} from '../pages/style';
 
