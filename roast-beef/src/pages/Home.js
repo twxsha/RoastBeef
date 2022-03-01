@@ -10,8 +10,6 @@ import { collection, getDocs} from "firebase/firestore";
 
 const Home = () => {
 
-    //database shit
-
     {/* posts stored in an array */}
     const [posts, setPosts] = useState ([
         {
