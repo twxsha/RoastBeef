@@ -11,9 +11,16 @@ function Popup(props){
     const [newTitle, setNewTitle] = useState("")
     const [newTag, setNewTag] = useState("")
     const [newContent, setNewContent] = useState("")
+    const [newVote_Tagged, setVote_Tagged] = useState("")
+    const [newVote_User, setVote_User] = useState("")
+
     const postsCollectionRef = collection(db, "posts");
 
-   
+    const createPost = async () =>{
+        await addDoc(postsCollectionRef, {Title: newTitle, 
+            Tags: newTag, Text: newContent, Vote_Tagged: 0, Vote_User: 0})
+            props.setTrigger(false)
+    }
 
     return (props.trigger) ? (
         <div className="popup">
@@ -44,7 +51,7 @@ function Popup(props){
                     </div>
 
                     <div class="outer2">
-                        <NickyButton onClick={() => props.setTrigger(false)}> Post </NickyButton> 
+                        <NickyButton onClick={createPost}> Post </NickyButton> 
                     </div>
                     
                     {props.children}
