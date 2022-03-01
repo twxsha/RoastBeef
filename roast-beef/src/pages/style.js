@@ -93,7 +93,7 @@ const Post = styled.button`
     border-radius: 10px;
     border: 0px;
     background: ${colors.postPink};
-    margin: 0 1em;
+    margin: 0 1em 3em;
     padding: 0.25em 1em;
     position: dynamic;
     width: 1000px;
@@ -101,12 +101,7 @@ const Post = styled.button`
     left: 57px;
     top: 245px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
-    transition: 0.2s;
-    &:hover {
-      cursor: pointer;
-      opacity: 0.8;
-    }   
+  
 `;
 
 const PostContents = styled.button`
@@ -124,12 +119,6 @@ const PostContents = styled.button`
     font-style: normal;
     font-weight: normal;
     font-size: 15px;
-
-    transition: 0.2s;
-    &:hover {
-      cursor: pointer;
-      opacity: 0.8;
-    }
     
 `;
 
