@@ -3,7 +3,6 @@ import { NavPadding, NavBar, LandingPage, NextButton, Text, LandingPageWrapper, 
 import Logo from '../images/logo.png';
 import { collection, getDocs, addDoc } from "firebase/firestore";
 import {createUserWithEmailAndPassword } from "firebase/auth";
-import SignIn from './SignIn';
 import {db, auth} from "../firebase-config";
 import { useHistory } from "react-router-dom";
 
