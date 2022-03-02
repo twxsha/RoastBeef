@@ -1,24 +1,42 @@
 import {useState, useEffect, React} from 'react';
-import { NavPadding, NavBar, LandingPage, NextButton, Text, LandingPageWrapper, HeaderText, TextBox } from '../pages/style';
+import { NavPadding, NavBar, LandingPage, NextButton, Text, LandingPageWrapper, HeaderText, TextBox, ErrorText } from '../pages/style';
 import Logo from '../images/logo.png';
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, addDoc } from "firebase/firestore";
 import {createUserWithEmailAndPassword } from "firebase/auth";
-
+import SignIn from './SignIn';
 import {db, auth} from "../firebase-config";
+import { useHistory } from "react-router-dom";
 
 function SignUp() {
+    const history = useHistory();
     const[newName, setNewName] = useState("");
     const[newEmail, setNewEmail] = useState("");
     const[newUser, setNewUser] = useState("");
     const[newPass, setNewPass] = useState("");
     const [users, setUsers] = useState([]);
     const usersCollectionRef = collection(db, "users");
+    const [emailError, setEmailError] = useState("");
+    const[passError, setPassError] = useState("");
+    
 
     const createUser = async () => {
-        let res = await createUserWithEmailAndPassword(auth, newEmail, newPass)
-        // only do the next part if no errors
-        //res = await addDoc(usersCollectionRef, {name: newName, email: newEmail, user: newUser, pass: newPass});
-        console.log(res);
+        try {
+            let res = await createUserWithEmailAndPassword(auth, newEmail, newPass)
+            history.push("/signIn");
+            res = await addDoc(usersCollectionRef, {name: newName, email: newEmail, user: newUser, pass: newPass});
+        } catch (error) {
+            setEmailError("");
+            setPassError("");
+            switch(error.code) {
+                case "auth/email-already-in-use":
+                case "auth/invalid-email":
+                    setEmailError("Email is already in use or is invalid");
+                    break;
+                case "auth/weak-password":
+                    setPassError("Password must be at least 6 characters");
+                    break;
+            }
+        }
     };
 
     useEffect(() => {
@@ -49,12 +67,12 @@ function SignUp() {
                 <TextBox type="text" placeholder="Username" onChange={(event) => {setNewUser(event.target.value);}}/><p />
                 <Text>Create Password: </Text>
                 <TextBox type="password" placeholder="Password" onChange={(event) => {setNewPass(event.target.value);}}/><p />
+                <ErrorText> {emailError} </ErrorText> <p />
+                <ErrorText> {passError} </ErrorText> <p />
                 <a href='/'>
                     <NextButton>Back</NextButton>
                 </a>
-                {/* <a href='/signIn'> */}
-                    <NextButton onClick={createUser}>Next</NextButton>
-                {/* </a> <p /> */}
+                <NextButton onClick={createUser}>Next</NextButton> <p />
             </LandingPageWrapper>
         </LandingPage>
     );

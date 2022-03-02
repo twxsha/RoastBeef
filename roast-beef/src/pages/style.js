@@ -297,6 +297,16 @@ const HeaderText = styled.p`
     color: #69404C;
 `;
 
+const ErrorText = styled.p`
+    font-family: Tahoma;
+    font-style: normal;
+    font-weight: 50;
+    font-size: 30px;
+    line-height: 10px;
+    align-items: center;
+    text-align: center;
+    color: #FF0000;
+`;
 
 
 
@@ -319,4 +329,5 @@ export {
     TextBox,
     BiggerTextBox,
     NickyButton,
+    ErrorText,
  }
