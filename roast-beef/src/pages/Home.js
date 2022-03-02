@@ -23,9 +23,8 @@ const Home = () => {
             postText: "we hate sank"
         },
     ]);
-
-       
-
+   
+    const postsCollectionRef = collection(db, "posts");
     const [buttonPopup, setButtonPopup] = useState(false);
     return (
         
