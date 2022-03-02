@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 export const colors = {
-    backgroundPink: "#F3DFE3",
-    buttonBrown: "#69404C",
-    white: "#FFFFFF",
-    postPink: "#FCF1F1",
-}
+  backgroundPink: "#F3DFE3",
+  buttonBrown: "#69404C",
+  white: "#FFFFFF",
+  postPink: "#FCF1F1",
+};
 const LandingPage = styled.div`
     background: ${colors.backgroundPink};
 `;
@@ -14,134 +14,130 @@ const LandingPageWrapper = styled.div`
   width: 100%;
   justify-content: center;
   min-height: 100vh;
-  padding: 20px 100vw 0 0vw;
+  padding: 20px 0vw 0 0vw;
 `;
 const NavBar = styled.div`
-    background: ${colors.white};
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    position: fixed;
-    width: 100%
+  background: ${colors.white};
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  position: fixed;
+  width: 99.5%;
 `;
 
 const NavPadding = styled.div`
-    background: ${colors.white};
-    padding-top: 130px;
+  background: ${colors.white};
+  padding-top: 155px;
 `;
 
 const LandingButton = styled.button`
-    border-radius: 10px;
-    border: 0px;
-    background: ${colors.white};
-    margin: 2 px;
-    padding: 0.25em 1em;
-    position: dynamic;
-    width: 615px;
-    height: 61px;
-    left: 448px;
-    top: 385px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  border: 0px;
+  background: ${colors.white};
+  margin: 2 px;
+  padding: 0.25em 1em;
+  position: dynamic;
+  width: 615px;
+  height: 61px;
+  left: 448px;
+  top: 385px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
-    transition: 0.2s;
-    &:hover {
-      cursor: pointer;
-      opacity: 0.8;
-    }
-    
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    font-family: Tahoma;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 30px;
-    line-height: 35px;
-    align-items: center;
-    text-align: center;
-    color: #69404C;
+  transition: 0.2s;
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-family: Tahoma;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 35px;
+  align-items: center;
+  text-align: center;
+  color: #69404c;
 `;
 const Button = styled.button`
-    border-radius: 10px;
-    border: 0px;
-    background: ${colors.white};
-    margin: 0 1em;
-    padding: 0.25em 1em;
-    position: dynamic;
-    width: 615px;
-    height: 61px;
-    left: 448px;
-    top: 385px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  border: 0px;
+  background: ${colors.white};
+  margin: 0 1em;
+  padding: 0.25em 1em;
+  position: dynamic;
+  width: 615px;
+  height: 61px;
+  left: 448px;
+  top: 385px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
-    transition: 0.2s;
-    &:hover {
-      cursor: pointer;
-      opacity: 0.8;
-    }
-    
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    font-family: Tahoma;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 30px;
-    line-height: 35px;
-    align-items: center;
-    text-align: center;
-    color: #69404C;
+  transition: 0.2s;
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-family: Tahoma;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 35px;
+  align-items: center;
+  text-align: center;
+  color: #69404c;
 `;
 
-
-
 const Post = styled.button`
-    border-radius: 10px;
-    border: 0px;
-    background: ${colors.postPink};
-    margin: 0 1em 3em;
-    padding: 0.25em 1em;
-    position: dynamic;
-    width: 1000px;
-    height: 400px;
-    left: 57px;
-    top: 245px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  
+  border-radius: 10px;
+  border: 0px;
+  background: ${colors.postPink};
+  margin: 0 1em 3em;
+  padding: 0.25em 1em;
+  position: dynamic;
+  width: 1000px;
+  height: 400px;
+  left: 57px;
+  top: 245px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;
 
 const PostContents = styled.button`
-    border-radius: 10px;
-    border: 0px;
-    background: ${colors.white};
-    margin: 0 1em;
-    padding: 0.25em 1em;
-    position: dynamic;
-    width: 950px;
-    height: 250px;
-    left: 448px;
-    top: 385px;
-    font-family: Tahoma;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 15px;
-    
+  border-radius: 10px;
+  border: 0px;
+  background: ${colors.white};
+  margin: 0 1em;
+  padding: 0.25em 1em;
+  position: dynamic;
+  width: 950px;
+  height: 250px;
+  left: 448px;
+  top: 385px;
+  font-family: Tahoma;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
 `;
 
 const PostText = styled.p`
-    font-family: Tahoma;
-    font-style: normal;
-    font-weight: 50;
-    font-size: 20px;
-    line-height: 10px;
-    align-items: center;
-    text-align: center;
-    color: #69404C;
+  font-family: Tahoma;
+  font-style: normal;
+  font-weight: 50;
+  font-size: 20px;
+  line-height: 10px;
+  align-items: center;
+  text-align: center;
+  color: #69404c;
 `;
 
 const PostHeaderText = styled.p`
-    font-family: Tahoma;
-    font-style: normal;
-    font-weight: 50;
-    font-size: 20px;
-    line-height: 10px;
-    align-items: center;
-    text-align: center;
-    color: #69404C;
+  font-family: Tahoma;
+  font-style: normal;
+  font-weight: 50;
+  font-size: 20px;
+  line-height: 10px;
+  align-items: center;
+  text-align: center;
+  color: #69404c;
 `;
 
 const PostUsername = styled.p`
@@ -157,10 +153,11 @@ const PostUsername = styled.p`
 `;
 
 const fightSymbolStyle = styled.p`
-    padding: 10px 0px 10px 0px
+  padding: 10px 0px 10px 0px;
 `;
 
-const TextBox = styled.input`  //HAS AN ISSUE
+const TextBox = styled.input`
+  //HAS AN ISSUE
   font-size: 18px;
   padding: 0.25em 1em;
   margin: 0 1em;
@@ -170,7 +167,7 @@ const TextBox = styled.input`  //HAS AN ISSUE
   width: 615px;
   height: 61px;
   left: 448px;
-  top: 385px;  
+  top: 385px;
   font-family: Tahoma;
   font-style: normal;
   font-weight: 50;
@@ -179,14 +176,13 @@ const TextBox = styled.input`  //HAS AN ISSUE
   align-items: center;
   text-align: center;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  text-color: ${colors.buttonBrown};  
+  text-color: ${colors.buttonBrown};
   ::placeholder {
     color: ${colors.backgroundPink};
     font-weight: 50;
     font-style: italic;
   }
 `;
-
 
 const BiggerTextBox = styled.input`
   font-size: 18px;
@@ -198,7 +194,7 @@ const BiggerTextBox = styled.input`
   width: 615px;
   height: 120px;
   left: 448px;
-  top: 385px;  
+  top: 385px;
   font-family: Tahoma;
   font-style: normal;
   font-weight: 50;
@@ -207,7 +203,7 @@ const BiggerTextBox = styled.input`
   align-items: center;
   text-align: center;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  text-color: ${colors.buttonBrown};  
+  text-color: ${colors.buttonBrown};
   ::placeholder {
     color: ${colors.backgroundPink};
     font-weight: 50;
@@ -216,118 +212,235 @@ const BiggerTextBox = styled.input`
 `;
 
 const NextButton = styled.button`
-    border-radius: 10px;
-    border: 0px;
-    background: #69404C;
-    margin: 0 1em;
-    padding: 0.25em 1em;
-    position: dynamic;
-    width: 250px;
-    height: 60px;
-    left: 598px;
-    top: 804px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  border: 0px;
+  background: #69404c;
+  margin: 0 1em;
+  padding: 0.25em 1em;
+  position: dynamic;
+  width: 250px;
+  height: 60px;
+  left: 598px;
+  top: 804px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
-    transition: 0.2s;
-    &:hover {
-      cursor: pointer;
-      opacity: 0.8;
-    }
-    
-    font-family: Tahoma;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 30px;
-    line-height: 35px;
-    align-items: center;
-    text-align: center;
-    color: #FFFFFF;
-    text-decoration: none;
+  transition: 0.2s;
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+
+  font-family: Tahoma;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 35px;
+  align-items: center;
+  text-align: center;
+  color: #ffffff;
+  text-decoration: none;
 `;
 
 const NickyButton = styled.button`
-    border-radius: 10px;
-    border: 0px;
-    background: #69404C;
-    margin: 0 1em;
-    padding: 0.25em 1em;
-    position: dynamic;
-    width: 220px;
-    height: 50px;
-    left: 598px;
-    top: 804px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  border: 0px;
+  background: #69404c;
+  margin: 0 1em;
+  padding: 0.25em 1em;
+  position: dynamic;
+  width: 220px;
+  height: 50px;
+  left: 598px;
+  top: 804px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
-    transition: 0.2s;
-    &:hover {
-      cursor: pointer;
-      opacity: 0.8;
-    }
-    
-    font-family: Tahoma;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 30px;
-    line-height: 35px;
-    align-items: center;
-    text-align: center;
-    color: #FFFFFF;
-    text-decoration: none;
+  transition: 0.2s;
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+
+  font-family: Tahoma;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 35px;
+  align-items: center;
+  text-align: center;
+  color: #ffffff;
+  text-decoration: none;
+`;
+
+const CommentButton = styled.button`
+  border-radius: 10px;
+  border: 0px;
+  background: #69404c;
+  margin: 0 1em;
+  padding: 0.25em 1em;
+  position: dynamic;
+  width: 220px;
+  height: 40px;
+  left: 598px;
+  top: 804px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+
+  font-family: Tahoma;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 20px;
+  align-items: center;
+  text-align: center;
+  color: #ffffff;
+  text-decoration: none;
+`;
+
+const CommentButton2 = styled.button`
+  border-radius: 10px;
+  border: 0px;
+  background: #fcf1f1;
+  margin: 0 1em;
+  padding: 0.25em 1em;
+  position: dynamic;
+  width: 220px;
+  height: 50px;
+  left: 598px;
+  top: 804px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+  transition: 0.2s;
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+
+  font-family: Tahoma;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 35px;
+  align-items: center;
+  text-align: center;
+  color: #69404c;
+  text-decoration: none;
+`;
+
+const CreateComment = styled.input`
+  font-size: 18px;
+  padding: 0.25em 1em;
+  margin: 2em 1em 1em 1em;
+  background: ${colors.white};
+  border: 10px;
+  border-radius: 10px;
+  width: 1320px;
+  height: 59px;
+  left: 448px;
+  top: 385px;
+  font-family: Tahoma;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 25px;
+  color: #69404c;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  ::placeholder {
+    color: ${colors.backgroundPink};
+    font-weight: 50;
+    font-style: italic;
+  }
+`;
+
+const Comments = styled.button`
+  border-radius: 10px;
+  border: 0px;
+  background: ${colors.postPink};
+  margin: 0 1em;
+  padding: 0.25em 1em;
+  position: dynamic;
+  width: 1360px;
+  height: 100px;
+  left: 448px;
+  top: 385px;
+  font-family: Tahoma;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  color: #69404c;
 `;
 
 const Text = styled.p`
-    font-family: Tahoma;
-    font-style: normal;
-    font-weight: 50;
-    font-size: 30px;
-    line-height: 10px;
-    align-items: center;
-    text-align: center;
-    color: #69404C;
+  font-family: Tahoma;
+  font-style: normal;
+  font-weight: 50;
+  font-size: 30px;
+  line-height: 10px;
+  align-items: center;
+  text-align: center;
+  color: #69404c;
 `;
 
 const HeaderText = styled.p`
-    font-family: Tahoma;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 55px;
-    line-height: 58.59px;
-    align-items: center;
-    text-align: center;
-    color: #69404C;
+  font-family: Tahoma;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 55px;
+  line-height: 58.59px;
+  align-items: center;
+  text-align: center;
+  color: #69404c;
+`;
+
+const CommentTitle = styled.p`
+  font-family: Tahoma;
+  font-style: normal;
+  font-weight: 100;
+  font-size: 35px;
+  line-height: 10px;
+  align-items: center;
+  text-align: center;
+  color: #ffffff;
 `;
 
 const ErrorText = styled.p`
-    font-family: Tahoma;
-    font-style: normal;
-    font-weight: 50;
-    font-size: 30px;
-    line-height: 10px;
-    align-items: center;
-    text-align: center;
-    color: #FF0000;
+  font-family: Tahoma;
+  font-style: normal;
+  font-weight: 50;
+  font-size: 30px;
+  line-height: 10px;
+  align-items: center;
+  text-align: center;
+  color: #ff0000;
 `;
 
-
-
 export {
-    LandingPage,
-    NavBar,
-    NavPadding,
-    Button,
-    LandingButton,
-    NextButton,
-    LandingPageWrapper,
-    Text,
-    Post,
-    PostContents,
-    PostText,
-    PostHeaderText,
-    PostUsername,
-    HeaderText,
-    fightSymbolStyle,
-    TextBox,
-    BiggerTextBox,
-    NickyButton,
-    ErrorText,
- }
+  LandingPage,
+  NavBar,
+  NavPadding,
+  Button,
+  LandingButton,
+  NextButton,
+  LandingPageWrapper,
+  Text,
+  Post,
+  PostContents,
+  PostText,
+  PostHeaderText,
+  PostUsername,
+  HeaderText,
+  fightSymbolStyle,
+  TextBox,
+  BiggerTextBox,
+  NickyButton,
+  ErrorText,
+  CommentButton,
+  CommentButton2,
+  Comments,
+  CreateComment as CreateComments,
+  CommentTitle,
+};

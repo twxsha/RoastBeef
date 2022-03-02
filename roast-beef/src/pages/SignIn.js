@@ -10,9 +10,9 @@ import {
   TextBox,
   ErrorText,
 } from "../pages/style";
-import {signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import Logo from "../images/logo.png";
-import {auth} from "../firebase-config";
+import { auth } from "../firebase-config";
 import { useHistory } from "react-router-dom";
 
 function SignIn() {
@@ -20,7 +20,7 @@ function SignIn() {
   const [newEmail, setNewEmail] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [emailError, setEmailError] = useState("");
-  const[passError, setPassError] = useState("");
+  const [passError, setPassError] = useState("");
 
   function signInHandler() {
     console.log("signing in");
@@ -34,13 +34,13 @@ function SignIn() {
       .catch((error) => {
         setEmailError("");
         setPassError("");
-        switch(error.code) {
-            case "auth/user-not-found":
-                setEmailError("No account associated with this email");
-                break;
-            case "auth/wrong-password":
-                setPassError("Incorrect password");
-                break;
+        switch (error.code) {
+          case "auth/user-not-found":
+            setEmailError("No account associated with this email");
+            break;
+          case "auth/wrong-password":
+            setPassError("Incorrect password");
+            break;
         }
       });
   }
