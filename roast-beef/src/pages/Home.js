@@ -1,29 +1,27 @@
-import { useState, React } from "react";
+import { useState, React, useEffect } from "react";
 import "./HomePage.css";
-import { db } from "../firebase-config";
+import { db, db2 } from "../firebase-config";
 import Logo from "../images/logo.png";
 import Popup from "./Popup";
 import { NavBar, NavPadding, LandingPage, NickyButton } from "../pages/style";
 import PostD from "./Post";
 import "./Popup";
-import { collection } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
+import { async } from "@firebase/util";
 
 const Home = () => {
-  {
-    /* posts stored in an array */
-  }
-  const [posts, setPosts] = useState([
-    {
-      username1: "paul eggert",
-      username2: "students",
-      postText: "students deserve a harder project",
-    },
-    {
-      username1: "nicky",
-      username2: "shravan",
-      postText: "we hate sank",
-    },
-  ]);
+  const [posts, setPosts] = useState([]);
+  const postsColRef = collection(db, "posts");
+
+
+  useEffect(()=> {
+    const getPosts = async () => {
+      const data = await getDocs(postsColRef);
+      setPosts(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
+    }
+    getPosts();
+  }, []);
+
 
   const postsCollectionRef = collection(db, "posts");
   const [buttonPopup, setButtonPopup] = useState(false);
@@ -58,15 +56,51 @@ const Home = () => {
         </a>
       </NavBar>
       <NavPadding></NavPadding> <p />
-      {posts.map((post) => (
-        <PostD
-          username1={post.username1}
-          username2={post.username2}
-          postText={post.postText}
-        ></PostD>
-      ))}
+      {posts.map((post) => {
+        return (
+          <PostD
+            username={post.User}
+            taggerUser={post.TaggedUser}
+            postText={post.Text}
+            postTitle={post.Title}
+          ></PostD>
+        );
+        
+      })}
       <p></p>
     </LandingPage>
   );
 };
 export default Home;
+
+
+
+
+/*
+    instagram guys
+
+    useEffect(()=> {
+      db2.collection('posts').onSnapshot(snapshot => {
+        setPosts(snapshot.docs.map(doc => ({
+          id: doc.id,
+          post: doc.data()
+        })));
+      })
+    }, []);
+
+    */
+
+     /*
+  //get collection data
+  getDocs(postsColRef)
+    .then((snapshot) => {
+      let posts = []
+      snapshot.docs.forEach((doc) => {
+        posts.push({...doc.data(), id: doc.id})
+      })
+      console.log(posts)
+    })
+    .catch(err => {
+      console.log(err.message)
+    })
+*/
