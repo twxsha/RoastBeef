@@ -1,0 +1,23 @@
+.stayPutHome{
+    margin-left: 500px;
+    margin-right: 500px;
+    position: relative;
+}
+
+.outerleft{
+    float: left;
+    position: absolute;
+}
+
+.outerright{
+    float: right;
+    position: absolute;
+    top: 70px;
+    right:0;
+}
+
+#results{
+    position: absolute;
+    width: inherit;
+    margin: 80px 0;
+} 
