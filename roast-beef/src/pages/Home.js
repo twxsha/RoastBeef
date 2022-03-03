@@ -1,6 +1,6 @@
 import {useState, useEffect, React} from 'react';
 import './HomePage.css';
-import db from '../firebase-config';
+import { db } from '../firebase-config';
 import Logo from '../images/logo.png';
 import Popup from './Popup'
 import {NavBar, NavPadding, LandingPage, Button, LandingPageWrapper, Post, PostContents, Text, NextButton, NickyButton, SearchBar, DDButton} from '../pages/style';
