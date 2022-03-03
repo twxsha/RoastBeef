@@ -331,7 +331,7 @@ const CommentButton2 = styled.button`
   text-decoration: none;
 `;
 
-const CreateComment = styled.input`
+const CreateComment = styled.textarea`
   font-size: 18px;
   padding: 0.25em 1em;
   margin: 2em 1em 1em 1em;
