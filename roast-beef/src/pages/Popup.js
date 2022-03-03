@@ -18,7 +18,7 @@ function Popup(props){
 
     const createPost = async () =>{
         await addDoc(postsCollectionRef, {Title: newTitle, 
-            Tags: newTag, Text: newContent, Vote_Tagged: 0, Vote_User: 0})
+             Text: newContent, Tags: ["Wordle", "Intel", "sankirth"], Vote_Tagged: 0,Vote_User: 0, User: "Shravan", Comments: ["Comment1","Comment2"], TaggedUser: "Nicky",})
             props.setTrigger(false)
     }
 
