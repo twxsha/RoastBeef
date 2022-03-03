@@ -1,6 +1,6 @@
 import { useState, React, useEffect } from "react";
 import "./HomePage.css";
-import { db, db2 } from "../firebase-config";
+import { db } from "../firebase-config";
 import Logo from "../images/logo.png";
 import Popup from "./Popup";
 import { NavBar, NavPadding, LandingPage, NickyButton } from "../pages/style";
@@ -72,35 +72,3 @@ const Home = () => {
   );
 };
 export default Home;
-
-
-
-
-/*
-    instagram guys
-
-    useEffect(()=> {
-      db2.collection('posts').onSnapshot(snapshot => {
-        setPosts(snapshot.docs.map(doc => ({
-          id: doc.id,
-          post: doc.data()
-        })));
-      })
-    }, []);
-
-    */
-
-     /*
-  //get collection data
-  getDocs(postsColRef)
-    .then((snapshot) => {
-      let posts = []
-      snapshot.docs.forEach((doc) => {
-        posts.push({...doc.data(), id: doc.id})
-      })
-      console.log(posts)
-    })
-    .catch(err => {
-      console.log(err.message)
-    })
-*/
