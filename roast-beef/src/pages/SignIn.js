@@ -8,14 +8,19 @@ import {
   LandingPageWrapper,
   HeaderText,
   TextBox,
+  ErrorText,
 } from "../pages/style";
-import {signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import Logo from "../images/logo.png";
-import {auth} from "../firebase-config";
+import { auth } from "../firebase-config";
+import { useHistory } from "react-router-dom";
 
 function SignIn() {
+  const history = useHistory();
   const [newEmail, setNewEmail] = useState("");
   const [newPassword, setNewPassword] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [passError, setPassError] = useState("");
 
   function signInHandler() {
     console.log("signing in");
@@ -23,13 +28,20 @@ function SignIn() {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        console.log(user);
+        history.push("/home");
         // ...
       })
       .catch((error) => {
-        console.log(error);
-        const errorCode = error.code;
-        const errorMessage = error.message;
+        setEmailError("");
+        setPassError("");
+        switch (error.code) {
+          case "auth/user-not-found":
+            setEmailError("No account associated with this email");
+            break;
+          case "auth/wrong-password":
+            setPassError("Incorrect password");
+            break;
+        }
       });
   }
 
@@ -51,10 +63,10 @@ function SignIn() {
       <NavPadding></NavPadding> <p />
       <LandingPageWrapper>
         <HeaderText>LOG IN</HeaderText>
-        <Text>Enter Your Username: </Text>
+        <Text>Enter Your Email: </Text>
         <TextBox
           type="text"
-          placeholder="Username"
+          placeholder="Email"
           onChange={(event) => {
             setNewEmail(event.target.value);
           }}
@@ -69,6 +81,8 @@ function SignIn() {
           }}
         />
         <p />
+        <ErrorText> {emailError} </ErrorText> <p />
+        <ErrorText> {passError} </ErrorText> <p />
         <a href="/">
           <NextButton>Back</NextButton>
         </a>

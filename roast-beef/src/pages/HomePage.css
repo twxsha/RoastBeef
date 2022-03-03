@@ -1,16 +1,17 @@
 .outer {
-    float:right;
-    position:absolute;
-  }
+  float: right;
+  position: absolute;
+}
 
 .outer2 {
-    float:right;
+  float: right;
+}
+
+.outer3 {
+  float: left;
 }
 
 .stayput {
-    margin: auto;
-    position: relative;
+  margin: auto;
+  position: relative;
 }
-
-
-

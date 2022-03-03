@@ -6,6 +6,8 @@ import Popup from './Popup'
 import {NavBar, NavPadding, LandingPage, Button, LandingPageWrapper, Post, PostContents, Text, NextButton, NickyButton, SearchBar, DDButton} from '../pages/style';
 import PostD from './Post';
 import './HomeCss.css'
+import "./Popup";
+import { collection } from "firebase/firestore";
 
 const SearchbarDropdown = (props) => {
     const {options, onInputChange} = props;
@@ -49,23 +51,25 @@ for(let i = 0; i < 10; i++){
 }
 
 const Home = () => {
-    {/* posts stored in an array */}
-    const [posts, setPosts] = useState ([
-        {
-            username1: "paul eggert",
-            username2: "students",
-            postText: "students deserve a harder project"
-        },
-        {
-            username1: "nicky",
-            username2: "shravan",
-            postText: "we hate sank"
-        },
-    ]);
+  {
+    /* posts stored in an array */
+  }
+  const [posts, setPosts] = useState([
+    {
+      username1: "paul eggert",
+      username2: "students",
+      postText: "students deserve a harder project",
+    },
+    {
+      username1: "nicky",
+      username2: "shravan",
+      postText: "we hate sank",
+    },
+  ]);
+  
+  const postsCollectionRef = collection(db, "posts");
+  const [buttonPopup, setButtonPopup] = useState(false);
 
-    const [buttonPopup, setButtonPopup] = useState(false);
-
-    
     const [options, setOptions] = useState([]);
     const onInputChange = (event) => {
         console.log(event.target.value);
@@ -74,40 +78,35 @@ const Home = () => {
         );
     };
 
-    return (
-
-        <LandingPage>
-            <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
-            </Popup>              
-            <NavBar>
-                <br></br>
-                <SearchbarDropdown options={options} onInputChange={onInputChange}/>
-                <div className="outerright">
-                    <div>
-                        <NickyButton onClick={() => setButtonPopup(true)}> Create Post </NickyButton>
-                    </div>
-                </div>
-                <div className = "stayPutHome">
-                    <a href='/' className="NavLogo">
-                        <marquee behavior="alternate" width="300">
-                            <img src={Logo} alt="Logo" align="left" width="200" height="133" ></img>
-                        </marquee>
-                    </a>
-                </div>
-                
-            </NavBar> <p/>
-            <NavPadding>
-            </NavPadding> <p />
-            <LandingPageWrapper>
-                {
-                    posts.map(post => (
-                        <PostD username1={post.username1} username2={post.username2} postText={post.postText}></PostD>
-                    ))
-                }
-                <p></p>
-            </LandingPageWrapper>
-        </LandingPage>
-        
-    );
-}
+  return (
+    <LandingPage>
+      <Popup trigger={buttonPopup} setTrigger={setButtonPopup}></Popup>
+    <NavBar>
+      <br></br>
+      <SearchbarDropdown options={options} onInputChange={onInputChange}/>
+      <div className="outerright">
+          <div>
+              <NickyButton onClick={() => setButtonPopup(true)}> Create Post </NickyButton>
+          </div>
+      </div>
+      <div className = "stayPutHome">
+          <a href='/' className="NavLogo">
+              <marquee behavior="alternate" width="300">
+                  <img src={Logo} alt="Logo" align="left" width="200" height="133" ></img>
+              </marquee>
+          </a>
+      </div>
+  </NavBar> <p/>
+   <NavPadding></NavPadding> <p />
+      {posts.map((post) => (
+        <PostD
+          username1={post.username1}
+          username2={post.username2}
+          postText={post.postText}
+        ></PostD>
+      ))}
+      <p></p>
+    </LandingPage>
+  );
+};
 export default Home;
