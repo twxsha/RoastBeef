@@ -1,4 +1,4 @@
-import { useState, React } from "react";
+import { useState, React, useEffect } from "react";
 import "./HomePage.css";
 import { db } from "../firebase-config";
 import Logo from "../images/logo.png";
@@ -14,7 +14,8 @@ import {
 import PostD from "./Post";
 import "./HomeCss.css";
 import "./Popup";
-import { collection } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
+import { async } from "@firebase/util";
 
 const SearchbarDropdown = (props) => {
   const { options, onInputChange } = props;
@@ -62,21 +63,18 @@ for (let i = 0; i < 10; i++) {
 }
 
 const Home = () => {
-  {
-    /* posts stored in an array */
-  }
-  const [posts, setPosts] = useState([
-    {
-      username1: "paul eggert",
-      username2: "students",
-      postText: "students deserve a harder project",
-    },
-    {
-      username1: "nicky",
-      username2: "shravan",
-      postText: "we hate sank",
-    },
-  ]);
+  const [posts, setPosts] = useState([]);
+  const postsColRef = collection(db, "posts");
+
+
+  useEffect(()=> {
+    const getPosts = async () => {
+      const data = await getDocs(postsColRef);
+      setPosts(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
+    }
+    getPosts();
+  }, []);
+
 
   const postsCollectionRef = collection(db, "posts");
   const [buttonPopup, setButtonPopup] = useState(false);
@@ -119,13 +117,17 @@ const Home = () => {
       </NavBar>{" "}
       <p />
       <NavPadding></NavPadding> <p />
-      {posts.map((post) => (
-        <PostD
-          username1={post.username1}
-          username2={post.username2}
-          postText={post.postText}
-        ></PostD>
-      ))}
+      {posts.map((post) => {
+        return (
+          <PostD
+            username={post.User}
+            taggerUser={post.TaggedUser}
+            postText={post.Text}
+            postTitle={post.Title}
+          ></PostD>
+        );
+        
+      })}
       <p></p>
     </LandingPage>
   );
