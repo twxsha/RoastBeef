@@ -26,6 +26,11 @@ const NavBar = styled.div`
 
 const NavPadding = styled.div`
   background: ${colors.white};
+  padding-top: 138px;
+`;
+
+const NavPaddingHome = styled.div`
+  background: ${colors.white};
   padding-top: 155px;
 `;
 
@@ -474,6 +479,7 @@ export {
   LandingPage,
   NavBar,
   NavPadding,
+  NavPaddingHome,
   Button,
   LandingButton,
   NextButton,

@@ -5,17 +5,19 @@ import Logo from "../images/logo.png";
 import Popup from "./Popup";
 import {
   NavBar,
-  NavPadding,
+  NavPaddingHome,
   LandingPage,
   NickyButton,
   SearchBar,
   DDButton,
+  Text
 } from "../pages/style";
 import PostD from "./Post";
 import "./HomeCss.css";
 import "./Popup";
 import { collection, getDocs } from "firebase/firestore";
 import { async } from "@firebase/util";
+import { cookies } from "./SignIn"
 
 const SearchbarDropdown = (props) => {
   const { options, onInputChange } = props;
@@ -93,6 +95,9 @@ const Home = () => {
       <NavBar>
         <br></br>
         <SearchbarDropdown options={options} onInputChange={onInputChange} />
+        <div className="outerrightuser">
+          <Text> {"@"}{cookies.get('user')}</Text>
+        </div>
         <div className="outerright">
           <div>
             <NickyButton onClick={() => setButtonPopup(true)}>
@@ -116,7 +121,7 @@ const Home = () => {
         </div>
       </NavBar>{" "}
       <p />
-      <NavPadding></NavPadding> <p />
+      <NavPaddingHome></NavPaddingHome> <p />
       {posts.map((post) => {
         return (
           <PostD
