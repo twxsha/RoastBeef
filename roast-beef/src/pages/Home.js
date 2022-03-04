@@ -14,7 +14,6 @@ import {
   PostContents,
   Text,
   NextButton,
-  SearchButton,
   NickyButton,
   SearchBar,
   DDButton,
@@ -48,7 +47,7 @@ const SearchbarDropdown = (props) => {
         ref={inputRef}
         onChange={onInputChange}
       />{" "}
-      <SearchButton>Search</SearchButton>
+      <p />
       <ul id="results" ref={ulRef}>
         {options.map((option, index) => {
           return (
@@ -83,6 +82,9 @@ defaultOptions.push(`#wordle`);
 defaultOptions.push(`#globle`);
 defaultOptions.push(`#handshakes`);
 
+for (let i = 0; i < 10; i++) {
+  defaultOptions.push(`tag ${i}`);
+}
 
 const Home = () => {
 

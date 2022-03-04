@@ -1,6 +1,6 @@
 .stayPutHome{
-    margin-left: 650px;
-    margin-right: 650px;
+    margin-left: 500px;
+    margin-right: 500px;
     position: relative;
 }
 
@@ -33,6 +33,5 @@
     position: absolute;
     width: inherit;
     display: inline-block;
-    margin: 0px;
-    flex-wrap: wrap;
+    margin: 80px 0;
 } 

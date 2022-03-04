@@ -416,7 +416,7 @@ const CommentTitle = styled.p`
 const SearchBar = styled.input`
   font-size: 16px;
   padding: 0.5em 1em;
-  margin: 35px 0px 0px 35px;
+  margin: 35px 35px;
   background: #EFE9E9;
   float: left;
   border: 10px;
@@ -432,7 +432,7 @@ const SearchBar = styled.input`
   line-height: 35px;
   text-align: center;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  color: ${colors.buttonBrown}; 
+  text-color: ${colors.buttonBrown}; 
   ::placeholder {
     color: rgba(105, 64, 76, .5);
     font-weight: 50;
@@ -440,31 +440,7 @@ const SearchBar = styled.input`
   }
   &:hover {
     cursor: pointer;
-  }
-  &:focus {
-    outline: 3px solid ${colors.buttonBrown} ;
-  }
-`;
-
-
-const SearchButton = styled.button`
-  border-radius: 16px;
-  border: 10px;
-  background: ${colors.buttonBrown};
-  margin: 35px 0px 0px 16px;
-  padding: 0.5em;
-  position: dynamic;
-  height: 64px;
-  font-family: Tahoma;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 30px;
-  color: ${colors.white};
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  transition: 0.2s;
-  &:hover {
-    cursor: pointer;
-    opacity: 0.8;
+    color: ${colors.buttonBrown}
   }
 `;
   
@@ -527,5 +503,4 @@ export {
   Comments,
   CreateComment as CreateComments,
   CommentTitle,
-  SearchButton,
 };
