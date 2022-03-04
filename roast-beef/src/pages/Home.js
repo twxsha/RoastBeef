@@ -1,12 +1,19 @@
-import { useState, React, useEffect } from "react";
+import { useState, useEffect, React, useRef } from "react";
 import "./HomePage.css";
-import { db } from "../firebase-config";
+import "./HomeCss.css";
+import {db} from "../firebase-config";
 import Logo from "../images/logo.png";
 import Popup from "./Popup";
 import {
   NavBar,
   NavPadding,
   LandingPage,
+  Button,
+  LandingPageWrapper,
+  Post,
+  PostContents,
+  Text,
+  NextButton,
   NickyButton,
   SearchBar,
   DDButton,
@@ -19,23 +26,39 @@ import { async } from "@firebase/util";
 
 const SearchbarDropdown = (props) => {
   const { options, onInputChange } = props;
+  const ulRef = useRef();
+  const inputRef = useRef();
+  useEffect(() => {
+      inputRef.current.addEventListener('click', (event) => {
+        event.stopPropagation();
+        ulRef.current.style.display = 'flex';
+        onInputChange(event);
+      });
+      document.addEventListener('click', (event) =>{
+        ulRef.current.style.display = 'none';
+      });
+  }, []);
   return (
     <div className="outerleft">
       <SearchBar
         type="text"
         placeholder="Search Here"
+        ref={inputRef}
         onChange={onInputChange}
       />{" "}
       <p />
-      <ul id="results">
+      <ul id="results" ref={ulRef}>
         {options.map((option, index) => {
           return (
             <DDButton
               className="list-group-item list-group-item-action"
               key={index}
+              onClick={(e) => {
+                inputRef.current.value = option;
+                }}
             >
               {option}
-            </DDButton>
+            </DDButton> 
           );
         })}
       </ul>
@@ -53,7 +76,7 @@ defaultOptions.push(`#arts`);
 defaultOptions.push(`#history`);
 defaultOptions.push(`#casual`);
 defaultOptions.push(`#ucla`);
-defaultOptions.push(`#computer science`);
+defaultOptions.push(`#computerscience`);
 defaultOptions.push(`#wordle`);
 defaultOptions.push(`#globle`);
 defaultOptions.push(`#handshakes`);
@@ -63,6 +86,7 @@ for (let i = 0; i < 10; i++) {
 }
 
 const Home = () => {
+
   const [posts, setPosts] = useState([]);
   const postsColRef = collection(db, "posts");
 
@@ -117,6 +141,7 @@ const Home = () => {
       </NavBar>{" "}
       <p />
       <NavPadding></NavPadding> <p />
+
       {posts.map((post) => {
         return (
           <PostD
