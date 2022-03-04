@@ -26,6 +26,11 @@ const NavBar = styled.div`
 
 const NavPadding = styled.div`
   background: ${colors.white};
+  padding-top: 138px;
+`;
+
+const NavPaddingHome = styled.div`
+  background: ${colors.white};
   padding-top: 155px;
 `;
 
@@ -185,7 +190,7 @@ const TextBox = styled.input`
   }
 `;
 
-const BiggerTextBox = styled.input`
+const BiggerTextBox = styled.textarea`
   font-size: 18px;
   padding: 0.25em 1em;
   margin: 0 1em;
@@ -331,7 +336,7 @@ const CommentButton2 = styled.button`
   text-decoration: none;
 `;
 
-const CreateComment = styled.input`
+const CreateComment = styled.textarea`
   font-size: 18px;
   padding: 0.25em 1em;
   margin: 2em 1em 1em 1em;
@@ -498,6 +503,7 @@ export {
   LandingPage,
   NavBar,
   NavPadding,
+  NavPaddingHome,
   Button,
   LandingButton,
   NextButton,

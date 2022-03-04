@@ -21,6 +21,14 @@
     right:0;
 }
 
+.outerrightuser{
+    float: right;
+    position: absolute;
+    right: 0;
+    margin-right: 50px;
+    bottom: 100px;
+}
+
 #results{
     position: absolute;
     width: inherit;

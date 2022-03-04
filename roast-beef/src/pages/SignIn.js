@@ -14,6 +14,12 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import Logo from "../images/logo.png";
 import { auth } from "../firebase-config";
 import { useHistory } from "react-router-dom";
+import { collection, doc, getDocs, query, where } from "firebase/firestore";
+import {usersCollectionRef} from './SignUp';
+import { async } from "@firebase/util";
+import Cookies from 'universal-cookie';
+
+let cookies = new Cookies();
 
 function SignIn() {
   const history = useHistory();
@@ -22,8 +28,12 @@ function SignIn() {
   const [emailError, setEmailError] = useState("");
   const [passError, setPassError] = useState("");
 
-  function signInHandler() {
-    console.log("signing in");
+  async function signInHandler() {
+    const q = query(usersCollectionRef, where("email", "==", newEmail));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      cookies.set('user', doc.data().user);
+    });
     signInWithEmailAndPassword(auth, newEmail, newPassword)
       .then((userCredential) => {
         // Signed in
@@ -92,4 +102,5 @@ function SignIn() {
     </LandingPage>
   );
 }
+export { cookies };
 export default SignIn;
