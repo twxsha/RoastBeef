@@ -71,6 +71,7 @@ function SignUp() {
               align="left"
               width="200"
               height="133"
+              
             ></img>
           </marquee>
         </a>

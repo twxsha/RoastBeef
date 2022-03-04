@@ -6,6 +6,9 @@ export const colors = {
   white: "#FFFFFF",
   grey: "#DEDEDE",
   postPink: "#FCF1F1",
+  votePink: "#F3DFE3",
+  postBrown: "#dbabab",
+  textBrown: "#52313b"
 };
 const LandingPage = styled.div`
     background: ${colors.backgroundPink};
@@ -89,35 +92,6 @@ const Button = styled.button`
   color: #69404c;
 `;
 
-const VoteButton = styled.button`
-  border-radius: 10px;
-  border: 0px;
-  background: ${colors.white};
-  margin: ;
-  padding: ;
-  position: dynamic;
-  width: 60px;
-  height: 40px;
-  left: 448px;
-  top: 385px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
-  transition: 0.2s;
-  &:hover {
-    cursor: pointer;
-    opacity: 0.8;
-  }
-
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  font-family: Tahoma;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 35px;
-  align-items: center;
-  text-align: center;
-  color: #69404c;
-`;
 
 const Post = styled.button`
   border-radius: 10px;
@@ -127,21 +101,19 @@ const Post = styled.button`
   padding: 0.25em 1em;
   position: dynamic;
   width: 1000px;
-  height: 400px;
   left: 57px;
   top: 245px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;
 
 const PostContents = styled.button`
-  border-radius: 10px;
+  border-radius: 15px;
   border: 0px;
   background: ${colors.white};
   margin: 0 1em;
   padding: 0.25em 1em;
   position: dynamic;
   width: 950px;
-  height: 200px;
   left: 448px;
   top: 385px;
   font-family: Tahoma;
@@ -150,15 +122,37 @@ const PostContents = styled.button`
   font-size: 15px;
 `;
 
-const PostText = styled.p`
+const PostTextL = styled.p`
+  border-radius: 20px;
+  border: 50px;
+  background: ${colors.buttonBrown};
+  padding: 13px 16px 16px 16px;
+  margin: 20px 90px 0px 5px;
   font-family: Tahoma;
   font-style: normal;
   font-weight: 50;
   font-size: 20px;
-  line-height: 10px;
-  align-items: center;
-  text-align: center;
-  color: #69404c;
+  line-height: 25px;
+  text-align: left;
+  color: ${colors.white};
+  float: left;
+  display: block;
+`;
+const PostTextR = styled.p`
+  border-radius: 20px;
+  border: 50px;
+  background: ${colors.postBrown};
+  padding: 13px 16px 16px 16px;
+  margin: 20px 5px 20px 90px;
+  font-family: Tahoma;
+  font-style: normal;
+  font-weight: 50;
+  font-size: 20px;
+  line-height: 25px;
+  text-align: left;
+  color: ${colors.textBrown};
+  float: right;
+  display: block;
 `;
 
 const PostHeaderText = styled.p`
@@ -167,7 +161,7 @@ const PostHeaderText = styled.p`
   font-weight: 50;
   font-size: 20px;
   line-height: 10px;
-  align-items: center;
+  align-items: baseline;
   text-align: center;
   color: #69404c;
 `;
@@ -175,17 +169,19 @@ const PostHeaderText = styled.p`
 const PostUsername = styled.p`
     font-family: Tahoma;
     font-style: normal;
-    font-weight: 500;
-    font-size: 22px;
+    font-weight: 0;
+    font-size: 25px;
     text-align: center;
     padding: 10px 0px 10px;
-    margin: 25px 15px 25px 15px;
+    margin: 25px 25px 25px 25px;
     color: #69404C;
     display: inline;
 `;
 
+
+
 const fightSymbolStyle = styled.p`
-  padding: 10px 30px 10px 30px;
+  padding: 0px 10px 10px 30px;
 `;
 
 
@@ -199,7 +195,7 @@ const PostTitle = styled.p`
   align-items: center;
   text-align: left;
   padding: 0px 0px 0px;
-  margin: 35px 25px 15px 25px;
+  margin: 30px 5px 0px 20px;
   color: #69404c;
 `;
 
@@ -209,10 +205,62 @@ const PostTags = styled.p`
   font-weight: normal;
   font-size: 15px;
   line-height: 10px;
-  align-items: center;
+  align-items: right;
   text-align: right;
+  padding: 0px 0px 0px 0px;
+  margin: 20px 25px 0px 0px;
+  color: #69404c;
+`;
+
+
+const VoteCount = styled.p`
+  font-family: Tahoma;
+  font-style: normal;
+  font-weight: 30;
+  text-transform: uppercase;
+  font-size: 22px;
+  line-height: 10px;
+  align-items: center;
+  text-align: center;
   padding: 0px 0px 0px;
-  margin: 0px 25px 0px 25px;
+  margin: 35px 10px 15px 10px;
+  color: #69404c;
+  display: inline;
+`;
+
+const VoteButton = styled.button`
+  border-radius: 10px;
+  border: 0px;
+  background: ${colors.white};
+  margin: 0 0 0 0;
+  padding: 5px 0 0 0;
+  position: dynamic;
+  width: 60px;
+  height: 40px;
+  left: 448px;
+  top: 385px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+  transition: 0.05s;
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
+  }
+
+  &:focus {
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
+    background: ${colors.votePink};
+  }
+
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-family: Tahoma;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 35px;
+  align-items: center;
+  text-align: center;
   color: #69404c;
 `;
 
@@ -336,7 +384,7 @@ const CommentButton = styled.button`
   border-radius: 10px;
   border: 0px;
   background: #69404c;
-  margin: 0 1em;
+  margin: 10px 0 20px 0;
   padding: 0.25em 1em;
   position: dynamic;
   width: 220px;
@@ -541,7 +589,8 @@ export {
   Text,
   Post,
   PostContents,
-  PostText,
+  PostTextL,
+  PostTextR,
   PostHeaderText,
   PostUsername,
   PostTitle,
@@ -560,4 +609,5 @@ export {
   CreateComment as CreateComments,
   CommentTitle,
   VoteButton,
+  VoteCount,
 };
