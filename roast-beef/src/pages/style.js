@@ -185,7 +185,7 @@ const TextBox = styled.input`
   }
 `;
 
-const BiggerTextBox = styled.input`
+const BiggerTextBox = styled.textarea`
   font-size: 18px;
   padding: 0.25em 1em;
   margin: 0 1em;
@@ -331,7 +331,7 @@ const CommentButton2 = styled.button`
   text-decoration: none;
 `;
 
-const CreateComment = styled.input`
+const CreateComment = styled.textarea`
   font-size: 18px;
   padding: 0.25em 1em;
   margin: 2em 1em 1em 1em;
@@ -412,7 +412,7 @@ const SearchBar = styled.input`
   font-size: 16px;
   padding: 0.5em 1em;
   margin: 35px 35px;
-  background: ${colors.grey};
+  background: #EFE9E9;
   float: left;
   border: 10px;
   border-radius: 10px;
@@ -429,7 +429,7 @@ const SearchBar = styled.input`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   text-color: ${colors.buttonBrown}; 
   ::placeholder {
-    color: ${colors.white};
+    color: rgba(105, 64, 76, .5);
     font-weight: 50;
     font-style: italic;
   }
