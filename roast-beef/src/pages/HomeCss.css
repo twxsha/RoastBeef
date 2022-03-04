@@ -9,6 +9,11 @@
     position: absolute;
 }
 
+.outerleft ul{
+    float: right;
+    width: inherit;
+}
+
 .outerright{
     float: right;
     position: absolute;
@@ -27,5 +32,6 @@
 #results{
     position: absolute;
     width: inherit;
+    display: inline-block;
     margin: 80px 0;
 } 
