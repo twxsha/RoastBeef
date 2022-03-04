@@ -5,19 +5,23 @@ import {
   PostText,
   PostHeaderText,
   PostUsername,
+  PostTitle,
+  PostTags,
   CommentButton,
 } from "./style";
 import Comments from "./Comments";
 import fightSymbol from "../images/fightSymbol.png";
 
-function PostD({ username, taggedUser, postText, postTitle }) {
+
+function PostD({ username, taggedUser, postText, postTitle, postTags, postComments, postVote_Tagged, postVote_User }) {
   const [buttonPopup, setButtonPopup] = useState(false);
   return (
     <div className="postD">
       <Post>
-        {/* PostHeader -> @usernames + vote counters + upvote buttons that increase the vote count*/}
+        {/* PostHeader -> @usernames + vote counters + upvote buttons that increase the vote count + title + tags*/}
         <PostHeaderText>
-          <PostUsername>{username}</PostUsername>
+          <PostTags>{" " + postTags}</PostTags>
+          <PostUsername>{"@" + username}</PostUsername>
           <fightSymbolStyle>
             <img
               src={fightSymbol}
@@ -26,9 +30,11 @@ function PostD({ username, taggedUser, postText, postTitle }) {
               height="30"
             ></img>
           </fightSymbolStyle>
-          <PostUsername>{taggedUser}</PostUsername>
+          <PostUsername>{"@" + taggedUser}</PostUsername>
+          <PostTitle>{postTitle}</PostTitle>
         </PostHeaderText>
-        {/* title + tags */}
+
+        {/* post contents: text*/}
         <PostContents>
           <PostText>{postText}</PostText>
         </PostContents>{" "}

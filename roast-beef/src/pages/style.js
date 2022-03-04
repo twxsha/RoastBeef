@@ -110,7 +110,7 @@ const PostContents = styled.button`
   padding: 0.25em 1em;
   position: dynamic;
   width: 950px;
-  height: 250px;
+  height: 200px;
   left: 448px;
   top: 385px;
   font-family: Tahoma;
@@ -144,18 +144,47 @@ const PostHeaderText = styled.p`
 const PostUsername = styled.p`
     font-family: Tahoma;
     font-style: normal;
-    font-weight: 50;
-    font-size: 20px;
+    font-weight: 500;
+    font-size: 22px;
     text-align: center;
-    padding: 10px 0px 10px 
-    margin: 25px
+    padding: 10px 0px 10px;
+    margin: 25px 15px 25px 15px;
     color: #69404C;
     display: inline;
 `;
 
 const fightSymbolStyle = styled.p`
-  padding: 10px 0px 10px 0px;
+  padding: 10px 30px 10px 30px;
 `;
+
+
+const PostTitle = styled.p`
+  font-family: Tahoma;
+  font-style: normal;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 22px;
+  line-height: 10px;
+  align-items: center;
+  text-align: left;
+  padding: 0px 0px 0px;
+  margin: 35px 25px 15px 25px;
+  color: #69404c;
+`;
+
+const PostTags = styled.p`
+  font-family: Tahoma;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 10px;
+  align-items: center;
+  text-align: right;
+  padding: 0px 0px 0px;
+  margin: 0px 25px 0px 25px;
+  color: #69404c;
+`;
+
 
 const TextBox = styled.input`
   //HAS AN ISSUE
@@ -484,6 +513,8 @@ export {
   PostText,
   PostHeaderText,
   PostUsername,
+  PostTitle,
+  PostTags,
   HeaderText,
   DDButton,
   SearchBar,
