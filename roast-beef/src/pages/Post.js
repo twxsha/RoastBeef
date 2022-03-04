@@ -8,6 +8,8 @@ import {
   PostTitle,
   PostTags,
   CommentButton,
+  Button,
+  VoteButton
 } from "./style";
 import Comments from "./Comments";
 import fightSymbol from "../images/fightSymbol.png";
@@ -21,6 +23,7 @@ function PostD({ username, taggedUser, postText, postTitle, postTags, postCommen
         {/* PostHeader -> @usernames + vote counters + upvote buttons that increase the vote count + title + tags*/}
         <PostHeaderText>
           <PostTags>{" " + postTags}</PostTags>
+          <VoteButton>{postVote_User}</VoteButton>
           <PostUsername>{"@" + username}</PostUsername>
           <fightSymbolStyle>
             <img
@@ -31,6 +34,7 @@ function PostD({ username, taggedUser, postText, postTitle, postTags, postCommen
             ></img>
           </fightSymbolStyle>
           <PostUsername>{"@" + taggedUser}</PostUsername>
+          <VoteButton>{postVote_User}</VoteButton>
           <PostTitle>{postTitle}</PostTitle>
         </PostHeaderText>
 

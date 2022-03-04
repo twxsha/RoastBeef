@@ -58,6 +58,7 @@ const LandingButton = styled.button`
   text-align: center;
   color: #69404c;
 `;
+
 const Button = styled.button`
   border-radius: 10px;
   border: 0px;
@@ -82,6 +83,36 @@ const Button = styled.button`
   font-style: normal;
   font-weight: 500;
   font-size: 30px;
+  line-height: 35px;
+  align-items: center;
+  text-align: center;
+  color: #69404c;
+`;
+
+const VoteButton = styled.button`
+  border-radius: 10px;
+  border: 0px;
+  background: ${colors.white};
+  margin: ;
+  padding: ;
+  position: dynamic;
+  width: 60px;
+  height: 40px;
+  left: 448px;
+  top: 385px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+  transition: 0.2s;
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-family: Tahoma;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
   line-height: 35px;
   align-items: center;
   text-align: center;
@@ -528,4 +559,5 @@ export {
   Comments,
   CreateComment as CreateComments,
   CommentTitle,
+  VoteButton,
 };
