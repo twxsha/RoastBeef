@@ -17,7 +17,6 @@ import {
   NickyButton,
   SearchBar,
   DDButton,
-  Text
 } from "../pages/style";
 import PostD from "./Post";
 import "./HomeCss.css";
