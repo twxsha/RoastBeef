@@ -27,7 +27,7 @@ function PostD({ username, taggedUser, postText, postTitle, postTags, postCommen
         {/* PostHeader -> @usernames + vote counters + upvote buttons that increase the vote count + title + tags*/}
         <PostHeaderText>
           <PostTitle>{postTitle}</PostTitle>
-          <VoteCount>10</VoteCount>
+          <VoteCount>{postVote_User}</VoteCount>
           <VoteButton
             onClick={() => setLiked(!liked)}
           >
@@ -56,7 +56,7 @@ function PostD({ username, taggedUser, postText, postTitle, postTags, postCommen
               height="21"
             ></img>
           </VoteButton>
-          <VoteCount>11</VoteCount>
+          <VoteCount>{postVote_Tagged}</VoteCount>
           <PostTags>{" " + postTags}</PostTags>
         </PostHeaderText>
 
