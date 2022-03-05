@@ -270,34 +270,6 @@ const VoteButton = styled.button`
   color: #69404c;
 `;
 
-const TextBox = styled.input`
-  //HAS AN ISSUE
-  font-size: 18px;
-  padding: 0.25em 1em;
-  margin: 0 1em;
-  background: white;
-  border: 10px;
-  border-radius: 10px;
-  width: 615px;
-  height: 61px;
-  left: 448px;
-  top: 385px;
-  font-family: Tahoma;
-  font-style: normal;
-  font-weight: 50;
-  font-size: 30px;
-  line-height: 35px;
-  align-items: center;
-  text-align: center;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  text-color: ${colors.buttonBrown};
-  ::placeholder {
-    color: ${colors.backgroundPink};
-    font-weight: 50;
-    font-style: italic;
-  }
-`;
-
 const BiggerTextBox = styled.textarea`
   font-size: 18px;
   padding: 0.25em 1em;
