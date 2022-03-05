@@ -22,7 +22,7 @@ const NavBar = styled.div`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   position: fixed;
   width: 100%;
-  padding: 10px 0;
+  padding: 0px;
 `;
 
 const NavPadding = styled.div`
