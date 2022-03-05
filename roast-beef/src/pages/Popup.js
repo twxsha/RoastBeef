@@ -1,10 +1,68 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import "./HomePage.css";
 import "./Popup.css";
-import { TextBox, Text, BiggerTextBox, NickyButton } from "../pages/style";
+import {
+  TextBox,
+  Text,
+  BiggerTextBox,
+  NickyButton,
+  DDButton,
+} from "../pages/style";
 import { db } from "../firebase-config";
 import { collection, addDoc } from "firebase/firestore";
+
+const SearchbarDropdown = (props) => {
+  const { options, onInputChange } = props;
+  const ulRef = useRef();
+  const inputRef = useRef();
+  
+  useEffect(() => {
+    inputRef.current.addEventListener("click", (event) => {
+      event.stopPropagation();
+      ulRef.current.style.display = "flex";
+      onInputChange(event);
+    });
+    document.addEventListener("click", (event) => {
+      ulRef.current.style.display = "none";
+    });
+  }, []);
+
+  return (
+    <div className="tagDropdown">
+      <TextBox
+        type="text"
+        placeholder='Tag "@username"'
+        ref={inputRef}
+        onChange={onInputChange}
+      />{" "}
+      <ul id="resultsTags" ref={ulRef} style = {{display: "none"}}>
+        {options.map((option, index) => {
+          return (
+            <DDButton
+              className="list-group-item list-group-item-action"
+              key={index}
+              onClick={(e) => {
+                inputRef.current.value = option;
+              }}
+            >
+              {"@" + option}
+            </DDButton>
+          );
+        })}
+      </ul>
+    </div>
+  );
+};
+
+const userNameList = [];//should be list of all usernames, grabbed from back end
+userNameList.push(`twxsha`);
+userNameList.push(`shravan.parigi`);
+userNameList.push(`dishasikaria`);
+userNameList.push(`nikolaisilky`);
+userNameList.push(`sankirth7`);
+userNameList.push(`WestEggert`);
+userNameList.push(`stephencurry30`);
 
 function Popup(props) {
   const [newTitle, setNewTitle] = useState("");
@@ -14,6 +72,14 @@ function Popup(props) {
   const [newVote_User, setVote_User] = useState("");
 
   const postsCollectionRef = collection(db, "posts");
+
+  const [options, setOptions] = useState([]);
+  const onInputChange = (event) => {
+    console.log(event.target.value);
+    setOptions(
+      userNameList.filter((option) => option.includes(event.target.value))
+    );
+  };
 
   const createPost = async () => {
     await addDoc(postsCollectionRef, {
@@ -32,8 +98,6 @@ function Popup(props) {
   return props.trigger ? (
     <div className="popup">
       <div className="popup-inner">
-        <br></br>
-
         <Text>Create Post</Text>
 
         <TextBox
@@ -44,19 +108,13 @@ function Popup(props) {
           }}
         />
 
-        <br></br>
-        <br></br>
-
-        <TextBox
-          type="text"
-          placeholder="Tag"
+        <SearchbarDropdown
+          options={options}
+          onInputChange={onInputChange}
           onChange={(event) => {
             setNewTag(event.target.value);
           }}
         />
-
-        <br></br>
-        <br></br>
 
         <BiggerTextBox
           type="text"

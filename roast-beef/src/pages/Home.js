@@ -68,7 +68,7 @@ const SearchbarDropdown = (props) => {
   );
 };
 
-const defaultOptions = [];
+const defaultOptions = []; //should be list of all tags, grabbed from back end
 defaultOptions.push(`#political`);
 defaultOptions.push(`#sports`);
 defaultOptions.push(`#basketball`);
@@ -114,7 +114,6 @@ const Home = () => {
     <LandingPage>
       <Popup trigger={buttonPopup} setTrigger={setButtonPopup}></Popup>
       <NavBar>
-        <br></br>
         <SearchbarDropdown options={options} onInputChange={onInputChange} />
         <div className="outerrightuser">
           <Text> {"@"}{cookies.get('user')}</Text>
@@ -134,8 +133,8 @@ const Home = () => {
                 src={Logo}
                 alt="Logo"
                 align="left"
-                width="200"
-                height="133"
+                width="180"
+                height="120"
               ></img>
             </marquee>
           </a>

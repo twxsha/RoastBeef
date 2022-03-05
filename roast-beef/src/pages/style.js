@@ -21,7 +21,8 @@ const NavBar = styled.div`
   background: ${colors.white};
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   position: fixed;
-  width: 99.5%;
+  width: 100%;
+  padding: 10px 0;
 `;
 
 const NavPadding = styled.div`
@@ -162,16 +163,15 @@ const fightSymbolStyle = styled.p`
   padding: 10px 0px 10px 0px;
 `;
 
-const TextBox = styled.input`
-  //HAS AN ISSUE
+const BiggerTextBox = styled.textarea`
   font-size: 18px;
   padding: 0.25em 1em;
-  margin: 0 1em;
+  margin: 10px 1em;
   background: white;
   border: 10px;
   border-radius: 10px;
-  width: 615px;
-  height: 61px;
+  max-width: 615px;
+  min-width: 615px;
   left: 448px;
   top: 385px;
   font-family: Tahoma;
@@ -182,38 +182,15 @@ const TextBox = styled.input`
   align-items: center;
   text-align: center;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  text-color: ${colors.buttonBrown};
+  color: ${colors.buttonBrown};
+  resize: vertical;
   ::placeholder {
     color: ${colors.backgroundPink};
     font-weight: 50;
     font-style: italic;
   }
-`;
-
-const BiggerTextBox = styled.textarea`
-  font-size: 18px;
-  padding: 0.25em 1em;
-  margin: 0 1em;
-  background: white;
-  border: 10px;
-  border-radius: 10px;
-  width: 615px;
-  height: 120px;
-  left: 448px;
-  top: 385px;
-  font-family: Tahoma;
-  font-style: normal;
-  font-weight: 50;
-  font-size: 30px;
-  line-height: 35px;
-  align-items: center;
-  text-align: center;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  text-color: ${colors.buttonBrown};
-  ::placeholder {
-    color: ${colors.backgroundPink};
-    font-weight: 50;
-    font-style: italic;
+  &:focus {
+    outline: 3px solid ${colors.buttonBrown} ;
   }
 `;
 
@@ -413,10 +390,42 @@ const CommentTitle = styled.p`
   color: #ffffff;
 `;
 
+const TextBox = styled.input`
+  //HAS AN ISSUE
+  font-size: 18px;
+  padding: 0.25em 1em;
+  margin: 8px 1em;
+  background: white;
+  border: 10px;
+  border-radius: 10px;
+  width: 615px;
+  height: 61px;
+  left: 448px;
+  top: 385px;
+  font-family: Tahoma;
+  font-style: normal;
+  font-weight: 50;
+  font-size: 30px;
+  line-height: 35px;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  color: ${colors.buttonBrown};
+  ::placeholder {
+    color: ${colors.backgroundPink};
+    font-weight: 50;
+    font-style: italic;
+  }
+  &:focus {
+    outline: 3px solid ${colors.buttonBrown} ;
+  }
+`;
+
+
 const SearchBar = styled.input`
   font-size: 16px;
   padding: 0.5em 1em;
-  margin: 35px 0px 0px 35px;
+  margin: 30px 0px 0px 35px;
   background: #EFE9E9;
   float: left;
   border: 10px;
@@ -487,7 +496,7 @@ const DDButton = styled.button`
     transition: 0.2s;
     &:hover {
       cursor: pointer;
-      color: red;
+      color: #c98585;
     }
     font-family: Tahoma;
     font-style: normal;
