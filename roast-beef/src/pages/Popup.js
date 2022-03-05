@@ -11,6 +11,7 @@ import {
 } from "../pages/style";
 import { db } from "../firebase-config";
 import { collection, addDoc } from "firebase/firestore";
+import { cookies } from "./SignIn"
 
 const SearchbarDropdown = (props) => {
   const { options, onInputChange } = props;
@@ -84,15 +85,15 @@ function Popup(props) {
   const createPost = async () => {
     await addDoc(postsCollectionRef, {
       Title: newTitle,
-      Text: newContent,
       Tags: ["Wordle", "Intel", "sankirth"],
       Vote_Tagged: 0,
       Vote_User: 0,
-      User: "Shravan",
-      Comments: ["Comment1", "Comment2"],
+      User: cookies.get('user'),
+      Comments: [newContent, "..."],
       TaggedUser: "Nicky",
     });
     props.setTrigger(false);
+    window.location.reload();
   };
 
   return props.trigger ? (
