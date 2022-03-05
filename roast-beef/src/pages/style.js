@@ -24,7 +24,8 @@ const NavBar = styled.div`
   background: ${colors.white};
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   position: fixed;
-  width: 99.5%;
+  width: 100%;
+  top: 0px;
 `;
 
 const NavPadding = styled.div`
@@ -34,7 +35,7 @@ const NavPadding = styled.div`
 
 const NavPaddingHome = styled.div`
   background: ${colors.white};
-  padding-top: 155px;
+  padding-top: 140px;
 `;
 
 const LandingButton = styled.button`
