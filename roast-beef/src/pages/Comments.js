@@ -36,14 +36,14 @@ function Popup(props) {
       <div className="cPopup-inner">
         <br></br>
 
-        <CommentTitle>Comments</CommentTitle>
+        <CommentTitle>Roasts</CommentTitle>
 
-        <Comments>Comment Text...</Comments>
+        <Comments>Roast Text...</Comments>
 
         <br></br>
         <br></br>
 
-        <Comments>Comment Text...</Comments>
+        <Comments>Roast Text...</Comments>
 
         <br></br>
         <br></br>
@@ -54,7 +54,7 @@ function Popup(props) {
           onChange={(event) => {
             setNewTag(event.target.value);
           }}
-        />
+        ></CreateComments>
 
         <br></br>
         <br></br>
@@ -68,7 +68,7 @@ function Popup(props) {
         </div>
 
         <div class="outer2">
-          <CommentButton2 onClick={createPost}> Comment </CommentButton2>
+          <CommentButton2 onClick={createPost}> Roast </CommentButton2>
         </div>
 
         {props.children}

@@ -89,7 +89,6 @@ const Home = () => {
   const [posts, setPosts] = useState([]);
   const postsColRef = collection(db, "posts");
 
-
   useEffect(()=> {
     const getPosts = async () => {
       const data = await getDocs(postsColRef);
@@ -146,9 +145,13 @@ const Home = () => {
         return (
           <PostD
             username={post.User}
-            taggerUser={post.TaggedUser}
+            taggedUser={post.TaggedUser}
             postText={post.Text}
             postTitle={post.Title}
+            postTags={post.Tags}
+            postComments={post.Comments}
+            postVote_Tagged={post.Vote_Tagged}
+            postVote_User={post.Vote_User}
           ></PostD>
         );
         
