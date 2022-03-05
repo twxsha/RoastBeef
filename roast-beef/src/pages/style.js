@@ -365,20 +365,16 @@ const CommentButton = styled.button`
   border-radius: 10px;
   border: 0px;
   background: #69404c;
-  margin: 10px 0 20px 0;
+  margin: .9em 0em 0em 0em;
   padding: 0.25em 1em;
   position: dynamic;
-  width: 220px;
-  height: 40px;
-  left: 598px;
-  top: 804px;
+  height: 46px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
   &:hover {
     cursor: pointer;
     opacity: 0.8;
   }
-
+  display: inline;
   font-family: Tahoma;
   font-style: normal;
   font-weight: 500;
@@ -390,59 +386,33 @@ const CommentButton = styled.button`
   text-decoration: none;
 `;
 
-const CommentButton2 = styled.button`
-  border-radius: 10px;
-  border: 0px;
-  background: #fcf1f1;
-  margin: 0 1em;
-  padding: 0.25em 1em;
-  position: dynamic;
-  width: 220px;
-  height: 50px;
-  left: 598px;
-  top: 804px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
-  transition: 0.2s;
-  &:hover {
-    cursor: pointer;
-    opacity: 0.8;
-  }
-
-  font-family: Tahoma;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 30px;
-  line-height: 35px;
-  align-items: center;
-  text-align: center;
-  color: #69404c;
-  text-decoration: none;
-`;
-
-const CreateComments = styled.input`
+const CreateComments = styled.textarea`
   font-size: 18px;
   padding: 0.25em 1em;
-  margin: 2em 1em 1em 1em;
-  background: ${colors.white};
+  margin: .7em 0em .7em .7em;
+  background: #ffffff;
   border: 10px;
   border-radius: 10px;
-  width: 77%;
-  height: 59px;
-  left: 448px;
-  top: 385px;
+  max-width: 800px;
+  min-width: 800px;
+  height: 38px;
+  display: inline;
+  float: left;
   font-family: Tahoma;
   font-style: normal;
   font-weight: normal;
-  font-size: 25px;
+  font-size: 23px;
   color: #69404c;
   align-items: center;
   text-align: center;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   ::placeholder {
     color: ${colors.backgroundPink};
-    font-weight: 50;
+    font-size: 25px;
     font-style: italic;
+    text-align: center;
+  }
+  &:focus {
+    outline: 3px solid ${colors.buttonBrown} ;
   }
 `;
 
@@ -538,7 +508,7 @@ const SearchBar = styled.input`
   border: 10px;
   border-radius: 10px;
   width: 400px;
-  height: 30px;
+  height: 20px;
   left: 448px;
   top: 385px;  
   font-family: Tahoma;
@@ -564,17 +534,17 @@ const SearchBar = styled.input`
 
 
 const SearchButton = styled.button`
-  border-radius: 16px;
+  border-radius: 10px;
   border: 10px;
   background: ${colors.buttonBrown};
-  margin: 35px 0px 0px 16px;
-  padding: 0.5em;
+  margin: 32px 0px 0px 16px;
+  padding: 0.4em;
   position: dynamic;
-  height: 64px;
   font-family: Tahoma;
   font-style: normal;
   font-weight: normal;
-  font-size: 30px;
+  font-size: 25px;
+  text-align: center;
   color: ${colors.white};
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   transition: 0.2s;
@@ -642,7 +612,6 @@ export {
   NickyButton,
   ErrorText,
   CommentButton,
-  CommentButton2,
   Comments,
   CreateComments,
   CommentTitle,

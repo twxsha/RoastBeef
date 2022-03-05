@@ -8,12 +8,12 @@ import {
   PostUsername,
   PostTitle,
   PostTags,
-  CommentButton,
+  CreateComments,
   Button,
+  CommentButton,
   VoteButton,
   VoteCount
 } from "./style";
-import Comments from "./Comments";
 import fightSymbol from "../images/fightSymbol.png";
 import ArrowUnfilled from "../images/arrow-unfilled.png";
 import ArrowFilled from "../images/arrow-filled.png";
@@ -21,6 +21,8 @@ import ArrowFilled from "../images/arrow-filled.png";
 function PostD({ username, taggedUser, postText, postTitle, postTags, postComments, postVote_Tagged, postVote_User }) {
   const [buttonPopup, setButtonPopup] = useState(false);
   const [liked, setLiked] = useState(null);
+  const [newTag, setNewTag] = useState("");
+
   return (
     <div className="postD">
       <Post>
@@ -65,15 +67,17 @@ function PostD({ username, taggedUser, postText, postTitle, postTags, postCommen
           <PostTextL>{postComments[0]}</PostTextL>
           <PostTextR>{postComments[1]}</PostTextR>
         </PostContents>{" "}
-        <p />
-        <Comments trigger={buttonPopup} setTrigger={setButtonPopup}></Comments>
-        <CommentButton
-          style={{ justifyContent: "right" }}
-          onClick={() => setButtonPopup(true)}
-        >
-          {" "}
-          Roasts{" "}
-        </CommentButton>
+        <div id="postPadding">
+          <CreateComments
+            type="text"
+            placeholder="Enter Roast"
+            onChange={(event) => {
+              setNewTag(event.target.value);
+            }}
+          ></CreateComments>
+          <CommentButton>Roast</CommentButton>
+        </div>
+
       </Post>
     </div>
   );

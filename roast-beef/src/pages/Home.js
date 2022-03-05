@@ -8,12 +8,7 @@ import {
   NavBar,
   NavPaddingHome,
   LandingPage,
-  Button,
-  LandingPageWrapper,
-  Post,
-  PostContents,
   Text,
-  NextButton,
   SearchButton,
   NickyButton,
   SearchBar,
@@ -122,7 +117,7 @@ const Home = () => {
           <div>
             <NickyButton onClick={() => setButtonPopup(true)}>
               {" "}
-              Create Post{" "}
+              Start Beef{" "}
             </NickyButton>
           </div>
         </div>
