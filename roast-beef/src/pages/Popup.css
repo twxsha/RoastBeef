@@ -14,9 +14,8 @@
 .popup-inner {
   position: fixed;
   top: 180px;
-  height: 50%;
   width: 50%;
-  min-height: 500px;
+  padding: 0 0 25px 0;
   max-width: 100%;
   min-width: 750px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -28,4 +27,18 @@
   position: absolute;
   top: 16px;
   right: 16px;
+}
+
+
+#resultsTags{
+  position: absolute;
+  display: inline-block;
+  margin: 0px 80px;
+  flex-wrap: wrap;
+  align-items: center;
+} 
+
+.tagDropdown{
+  border-radius: 10px;
+  background-color: rgba(252, 241, 241, 1);
 }
