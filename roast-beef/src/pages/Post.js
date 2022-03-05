@@ -62,8 +62,17 @@ function PostD({ username, taggedUser, postText, postTitle, postTags, postCommen
 
         {/* post contents: text*/}
         <PostContents>
-          <PostTextL>{postComments[0]}</PostTextL>
-          <PostTextR>{postComments[1]}</PostTextR>
+          {postComments.map((post, index) => {
+            if (index%2 == 0){
+              return(
+                <PostTextL>{postComments[index]}</PostTextL>
+              )
+            } else {
+              return(
+                <PostTextR>{postComments[index]}</PostTextR>
+              )
+            }
+          })}
         </PostContents>{" "}
         <p />
         <Comments trigger={buttonPopup} setTrigger={setButtonPopup}></Comments>

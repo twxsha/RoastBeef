@@ -117,7 +117,7 @@ const PostContents = styled.button`
   border: 0px;
   background: ${colors.white};
   margin: 0 1em;
-  padding: 0.25em 1em;
+  padding: 10px 1em 10px 1em;
   position: dynamic;
   width: 950px;
   left: 448px;
@@ -133,7 +133,7 @@ const PostTextL = styled.p`
   border: 50px;
   background: ${colors.buttonBrown};
   padding: 13px 16px 16px 16px;
-  margin: 20px 90px 0px 5px;
+  margin: 10px 90px 10px 5px;
   font-family: Tahoma;
   font-style: normal;
   font-weight: 50;
@@ -143,13 +143,14 @@ const PostTextL = styled.p`
   color: ${colors.white};
   float: left;
   display: block;
+  clear:both;
 `;
 const PostTextR = styled.p`
   border-radius: 20px;
   border: 50px;
   background: ${colors.postBrown};
   padding: 13px 16px 16px 16px;
-  margin: 20px 5px 20px 90px;
+  margin: 10px 5px 10px 90px;
   font-family: Tahoma;
   font-style: normal;
   font-weight: 50;
@@ -159,6 +160,7 @@ const PostTextR = styled.p`
   color: ${colors.textBrown};
   float: right;
   display: block;
+  clear:both;
 `;
 
 const PostHeaderText = styled.p`
