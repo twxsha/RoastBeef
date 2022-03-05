@@ -113,6 +113,7 @@ const Home = () => {
     <LandingPage>
       <Popup trigger={buttonPopup} setTrigger={setButtonPopup}></Popup>
       <NavBar>
+        <br/>
         <SearchbarDropdown options={options} onInputChange={onInputChange} />
         <div className="outerrightuser">
           <Text> {"@"}{cookies.get('user')}</Text>
@@ -138,6 +139,7 @@ const Home = () => {
             </marquee>
           </a>
         </div>
+        <br/>
       </NavBar>{" "}
       <p />
       <NavPaddingHome></NavPaddingHome> <p />
