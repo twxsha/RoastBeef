@@ -72,7 +72,7 @@ function PostD({ username, taggedUser, postText, postTitle, postTags, postCommen
           onClick={() => setButtonPopup(true)}
         >
           {" "}
-          Comments{" "}
+          Roasts{" "}
         </CommentButton>
       </Post>
     </div>

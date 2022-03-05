@@ -1,12 +1,17 @@
 .stayPutHome{
-    margin-left: 500px;
-    margin-right: 500px;
+    margin-left: 650px;
+    margin-right: 650px;
     position: relative;
 }
 
 .outerleft{
     float: left;
     position: absolute;
+}
+
+.outerleft ul{
+    float: right;
+    width: inherit;
 }
 
 .outerright{
@@ -16,8 +21,18 @@
     right:0;
 }
 
+.outerrightuser{
+    float: right;
+    position: absolute;
+    right: 0;
+    margin-right: 50px;
+    bottom: 100px;
+}
+
 #results{
     position: absolute;
     width: inherit;
-    margin: 80px 0;
+    display: inline-block;
+    margin: 0px;
+    flex-wrap: wrap;
 } 

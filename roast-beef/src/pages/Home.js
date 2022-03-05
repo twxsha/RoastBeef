@@ -1,12 +1,20 @@
-import { useState, React, useEffect } from "react";
+import { useState, useEffect, React, useRef } from "react";
 import "./HomePage.css";
-import { db } from "../firebase-config";
+import "./HomeCss.css";
+import {db} from "../firebase-config";
 import Logo from "../images/logo.png";
 import Popup from "./Popup";
 import {
   NavBar,
-  NavPadding,
+  NavPaddingHome,
   LandingPage,
+  Button,
+  LandingPageWrapper,
+  Post,
+  PostContents,
+  Text,
+  NextButton,
+  SearchButton,
   NickyButton,
   SearchBar,
   DDButton,
@@ -16,26 +24,43 @@ import "./HomeCss.css";
 import "./Popup";
 import { collection, getDocs } from "firebase/firestore";
 import { async } from "@firebase/util";
+import { cookies } from "./SignIn"
 
 const SearchbarDropdown = (props) => {
   const { options, onInputChange } = props;
+  const ulRef = useRef();
+  const inputRef = useRef();
+  useEffect(() => {
+      inputRef.current.addEventListener('click', (event) => {
+        event.stopPropagation();
+        ulRef.current.style.display = 'flex';
+        onInputChange(event);
+      });
+      document.addEventListener('click', (event) =>{
+        ulRef.current.style.display = 'none';
+      });
+  }, []);
   return (
     <div className="outerleft">
       <SearchBar
         type="text"
         placeholder="Search Here"
+        ref={inputRef}
         onChange={onInputChange}
       />{" "}
-      <p />
-      <ul id="results">
+      <SearchButton>Search</SearchButton>
+      <ul id="results" ref={ulRef}>
         {options.map((option, index) => {
           return (
             <DDButton
               className="list-group-item list-group-item-action"
               key={index}
+              onClick={(e) => {
+                inputRef.current.value = option;
+                }}
             >
               {option}
-            </DDButton>
+            </DDButton> 
           );
         })}
       </ul>
@@ -53,16 +78,14 @@ defaultOptions.push(`#arts`);
 defaultOptions.push(`#history`);
 defaultOptions.push(`#casual`);
 defaultOptions.push(`#ucla`);
-defaultOptions.push(`#computer science`);
+defaultOptions.push(`#computerscience`);
 defaultOptions.push(`#wordle`);
 defaultOptions.push(`#globle`);
 defaultOptions.push(`#handshakes`);
 
-for (let i = 0; i < 10; i++) {
-  defaultOptions.push(`tag ${i}`);
-}
 
 const Home = () => {
+
   const [posts, setPosts] = useState([]);
   const postsColRef = collection(db, "posts");
 
@@ -92,6 +115,9 @@ const Home = () => {
       <NavBar>
         <br></br>
         <SearchbarDropdown options={options} onInputChange={onInputChange} />
+        <div className="outerrightuser">
+          <Text> {"@"}{cookies.get('user')}</Text>
+        </div>
         <div className="outerright">
           <div>
             <NickyButton onClick={() => setButtonPopup(true)}>
@@ -115,7 +141,7 @@ const Home = () => {
         </div>
       </NavBar>{" "}
       <p />
-      <NavPadding></NavPadding> <p />
+      <NavPaddingHome></NavPaddingHome> <p />
       {posts.map((post) => {
         return (
           <PostD

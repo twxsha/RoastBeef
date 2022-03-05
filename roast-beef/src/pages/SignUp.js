@@ -16,6 +16,8 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { db, auth } from "../firebase-config";
 import { useHistory } from "react-router-dom";
 
+const usersCollectionRef = collection(db, "users");
+
 function SignUp() {
   const history = useHistory();
   const [newName, setNewName] = useState("");
@@ -23,7 +25,6 @@ function SignUp() {
   const [newUser, setNewUser] = useState("");
   const [newPass, setNewPass] = useState("");
   const [users, setUsers] = useState([]);
-  const usersCollectionRef = collection(db, "users");
   const [emailError, setEmailError] = useState("");
   const [passError, setPassError] = useState("");
 
@@ -125,4 +126,6 @@ function SignUp() {
     </LandingPage>
   );
 }
+export {usersCollectionRef};
 export default SignUp;
+
