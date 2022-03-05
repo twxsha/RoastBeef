@@ -336,14 +336,14 @@ const CommentButton2 = styled.button`
   text-decoration: none;
 `;
 
-const CreateComment = styled.textarea`
+const CreateComments = styled.input`
   font-size: 18px;
   padding: 0.25em 1em;
   margin: 2em 1em 1em 1em;
   background: ${colors.white};
   border: 10px;
   border-radius: 10px;
-  width: 1320px;
+  width: 77%;
   height: 59px;
   left: 448px;
   top: 385px;
@@ -369,7 +369,7 @@ const Comments = styled.button`
   margin: 0 1em;
   padding: 0.25em 1em;
   position: dynamic;
-  width: 1360px;
+  width: 80%;
   height: 100px;
   left: 448px;
   top: 385px;
@@ -525,7 +525,7 @@ export {
   CommentButton,
   CommentButton2,
   Comments,
-  CreateComment as CreateComments,
+  CreateComments,
   CommentTitle,
   SearchButton,
 };
