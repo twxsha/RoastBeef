@@ -7,6 +7,7 @@
 .outerleft{
     float: left;
     position: absolute;
+    margin-top: 30px;
 }
 
 .outerleft ul{
@@ -17,7 +18,7 @@
 .outerright{
     float: right;
     position: absolute;
-    top: 70px;
+    top: 80px;
     right:0;
 }
 
@@ -27,6 +28,9 @@
     right: 0;
     margin-right: 50px;
     bottom: 80px;
+}
+#postPadding{
+    display: inline;
 }
 
 #results{
