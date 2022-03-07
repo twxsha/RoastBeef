@@ -79,6 +79,9 @@ defaultOptions.push(`#globle`);
 defaultOptions.push(`#handshakes`);
 
 
+
+
+
 const Home = () => {
 
   const [posts, setPosts] = useState([]);
@@ -92,6 +95,14 @@ const Home = () => {
     getPosts();
   }, []);
 
+  // function writeComment(){
+  //   const thisPost = doc(db, "posts", "DC");
+
+  //   // Atomically add a new region to the "regions" array field.
+  //   await updateDoc(thisPost, {
+  //       Comments: arrayUnion("greater_virginia")
+  //   });
+  // }
 
   const postsCollectionRef = collection(db, "posts");
   const [buttonPopup, setButtonPopup] = useState(false);
