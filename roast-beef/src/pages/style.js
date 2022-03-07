@@ -8,10 +8,10 @@ export const colors = {
   postPink: "#FCF1F1",
   votePink: "#F3DFE3",
   postBrown: "#dbabab",
-  textBrown: "#52313b"
+  textBrown: "#52313b",
 };
 const LandingPage = styled.div`
-    background: ${colors.backgroundPink};
+  background: ${colors.backgroundPink};
 `;
 const LandingPageWrapper = styled.div`
   margin: 0 auto;
@@ -98,7 +98,6 @@ const Button = styled.button`
   color: #69404c;
 `;
 
-
 const Post = styled.button`
   border-radius: 10px;
   border: 0px;
@@ -143,7 +142,11 @@ const PostTextL = styled.p`
   color: ${colors.white};
   float: left;
   display: block;
-  clear:both;
+  clear: both;
+  user-select: text;
+  &:hover {
+    cursor: text;
+  }
 `;
 const PostTextR = styled.p`
   border-radius: 20px;
@@ -160,7 +163,11 @@ const PostTextR = styled.p`
   color: ${colors.textBrown};
   float: right;
   display: block;
-  clear:both;
+  clear: both;
+  user-select: text;
+  &:hover {
+    cursor: text;
+  }
 `;
 
 const PostHeaderText = styled.p`
@@ -175,23 +182,20 @@ const PostHeaderText = styled.p`
 `;
 
 const PostUsername = styled.p`
-    font-family: Tahoma;
-    font-style: normal;
-    font-weight: 0;
-    font-size: 25px;
-    text-align: center;
-    padding: 10px 0px 10px;
-    margin: 25px 25px 25px 25px;
-    color: #69404C;
-    display: inline;
+  font-family: Tahoma;
+  font-style: normal;
+  font-weight: 0;
+  font-size: 25px;
+  text-align: center;
+  padding: 10px 0px 10px;
+  margin: 25px 25px 25px 25px;
+  color: #69404c;
+  display: inline;
 `;
-
-
 
 const fightSymbolStyle = styled.p`
   padding: 0px 10px 10px 30px;
 `;
-
 
 const PostTitle = styled.p`
   font-family: Tahoma;
@@ -220,6 +224,23 @@ const PostTags = styled.p`
   color: #69404c;
 `;
 
+const Tags = styled.p`
+  border: 10px;
+  border-radius: 10px;
+  background-color: ${colors.buttonBrown};
+  transition: 0.2s;
+  padding: 10px;
+  margin: 10px;
+  float: left;
+  font-family: Tahoma;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 27px;
+  line-height: 35px;
+  color: ${colors.white};
+  display: inline;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+`;
 
 const VoteCount = styled.p`
   font-family: Tahoma;
@@ -258,7 +279,7 @@ const VoteButton = styled.button`
 
   &:focus {
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
-    background: ${colors.votePink};
+    background: ${colors.postBrown};
   }
 
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -281,6 +302,7 @@ const BiggerTextBox = styled.textarea`
   border-radius: 10px;
   max-width: 615px;
   min-width: 615px;
+  min-height: 150px;
   left: 448px;
   top: 385px;
   font-family: Tahoma;
@@ -299,7 +321,7 @@ const BiggerTextBox = styled.textarea`
     font-style: italic;
   }
   &:focus {
-    outline: 3px solid ${colors.buttonBrown} ;
+    outline: 3px solid ${colors.buttonBrown};
   }
 `;
 
@@ -367,7 +389,7 @@ const CommentButton = styled.button`
   border-radius: 10px;
   border: 0px;
   background: #69404c;
-  margin: .9em 0em 0em 0em;
+  margin: 0.9em 0em 0em 0em;
   padding: 0.25em 1em;
   position: dynamic;
   height: 46px;
@@ -375,6 +397,9 @@ const CommentButton = styled.button`
   &:hover {
     cursor: pointer;
     opacity: 0.8;
+  }
+  &:focus {
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
   }
   display: inline;
   font-family: Tahoma;
@@ -391,13 +416,14 @@ const CommentButton = styled.button`
 const CreateComments = styled.textarea`
   font-size: 18px;
   padding: 0.25em 1em;
-  margin: .7em 0em .7em .7em;
+  margin: 0.7em 0em 0.7em 0.7em;
   background: #ffffff;
   border: 10px;
   border-radius: 10px;
   max-width: 800px;
   min-width: 800px;
   height: 38px;
+  min-height: 38px;
   display: inline;
   float: left;
   font-family: Tahoma;
@@ -414,7 +440,7 @@ const CreateComments = styled.textarea`
     text-align: center;
   }
   &:focus {
-    outline: 3px solid ${colors.buttonBrown} ;
+    outline: 0.1em solid ${colors.buttonBrown};
   }
 `;
 
@@ -470,7 +496,6 @@ const CommentTitle = styled.p`
 `;
 
 const TextBox = styled.input`
-  //HAS AN ISSUE
   font-size: 18px;
   padding: 0.25em 1em;
   margin: 8px 1em;
@@ -496,23 +521,53 @@ const TextBox = styled.input`
     font-style: italic;
   }
   &:focus {
-    outline: 3px solid ${colors.buttonBrown} ;
+    outline: 3px solid ${colors.buttonBrown};
   }
 `;
 
+const TagsTextBox = styled.input`
+  font-size: 18px;
+  padding: 0.25em 1em;
+  margin: 8px 30px 8px 0px;
+  background: white;
+  border: 10px;
+  border-radius: 10px;
+  width: 615px;
+  height: 61px;
+  left: 448px;
+  top: 385px;
+  font-family: Tahoma;
+  font-style: normal;
+  font-weight: 50;
+  font-size: 30px;
+  line-height: 35px;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  color: ${colors.white};
+  background-color: ${colors.buttonBrown};
+  ::placeholder {
+    color: ${colors.postBrown};
+    font-weight: 50;
+    font-style: italic;
+  }
+  &:focus {
+    outline: none;
+  }
+`;
 
 const SearchBar = styled.input`
   font-size: 16px;
   padding: 0.5em 1em;
   margin: 30px 0px 0px 35px;
-  background: #EFE9E9;
+  background: #efe9e9;
   float: left;
   border: 10px;
   border-radius: 10px;
   width: 400px;
   height: 20px;
   left: 448px;
-  top: 385px;  
+  top: 385px;
   font-family: Tahoma;
   font-style: normal;
   font-weight: 50;
@@ -520,9 +575,9 @@ const SearchBar = styled.input`
   line-height: 35px;
   text-align: center;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  color: ${colors.buttonBrown}; 
+  color: ${colors.buttonBrown};
   ::placeholder {
-    color: rgba(105, 64, 76, .5);
+    color: rgba(105, 64, 76, 0.5);
     font-weight: 50;
     font-style: italic;
   }
@@ -530,10 +585,9 @@ const SearchBar = styled.input`
     cursor: pointer;
   }
   &:focus {
-    outline: 3px solid ${colors.buttonBrown} ;
+    outline: 3px solid ${colors.buttonBrown};
   }
 `;
-
 
 const SearchButton = styled.button`
   border-radius: 10px;
@@ -555,7 +609,7 @@ const SearchButton = styled.button`
     opacity: 0.8;
   }
 `;
-  
+
 const ErrorText = styled.p`
   font-family: Tahoma;
   font-style: normal;
@@ -568,23 +622,62 @@ const ErrorText = styled.p`
 `;
 
 const DDButton = styled.button`
-    border: 10px;
-    border-radius: 10px;
-    background: ${colors.white};
-    height: 40px;
-    transition: 0.2s;
-    &:hover {
-      cursor: pointer;
-      color: #c98585;
-    }
-    font-family: Tahoma;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 30px;
-    line-height: 35px;
-    align-items: center;
-    text-align: center;
-    color: #69404C;
+  border: 10px;
+  border-radius: 10px;
+  background: ${colors.white};
+  height: 40px;
+  transition: 0.2s;
+  &:hover {
+    cursor: pointer;
+    color: #c98585;
+  }
+  font-family: Tahoma;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 35px;
+  align-items: center;
+  text-align: center;
+  color: #69404c;
+`;
+
+const DDTagButton = styled.button`
+  border: 15px;
+  border-radius: 10px;
+  background: ${colors.buttonBrown};
+  height: 40px;
+  transition: 0.2s;
+  &:hover {
+    cursor: pointer;
+    color: #c98585;
+  }
+  font-family: Tahoma;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 35px;
+  align-items: center;
+  text-align: center;
+  color: ${colors.white};
+`;
+
+const ClearButton = styled.button`
+  border: 15px;
+  border-radius: 10px;
+  background: ${colors.postBrown};
+  transition: 0.2s;
+  &:hover {
+    opacity: 0.8;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+  }
+  margin: 10px;
+  padding: 10px 9px 7px 10px;
+  align-items: center;
+  text-align: center;
+  color: ${colors.white};
+  float: right;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  clear: right;
 `;
 
 export {
@@ -610,9 +703,11 @@ export {
   SearchBar,
   fightSymbolStyle,
   TextBox,
+  TagsTextBox,
   BiggerTextBox,
   NickyButton,
   ErrorText,
+  Tags,
   CommentButton,
   Comments,
   CreateComments,
@@ -620,4 +715,6 @@ export {
   VoteButton,
   VoteCount,
   SearchButton,
+  DDTagButton,
+  ClearButton,
 };
