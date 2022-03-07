@@ -51,7 +51,7 @@ const SearchbarDropdown = (props) => {
               className="list-group-item list-group-item-action"
               key={index}
               onClick={(e) => {
-                onInputChange("@" + option);
+                onInputChange(option);
               }}
             >
               {"@" + option}
@@ -146,6 +146,7 @@ function Popup(props) {
   const [newContent, setNewContent] = useState("");
   const [newVote_Tagged, setVote_Tagged] = useState("");
   const [newVote_User, setVote_User] = useState("");
+  const [newMentioned, setMentioned] = useState("");
 
   const [tagDropdownFocus, updateFocusDropdown] = useState(0);
   const postsCollectionRef = collection(db, "posts");
@@ -157,7 +158,8 @@ function Popup(props) {
   const [taggedList, updateTaggedList] = useState([]);
 
   const onInputChange = (value) => {
-    updateMentionInput(value);
+    updateMentionInput("@" + value);
+    setMentioned(value);
     setOptions(userNameList.filter((option) => option.includes(value)));
   };
 
@@ -170,15 +172,16 @@ function Popup(props) {
   };
 
   const createPost = async () => {
-    await addDoc(postsCollectionRef, {
+  await addDoc(postsCollectionRef,{
       Title: newTitle,
       Tags: taggedList,
       Vote_Tagged: 0,
       Vote_User: 0,
       User: cookies.get("user"),
       Comments: [newContent],
-      TaggedUser: "Nicky",
-    });
+      TaggedUser: newMentioned,
+   });
+   
     props.setTrigger(false);
     window.location.reload();
   };
@@ -200,12 +203,10 @@ function Popup(props) {
             <SearchbarDropdown
               options={options}
               onInputChange={onInputChange}
-              onChange={(event) => {
-                setNewTag(event.target.value);
-              }}
               tagDropdownFocus={tagDropdownFocus}
               updateFocusDropdown={updateFocusDropdown}
               mentionInput={mentionInput}
+              setMentioned={setMentioned}
             />
 
             <BiggerTextBox
