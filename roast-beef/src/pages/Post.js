@@ -17,6 +17,47 @@ import {
 import fightSymbol from "../images/fightSymbol.png";
 import ArrowUnfilled from "../images/arrow-unfilled.png";
 import ArrowFilled from "../images/arrow-filled.png";
+import { cookies } from "./SignIn"
+
+
+function DisplayCommenting({username, postuser, taggeduser, postcomments, setNewTag}) {
+  let turn = postcomments.length;
+  if(turn%2  ==0){
+    if(username == postuser){
+      return (
+        <div id="postPadding">
+          <CreateComments
+            type="text"
+            placeholder="Enter Roast"
+            onChange={(event) => {
+              setNewTag(event.target.value);
+            }}
+          ></CreateComments>
+          <CommentButton>Roast</CommentButton>
+        </div>
+      )
+    } else{
+      return (<p/>)
+    }
+  } else {
+    if(username == taggeduser){
+      return (
+        <div id="postPadding">
+          <CreateComments
+            type="text"
+            placeholder="Enter Roast"
+            onChange={(event) => {
+              setNewTag(event.target.value);
+            }}
+          ></CreateComments>
+          <CommentButton>Roast</CommentButton>
+        </div>
+      )
+    } else {
+      return (<p/>)
+    }
+  }
+}
 
 function PostD({ username, taggedUser, postText, postTitle, postTags, postComments, postVote_Tagged, postVote_User }) {
   const [buttonPopup, setButtonPopup] = useState(false);
@@ -61,7 +102,6 @@ function PostD({ username, taggedUser, postText, postTitle, postTags, postCommen
           <VoteCount>{postVote_Tagged}</VoteCount>
           <PostTags>{" " + postTags}</PostTags>
         </PostHeaderText>
-
         {/* post contents: text*/}
         <PostContents>
           {postComments.map((post, index) => {
@@ -76,17 +116,7 @@ function PostD({ username, taggedUser, postText, postTitle, postTags, postCommen
             }
           })}
         </PostContents>{" "}
-        <div id="postPadding">
-          <CreateComments
-            type="text"
-            placeholder="Enter Roast"
-            onChange={(event) => {
-              setNewTag(event.target.value);
-            }}
-          ></CreateComments>
-          <CommentButton>Roast</CommentButton>
-        </div>
-
+        <DisplayCommenting username={cookies.get('user')} postuser={username} taggeduser={taggedUser} postcomments={postComments} setNewTag={setNewTag} ></DisplayCommenting>
       </Post>
     </div>
   );

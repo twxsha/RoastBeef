@@ -4,8 +4,7 @@
   left: 0;
   width: 100%;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.2);
-
+  background-color: rgba(0, 0, 0, 0.3);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,10 +13,7 @@
 .popup-inner {
   position: fixed;
   top: 180px;
-  width: 50%;
   padding: 0 0 25px 0;
-  max-width: 100%;
-  min-width: 750px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   background-color: rgba(252, 241, 241, 1);
@@ -29,16 +25,58 @@
   right: 16px;
 }
 
+.popupsidebyside{
+  display: flex;
+  flex-direction: row;
+}
 
-#resultsTags{
-  position: absolute;
+#resultsMentions{
+  width: 675px;
   display: inline-block;
-  margin: 0px 80px;
+  padding: 0px;
+  margin: 0px 30px;
   flex-wrap: wrap;
   align-items: center;
 } 
 
+#resultsTags{
+  width: 675px;
+  display: inline-block;
+  padding: 0px;
+  margin: 0px 30px 0px 0px;
+  flex-wrap: wrap;
+  align-items: center;
+} 
+
+
 .tagDropdown{
   border-radius: 10px;
-  background-color: rgba(252, 241, 241, 1);
+}
+
+.tagsSelected{
+  font-size: 18px;
+  padding: 10px;
+  margin: 8px 30px 8px 0;
+  background: white;
+  border: 10px;
+  border-radius: 10px;
+  min-height: 40px;
+  width: 655px;
+  max-width: 655px;
+  left: 448px;
+  top: 385px;
+  font-family: Tahoma;
+  font-style: normal;
+  font-weight: 50;
+  font-size: 30px;
+  line-height: 35px;
+  align-items: center;
+  text-align: center;
+  float: left;
+  flex-wrap: wrap;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.tags{
+  margin-right: 50px;
 }
