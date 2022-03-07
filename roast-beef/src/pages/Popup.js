@@ -14,7 +14,7 @@ import {
   ClearButton,
 } from "../pages/style";
 import { db } from "../firebase-config";
-import { collection, addDoc, Timestamp } from "firebase/firestore";
+import { collection, addDoc, getDocs } from "firebase/firestore";
 import { cookies } from "./SignIn";
 import { prodErrorMap } from "firebase/auth";
 import clearx from "../images/clearx.png";
@@ -54,7 +54,7 @@ const SearchbarDropdown = (props) => {
                 onInputChange(option);
               }}
             >
-              {"@" + option}
+              {option}
             </DDButton>
           );
         })}
@@ -150,20 +150,28 @@ function Popup(props) {
 
   const [tagDropdownFocus, updateFocusDropdown] = useState(0);
   const postsCollectionRef = collection(db, "posts");
+  const usersColRef = collection(db, "users");
 
-  const [options, setOptions] = useState(userNameList);
+  const [options, setOptions] = useState([]);
   const [tagOptions, setTagOptions] = useState(defaultOptions);
   const [tagInput, updateTagInput] = useState("");
   const [mentionInput, updateMentionInput] = useState("");
   const [taggedList, updateTaggedList] = useState([]);
-
+  let array = []
+  
   const onInputChange = (value) => {
-    updateMentionInput("@" + value);
+    updateMentionInput(value);
     setMentioned(value);
-    setOptions(userNameList.filter((option) => option.includes(value)));
+    setOptions(array.filter((option) => option.includes(value)));
   };
-
+  
   useEffect(() => {
+    const getOptions = async () => {
+      const  q = await getDocs(usersColRef);
+      array = q.docs.map((doc) => (doc.data().user))
+      setOptions(array.filter((option) => option != cookies.get('user')));
+    }
+    getOptions();
     setTagOptions(defaultOptions.filter((option) => option.includes(tagInput) && !taggedList.includes(option)));
   }, [taggedList, tagInput]);
 
@@ -172,7 +180,7 @@ function Popup(props) {
   };
 
   const createPost = async () => {
-  await addDoc(postsCollectionRef,{
+    await addDoc(postsCollectionRef,{
       Title: newTitle,
       Tags: taggedList,
       Vote_Tagged: 0,
