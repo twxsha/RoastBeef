@@ -20,7 +20,8 @@ import ArrowFilled from "../images/arrow-filled.png";
 import { cookies } from "./SignIn"
 
 
-function DisplayCommenting({username, postuser, taggeduser, postcomments, setNewTag}) {
+const DisplayCommenting = (props) => {
+  const {username, postuser, taggeduser, postcomments, setNewTag, setComments, newTag} = props;
   let turn = postcomments.length;
   if(turn%2  ==0){
     if(username == postuser){
@@ -33,7 +34,9 @@ function DisplayCommenting({username, postuser, taggeduser, postcomments, setNew
               setNewTag(event.target.value);
             }}
           ></CreateComments>
-          <CommentButton>Roast</CommentButton>
+          <CommentButton
+            onClick={(event) => {setComments([...postcomments, newTag])}}
+          >Roast</CommentButton>
         </div>
       )
     } else{
@@ -50,7 +53,9 @@ function DisplayCommenting({username, postuser, taggeduser, postcomments, setNew
               setNewTag(event.target.value);
             }}
           ></CreateComments>
-          <CommentButton>Roast</CommentButton>
+          <CommentButton
+            onClick={setComments([...postcomments, newTag])}
+          >Roast</CommentButton>
         </div>
       )
     } else {
@@ -63,6 +68,8 @@ function PostD({ username, taggedUser, postText, postTitle, postTags, postCommen
   const [buttonPopup, setButtonPopup] = useState(false);
   const [liked, setLiked] = useState(null);
   const [newTag, setNewTag] = useState("");
+  const [comments, setComments] = useState(postComments);
+
 
   return (
     <div className="postD">
@@ -104,19 +111,27 @@ function PostD({ username, taggedUser, postText, postTitle, postTags, postCommen
         </PostHeaderText>
         {/* post contents: text*/}
         <PostContents>
-          {postComments.map((post, index) => {
+          {comments.map((post, index) => {
             if (index%2 == 0){
               return(
-                <PostTextL>{postComments[index]}</PostTextL>
+                <PostTextL>{comments[index]}</PostTextL>
               )
             } else {
               return(
-                <PostTextR>{postComments[index]}</PostTextR>
+                <PostTextR>{comments[index]}</PostTextR>
               )
             }
           })}
         </PostContents>{" "}
-        <DisplayCommenting username={cookies.get('user')} postuser={username} taggeduser={taggedUser} postcomments={postComments} setNewTag={setNewTag} ></DisplayCommenting>
+        <DisplayCommenting 
+          username={cookies.get('user')}
+          postuser={username}
+          taggeduser={taggedUser}
+          postcomments={comments}
+          newTag = {newTag}
+          setNewTag={setNewTag}
+          setComments={setComments}
+        ></DisplayCommenting>
       </Post>
     </div>
   );
