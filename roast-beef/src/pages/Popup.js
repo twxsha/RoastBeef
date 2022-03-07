@@ -97,8 +97,11 @@ const TagsDropdown = (props) => {
               className="list-group-item list-group-item-action"
               key={index}
               onClick={(e) => {
-                props.updateTaggedList([...props.taggedList,option]);
-                onInputChange("");
+                if(props.taggedList.length<4){
+                  props.updateTaggedList([...props.taggedList,option]);
+                  onInputChange("");
+                }
+                
               }}
             >
               {option}
