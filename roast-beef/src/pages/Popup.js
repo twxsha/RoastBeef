@@ -14,7 +14,7 @@ import {
   ClearButton,
 } from "../pages/style";
 import { db } from "../firebase-config";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, Timestamp } from "firebase/firestore";
 import { cookies } from "./SignIn";
 import { prodErrorMap } from "firebase/auth";
 import clearx from "../images/clearx.png";
@@ -175,6 +175,7 @@ function Popup(props) {
       User: cookies.get("user"),
       Comments: [newContent],
       TaggedUser: "Nicky",
+      createdAt: Date.now(),
     });
     props.setTrigger(false);
     window.location.reload();

@@ -17,7 +17,7 @@ import {
 import PostD from "./Post";
 import "./HomeCss.css";
 import "./Popup";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import { async } from "@firebase/util";
 import { cookies } from "./SignIn"
 
@@ -86,8 +86,9 @@ const Home = () => {
 
   useEffect(()=> {
     const getPosts = async () => {
-      const data = await getDocs(postsColRef);
-      setPosts(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
+      const q = query(postsColRef, orderBy("createdAt", "desc"));
+      const querySnapshot = await getDocs(q);
+      setPosts(querySnapshot.docs.map((doc) => ({...doc.data(), id: doc.id})));
     }
     getPosts();
   }, []);
