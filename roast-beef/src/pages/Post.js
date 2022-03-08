@@ -75,7 +75,7 @@ function PostD({ username, taggedUser, postText, postTitle, postTags, postCommen
   const [userVotes, setUserVotes] = useState(postVote_User);
   const  [taggedVotes, setTaggedVotes] = useState(postVote_Tagged);
 
-  async function pushLikes() {
+  async function pushLikes(votes, tvotes) {
     console.log("shr");
     let docID;
     setLiked(!liked)
@@ -88,11 +88,13 @@ function PostD({ username, taggedUser, postText, postTitle, postTags, postCommen
     const washingtonRef = doc(db, "posts", docID);
 
     await updateDoc(washingtonRef, {
-      Vote_Tagged: taggedVotes,
-      Vote_User: userVotes,
+      Vote_Tagged: tvotes,
+      Vote_User: votes,
     });
     
   }
+  var votes = userVotes;
+  var tvotes = taggedVotes;
 
   return (
     <div className="postD">
@@ -100,15 +102,19 @@ function PostD({ username, taggedUser, postText, postTitle, postTags, postCommen
         {/* PostHeader -> @usernames + vote counters + upvote buttons that increase the vote count + title + tags*/}
         <PostHeaderText>
           <PostTitle>{postTitle}</PostTitle>
-          <VoteCount>{postVote_User.length}</VoteCount>
+          <VoteCount>{votes.length}</VoteCount>
           <VoteButton
             onClick={(event) => {
-              console.log(cookies.get('user'));
-
-              setUserVotes(userVotes.filter(v => !taggedVotes.includes(v)));
-              setUserVotes(userVotes.push(cookies.get('user')));
-              setTaggedVotes(taggedVotes.filter(v => !userVotes.includes(v)));
-              pushLikes();
+              votes = votes.filter(function(value){ 
+                return value !=  cookies.get('user');
+              });
+              votes.push(cookies.get('user'));
+              tvotes = tvotes.filter(function(value){ 
+                return value !=  cookies.get('user');
+              });
+              setUserVotes(votes);
+              setTaggedVotes(tvotes);
+              pushLikes(votes, tvotes);
             }}
           >
             <img
@@ -118,7 +124,7 @@ function PostD({ username, taggedUser, postText, postTitle, postTags, postCommen
               height="21"
             ></img>
           </VoteButton>
-          <PostUsername>{"@" + username}</PostUsername>
+          <PostUsername>{username}</PostUsername>
           <fightSymbolStyle>
             <img
               src={fightSymbol}
@@ -127,13 +133,19 @@ function PostD({ username, taggedUser, postText, postTitle, postTags, postCommen
               height="50"
             ></img>
           </fightSymbolStyle>
-          <PostUsername>{"@" + taggedUser}</PostUsername>
+          <PostUsername>{taggedUser}</PostUsername>
           <VoteButton
             onClick={(event) => {
-              setTaggedVotes(taggedVotes.filter(v => !userVotes.includes(v)));
-              setTaggedVotes(taggedVotes.push(cookies.get('user')));
-              setUserVotes(userVotes.filter(v => !taggedVotes.includes(v)));
-              pushLikes();
+              votes = votes.filter(function(value){ 
+                return value !=  cookies.get('user');
+              });
+              tvotes = tvotes.filter(function(value){ 
+                return value !=  cookies.get('user');
+              });
+              tvotes.push(cookies.get('user'));
+              setUserVotes(votes);
+              setTaggedVotes(tvotes);
+              pushLikes(votes, tvotes);
             }}
           >
             <img
@@ -143,7 +155,7 @@ function PostD({ username, taggedUser, postText, postTitle, postTags, postCommen
               height="21"
             ></img>
           </VoteButton>
-          <VoteCount>{postVote_Tagged.length}</VoteCount>
+          <VoteCount>{tvotes.length}</VoteCount>
           <PostTags>{" " + postTags}</PostTags>
         </PostHeaderText>
         {/* post contents: text*/}
