@@ -12,19 +12,36 @@ import {
   Button,
   CommentButton,
   VoteButton,
-  VoteCount
+  VoteCount,
 } from "./style";
 import fightSymbol from "../images/fightSymbol.png";
 import ArrowUnfilled from "../images/arrow-unfilled.png";
 import ArrowFilled from "../images/arrow-filled.png";
-import { cookies } from "./SignIn"
-
+import { cookies } from "./SignIn";
+import {
+  collection,
+  getDocs,
+  doc,
+  updateDoc,
+  query,
+  where,
+} from "firebase/firestore";
+import { db } from "../firebase-config.js";
 
 const DisplayCommenting = (props) => {
-  const {username, postuser, taggeduser, postcomments, setNewTag, setComments, newTag} = props;
+  const {
+    username,
+    postuser,
+    taggeduser,
+    postcomments,
+    setNewTag,
+    setComments,
+    newTag,
+    updateComments,
+  } = props;
   let turn = postcomments.length;
-  if(turn%2  ==0){
-    if(username == postuser){
+  if (turn % 2 == 0) {
+    if (username == postuser) {
       return (
         <div id="postPadding">
           <CreateComments
@@ -35,15 +52,22 @@ const DisplayCommenting = (props) => {
             }}
           ></CreateComments>
           <CommentButton
-            onClick={(event) => {setComments([...postcomments, newTag])}}
-          >Roast</CommentButton>
+            onClick={(event) => {
+              let c = postcomments;
+              c.push(newTag);
+              setComments(c);
+              updateComments(newTag);
+            }}
+          >
+            Roast
+          </CommentButton>
         </div>
-      )
-    } else{
-      return (<p/>)
+      );
+    } else {
+      return <p />;
     }
   } else {
-    if(username == taggeduser){
+    if (username == taggeduser) {
       return (
         <div id="postPadding">
           <CreateComments
@@ -54,22 +78,54 @@ const DisplayCommenting = (props) => {
             }}
           ></CreateComments>
           <CommentButton
-            onClick={(event) => setComments([...postcomments, newTag])}
-          >Roast</CommentButton>
+            onClick={(event) => {
+              let c = postcomments;
+              c.push(newTag);
+              setComments(c);
+              updateComments(newTag);
+            }}
+          >
+            Roast
+          </CommentButton>
         </div>
-      )
+      );
     } else {
-      return (<p/>)
+      return <p />;
     }
   }
-}
+};
 
-function PostD({ username, taggedUser, postText, postTitle, postTags, postComments, postVote_Tagged, postVote_User }) {
+function PostD({
+  username,
+  taggedUser,
+  postText,
+  postTitle,
+  postTags,
+  postComments,
+  postVote_Tagged,
+  postVote_User,
+}) {
   const [buttonPopup, setButtonPopup] = useState(false);
   const [liked, setLiked] = useState(null);
   const [newTag, setNewTag] = useState("");
   const [comments, setComments] = useState(postComments);
+  const postCollectionRef = collection(db, "posts");
 
+  async function updateComments(newTag) {
+    console.log("shr");
+    let docID;
+    setLiked(!liked);
+    const h = query(postCollectionRef, where("Title", "==", postTitle));
+    const querySnapshot2 = await getDocs(h);
+    querySnapshot2.forEach((doc) => {
+      docID = doc.id;
+    });
+    const postRef = doc(db, "posts", docID);
+
+    await updateDoc(postRef, {
+      Comments: comments,
+    });
+  }
 
   return (
     <div className="postD">
@@ -78,10 +134,7 @@ function PostD({ username, taggedUser, postText, postTitle, postTags, postCommen
         <PostHeaderText>
           <PostTitle>{postTitle}</PostTitle>
           <VoteCount>{postVote_User.length}</VoteCount>
-          <VoteButton
-            onClick={() => setLiked(!liked)}
-            
-          >
+          <VoteButton onClick={() => setLiked(!liked)}>
             <img
               src={ArrowFilled}
               alt="ArrowFilled"
@@ -89,7 +142,7 @@ function PostD({ username, taggedUser, postText, postTitle, postTags, postCommen
               height="21"
             ></img>
           </VoteButton>
-          <PostUsername>{username}</PostUsername>
+          <PostUsername>{"@" + username}</PostUsername>
           <fightSymbolStyle>
             <img
               src={fightSymbol}
@@ -98,7 +151,7 @@ function PostD({ username, taggedUser, postText, postTitle, postTags, postCommen
               height="50"
             ></img>
           </fightSymbolStyle>
-          <PostUsername>{taggedUser}</PostUsername>
+          <PostUsername>{"@" + taggedUser}</PostUsername>
           <VoteButton>
             <img
               src={ArrowUnfilled}
@@ -113,25 +166,22 @@ function PostD({ username, taggedUser, postText, postTitle, postTags, postCommen
         {/* post contents: text*/}
         <PostContents>
           {comments.map((post, index) => {
-            if (index%2 == 0){
-              return(
-                <PostTextL>{comments[index]}</PostTextL>
-              )
+            if (index % 2 == 0) {
+              return <PostTextL>{comments[index]}</PostTextL>;
             } else {
-              return(
-                <PostTextR>{comments[index]}</PostTextR>
-              )
+              return <PostTextR>{comments[index]}</PostTextR>;
             }
           })}
         </PostContents>{" "}
-        <DisplayCommenting 
-          username={cookies.get('user')}
+        <DisplayCommenting
+          username={cookies.get("user")}
           postuser={username}
           taggeduser={taggedUser}
           postcomments={comments}
-          newTag = {newTag}
+          newTag={newTag}
           setNewTag={setNewTag}
           setComments={setComments}
+          updateComments={updateComments}
         ></DisplayCommenting>
       </Post>
     </div>
