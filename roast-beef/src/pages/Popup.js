@@ -175,8 +175,8 @@ function Popup(props) {
   await addDoc(postsCollectionRef,{
       Title: newTitle,
       Tags: taggedList,
-      Vote_Tagged: 0,
-      Vote_User: 0,
+      Vote_Tagged: [],
+      Vote_User: [],
       User: cookies.get("user"),
       Comments: [newContent],
       TaggedUser: newMentioned,
@@ -197,6 +197,7 @@ function Popup(props) {
               placeholder="Enter title here"
               onChange={(event) => {
                 setNewTitle(event.target.value);
+                
               }}
             />
 
