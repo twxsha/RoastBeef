@@ -35,7 +35,7 @@ function SignUp() {
       res = await addDoc(usersCollectionRef, {
         name: newName,
         email: newEmail,
-        user: newUser,
+        user: "@" + newUser,
         pass: newPass,
       });
     } catch (error) {

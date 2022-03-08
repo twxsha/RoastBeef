@@ -14,7 +14,7 @@ import {
   ClearButton,
 } from "../pages/style";
 import { db } from "../firebase-config";
-import { collection, addDoc, Timestamp } from "firebase/firestore";
+import { collection, addDoc, getDocs } from "firebase/firestore";
 import { cookies } from "./SignIn";
 import { prodErrorMap } from "firebase/auth";
 import clearx from "../images/clearx.png";
@@ -54,7 +54,7 @@ const SearchbarDropdown = (props) => {
                 onInputChange(option);
               }}
             >
-              {"@" + option}
+              {option}
             </DDButton>
           );
         })}
@@ -113,16 +113,9 @@ const TagsDropdown = (props) => {
   );
 };
 
-const userNameList = []; //should be list of all usernames, grabbed from back end
-userNameList.push(`twxsha`);
-userNameList.push(`shravan.parigi`);
-userNameList.push(`dishasikaria`);
-userNameList.push(`nikolaisilky`);
-userNameList.push(`sankirth7`);
-userNameList.push(`WestEggert`);
-userNameList.push(`stephencurry30`);
+let userNameList = [];
 
-const defaultOptions = []; //should be list of all tags, grabbed from back end
+const defaultOptions = [];
 defaultOptions.push(`#political`);
 defaultOptions.push(`#sports`);
 defaultOptions.push(`#basketball`);
@@ -150,20 +143,27 @@ function Popup(props) {
 
   const [tagDropdownFocus, updateFocusDropdown] = useState(0);
   const postsCollectionRef = collection(db, "posts");
+  const usersColRef = collection(db, "users");
 
-  const [options, setOptions] = useState(userNameList);
+  const [options, setOptions] = useState([]);
   const [tagOptions, setTagOptions] = useState(defaultOptions);
   const [tagInput, updateTagInput] = useState("");
   const [mentionInput, updateMentionInput] = useState("");
   const [taggedList, updateTaggedList] = useState([]);
-
+  
   const onInputChange = (value) => {
-    updateMentionInput("@" + value);
+    updateMentionInput(value);
     setMentioned(value);
     setOptions(userNameList.filter((option) => option.includes(value)));
   };
-
+  
   useEffect(() => {
+    const getOptions = async () => {
+      const  q = await getDocs(usersColRef);
+      userNameList = q.docs.map((doc) => (doc.data().user))
+      setOptions(userNameList.filter((option) => option != cookies.get('user')));
+    }
+    getOptions();
     setTagOptions(defaultOptions.filter((option) => option.includes(tagInput) && !taggedList.includes(option)));
   }, [taggedList, tagInput]);
 
@@ -172,7 +172,7 @@ function Popup(props) {
   };
 
   const createPost = async () => {
-  await addDoc(postsCollectionRef,{
+    await addDoc(postsCollectionRef,{
       Title: newTitle,
       Tags: taggedList,
       Vote_Tagged: [],

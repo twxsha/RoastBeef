@@ -12,17 +12,33 @@ import {
   Button,
   CommentButton,
   VoteButton,
-  VoteCount
+  VoteCount,
 } from "./style";
 import fightSymbol from "../images/fightSymbol.png";
 import ArrowUnfilled from "../images/arrow-unfilled.png";
 import ArrowFilled from "../images/arrow-filled.png";
-import { cookies } from "./SignIn"
-import { collection, getDocs, doc, updateDoc,query, where } from "firebase/firestore";
-import {db} from '../firebase-config.js';
+import { cookies } from "./SignIn";
+import {
+  collection,
+  getDocs,
+  doc,
+  updateDoc,
+  query,
+  where,
+} from "firebase/firestore";
+import { db } from "../firebase-config.js";
 
 const DisplayCommenting = (props) => {
-  const { username, postuser, taggeduser, postcomments, setNewTag, setComments, newTag } = props;
+  const {
+    username,
+    postuser,
+    taggeduser,
+    postcomments,
+    setNewTag,
+    setComments,
+    newTag,
+    updateComments,
+  } = props;
   let turn = postcomments.length;
   if (turn % 2 == 0) {
     if (username == postuser) {
@@ -36,12 +52,19 @@ const DisplayCommenting = (props) => {
             }}
           ></CreateComments>
           <CommentButton
-            onClick={(event) => { setComments([...postcomments, newTag]) }}
-          >Roast</CommentButton>
+            onClick={(event) => {
+              let c = postcomments;
+              c.push(newTag);
+              setComments(c);
+              updateComments(newTag);
+            }}
+          >
+            Roast
+          </CommentButton>
         </div>
-      )
+      );
     } else {
-      return (<p />)
+      return <p />;
     }
   } else {
     if (username == taggeduser) {
@@ -55,23 +78,38 @@ const DisplayCommenting = (props) => {
             }}
           ></CreateComments>
           <CommentButton
-            onClick={setComments([...postcomments, newTag])}
-          >Roast</CommentButton>
+            onClick={(event) => {
+              let c = postcomments;
+              c.push(newTag);
+              setComments(c);
+              updateComments(newTag);
+            }}
+          >
+            Roast
+          </CommentButton>
         </div>
-      )
+      );
     } else {
-      return (<p />)
+      return <p />;
     }
   }
-}
+};
 
-function PostD({ username, taggedUser, postText, postTitle, postTags, postComments, postVote_Tagged, postVote_User }) {
+function PostD({
+  username,
+  taggedUser,
+  postText,
+  postTitle,
+  postTags,
+  postComments,
+  postVote_Tagged,
+  postVote_User,
+}) {
   const [buttonPopup, setButtonPopup] = useState(false);
   const [liked, setLiked] = useState(null);
   const [newTag, setNewTag] = useState("");
   const [comments, setComments] = useState(postComments);
   const postCollectionRef = collection(db, "posts");
-
   const [userVotes, setUserVotes] = useState(postVote_User);
   const  [taggedVotes, setTaggedVotes] = useState(postVote_Tagged);
 
@@ -95,6 +133,22 @@ function PostD({ username, taggedUser, postText, postTitle, postTags, postCommen
   }
   var votes = userVotes;
   var tvotes = taggedVotes;
+
+  async function updateComments(newTag) {
+    console.log("shr");
+    let docID;
+    setLiked(!liked);
+    const h = query(postCollectionRef, where("Title", "==", postTitle));
+    const querySnapshot2 = await getDocs(h);
+    querySnapshot2.forEach((doc) => {
+      docID = doc.id;
+    });
+    const postRef = doc(db, "posts", docID);
+
+    await updateDoc(postRef, {
+      Comments: comments,
+    });
+  }
 
   return (
     <div className="postD">
@@ -162,13 +216,10 @@ function PostD({ username, taggedUser, postText, postTitle, postTags, postCommen
         <PostContents>
           {comments.map((post, index) => {
             if (index % 2 == 0) {
-              return (
-                <PostTextL>{comments[index]}</PostTextL>
-              )
+
+              return <PostTextL>{comments[index]}</PostTextL>;
             } else {
-              return (
-                <PostTextR>{comments[index]}</PostTextR>
-              )
+              return <PostTextR>{comments[index]}</PostTextR>;
             }
           })}
         </PostContents>{" "}
@@ -180,6 +231,7 @@ function PostD({ username, taggedUser, postText, postTitle, postTags, postCommen
           newTag={newTag}
           setNewTag={setNewTag}
           setComments={setComments}
+          updateComments={updateComments}
         ></DisplayCommenting>
       </Post>
     </div>

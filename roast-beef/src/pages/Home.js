@@ -123,7 +123,7 @@ const Home = () => {
         <br/>
         <SearchbarDropdown options={options} onInputChange={onInputChange} />
         <div className="outerrightuser">
-          <Text> {"@"}{cookies.get('user')}</Text>
+          <Text> {cookies.get('user')}</Text>
         </div>
         <div className="outerright">
           <div>
