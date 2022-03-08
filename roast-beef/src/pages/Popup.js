@@ -113,16 +113,9 @@ const TagsDropdown = (props) => {
   );
 };
 
-const userNameList = []; //should be list of all usernames, grabbed from back end
-userNameList.push(`twxsha`);
-userNameList.push(`shravan.parigi`);
-userNameList.push(`dishasikaria`);
-userNameList.push(`nikolaisilky`);
-userNameList.push(`sankirth7`);
-userNameList.push(`WestEggert`);
-userNameList.push(`stephencurry30`);
+let userNameList = [];
 
-const defaultOptions = []; //should be list of all tags, grabbed from back end
+const defaultOptions = [];
 defaultOptions.push(`#political`);
 defaultOptions.push(`#sports`);
 defaultOptions.push(`#basketball`);
@@ -157,19 +150,18 @@ function Popup(props) {
   const [tagInput, updateTagInput] = useState("");
   const [mentionInput, updateMentionInput] = useState("");
   const [taggedList, updateTaggedList] = useState([]);
-  let array = []
   
   const onInputChange = (value) => {
     updateMentionInput(value);
     setMentioned(value);
-    setOptions(array.filter((option) => option.includes(value)));
+    setOptions(userNameList.filter((option) => option.includes(value)));
   };
   
   useEffect(() => {
     const getOptions = async () => {
       const  q = await getDocs(usersColRef);
-      array = q.docs.map((doc) => (doc.data().user))
-      setOptions(array.filter((option) => option != cookies.get('user')));
+      userNameList = q.docs.map((doc) => (doc.data().user))
+      setOptions(userNameList.filter((option) => option != cookies.get('user')));
     }
     getOptions();
     setTagOptions(defaultOptions.filter((option) => option.includes(tagInput) && !taggedList.includes(option)));

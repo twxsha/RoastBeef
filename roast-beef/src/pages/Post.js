@@ -54,7 +54,7 @@ const DisplayCommenting = (props) => {
             }}
           ></CreateComments>
           <CommentButton
-            onClick={setComments([...postcomments, newTag])}
+            onClick={(event) => setComments([...postcomments, newTag])}
           >Roast</CommentButton>
         </div>
       )
@@ -89,7 +89,7 @@ function PostD({ username, taggedUser, postText, postTitle, postTags, postCommen
               height="21"
             ></img>
           </VoteButton>
-          <PostUsername>{"@" + username}</PostUsername>
+          <PostUsername>{username}</PostUsername>
           <fightSymbolStyle>
             <img
               src={fightSymbol}
@@ -98,7 +98,7 @@ function PostD({ username, taggedUser, postText, postTitle, postTags, postCommen
               height="50"
             ></img>
           </fightSymbolStyle>
-          <PostUsername>{"@" + taggedUser}</PostUsername>
+          <PostUsername>{taggedUser}</PostUsername>
           <VoteButton>
             <img
               src={ArrowUnfilled}
