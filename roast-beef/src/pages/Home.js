@@ -104,6 +104,7 @@ const ShowPosts = (props) => {
 const Home = () => {
 
   const [posts, setPosts] = useState([]);
+  const [filtered, setFiltered] = useState([]);
   const postsColRef = collection(db, "posts");
 
   useEffect(() => {
@@ -111,6 +112,7 @@ const Home = () => {
       const q = query(postsColRef, orderBy("createdAt", "desc"));
       const querySnapshot = await getDocs(q);
       setPosts(querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      setFiltered(querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     }
     getPosts();
   }, []);
@@ -134,16 +136,16 @@ const Home = () => {
     );
   };
 
-  let filtered = posts;
   function filterPosts(filterTag) {
     if (filterTag === "") {
-      filtered = posts;
+      setFiltered(posts);
     }
     else {
-      filtered = posts.filter(function (post) {
+      let arr = posts.filter(function (post) {
         return Array.from(post.Tags).includes(filterTag);
       });
-      console.log(filtered);
+      setFiltered(arr);
+      // console.log(filtered);
     }
   }
 

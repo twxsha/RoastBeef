@@ -131,7 +131,7 @@ const PostTextL = styled.p`
   border-radius: 20px;
   border: 50px;
   background: ${colors.buttonBrown};
-  padding: 13px 16px 16px 16px;
+  padding: 13px 16px 13px 16px;
   margin: 10px 90px 10px 5px;
   font-family: Tahoma;
   font-style: normal;
@@ -152,7 +152,7 @@ const PostTextR = styled.p`
   border-radius: 20px;
   border: 50px;
   background: ${colors.postBrown};
-  padding: 13px 16px 16px 16px;
+  padding: 13px 16px 13px 16px;
   margin: 10px 5px 10px 90px;
   font-family: Tahoma;
   font-style: normal;
@@ -279,7 +279,6 @@ const VoteButton = styled.button`
 
   &:focus {
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
-    background: ${colors.postBrown};
   }
 
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
