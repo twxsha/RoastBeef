@@ -27,6 +27,7 @@ import {
   where,
 } from "firebase/firestore";
 import { db } from "../firebase-config.js";
+import { __RouterContext } from "react-router";
 
 const DisplayCommenting = (props) => {
   const {
@@ -95,6 +96,18 @@ const DisplayCommenting = (props) => {
   }
 };
 
+const LikeButtonImg = (props) => {
+  if (props.liked) {
+    return (
+      <img src={ArrowFilled} alt="ArrowFilled" width="20" height="21"></img>
+    );
+  } else {
+    return (
+      <img src={ArrowUnfilled} alt="ArrowUnfilled" width="20" height="21"></img>
+    );
+  }
+};
+
 function PostD({
   username,
   taggedUser,
@@ -111,12 +124,12 @@ function PostD({
   const [comments, setComments] = useState(postComments);
   const postCollectionRef = collection(db, "posts");
   const [userVotes, setUserVotes] = useState(postVote_User);
-  const  [taggedVotes, setTaggedVotes] = useState(postVote_Tagged);
+  const [taggedVotes, setTaggedVotes] = useState(postVote_Tagged);
 
   async function pushLikes(votes, tvotes) {
     console.log("shr");
     let docID;
-    setLiked(!liked)
+    setLiked(!liked);
     const h = query(postCollectionRef, where("Title", "==", postTitle));
     const querySnapshot2 = await getDocs(h);
     querySnapshot2.forEach((doc) => {
@@ -129,7 +142,6 @@ function PostD({
       Vote_Tagged: tvotes,
       Vote_User: votes,
     });
-    
   }
   var votes = userVotes;
   var tvotes = taggedVotes;
@@ -160,24 +172,21 @@ function PostD({
           <VoteCount>{votes.length}</VoteCount>
           <VoteButton
             onClick={(event) => {
-              votes = votes.filter(function(value){ 
-                return value !=  cookies.get('user');
+              votes = votes.filter(function (value) {
+                return value != cookies.get("user");
               });
-              votes.push(cookies.get('user'));
-              tvotes = tvotes.filter(function(value){ 
-                return value !=  cookies.get('user');
+              votes.push(cookies.get("user"));
+              tvotes = tvotes.filter(function (value) {
+                return value != cookies.get("user");
               });
               setUserVotes(votes);
               setTaggedVotes(tvotes);
               pushLikes(votes, tvotes);
             }}
           >
-            <img
-              src={ArrowFilled}
-              alt="ArrowFilled"
-              width="20"
-              height="21"
-            ></img>
+            <LikeButtonImg
+              liked = {Array.from(votes).includes(cookies.get("user"))}
+            ></LikeButtonImg>
           </VoteButton>
           <PostUsername>{username}</PostUsername>
           <fightSymbolStyle>
@@ -191,24 +200,21 @@ function PostD({
           <PostUsername>{taggedUser}</PostUsername>
           <VoteButton
             onClick={(event) => {
-              votes = votes.filter(function(value){ 
-                return value !=  cookies.get('user');
+              votes = votes.filter(function (value) {
+                return value != cookies.get("user");
               });
-              tvotes = tvotes.filter(function(value){ 
-                return value !=  cookies.get('user');
+              tvotes = tvotes.filter(function (value) {
+                return value != cookies.get("user");
               });
-              tvotes.push(cookies.get('user'));
+              tvotes.push(cookies.get("user"));
               setUserVotes(votes);
               setTaggedVotes(tvotes);
               pushLikes(votes, tvotes);
             }}
           >
-            <img
-              src={ArrowUnfilled}
-              alt="ArrowUnfilled"
-              width="20"
-              height="21"
-            ></img>
+            <LikeButtonImg
+              liked = {Array.from(tvotes).includes(cookies.get("user"))}
+            ></LikeButtonImg>
           </VoteButton>
           <VoteCount>{tvotes.length}</VoteCount>
           <PostTags>{" " + postTags}</PostTags>
@@ -217,7 +223,6 @@ function PostD({
         <PostContents>
           {comments.map((post, index) => {
             if (index % 2 == 0) {
-
               return <PostTextL>{comments[index]}</PostTextL>;
             } else {
               return <PostTextR>{comments[index]}</PostTextR>;
@@ -225,7 +230,7 @@ function PostD({
           })}
         </PostContents>{" "}
         <DisplayCommenting
-          username={cookies.get('user')}
+          username={cookies.get("user")}
           postuser={username}
           taggeduser={taggedUser}
           postcomments={comments}
