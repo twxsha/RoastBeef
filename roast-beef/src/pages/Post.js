@@ -96,7 +96,7 @@ const DisplayCommenting = (props) => {
   }
 };
 
-const likeButtonImg = (props) => {
+const LikeButtonImg = (props) => {
   if (props.liked) {
     return (
       <img src={ArrowFilled} alt="ArrowFilled" width="20" height="21"></img>
@@ -183,9 +183,9 @@ function PostD({
               pushLikes(votes, tvotes);
             }}
           >
-            <likeButtonImg
+            <LikeButtonImg
               liked = {Array.from(votes).includes(cookies.get("user"))}
-            ></likeButtonImg>
+            ></LikeButtonImg>
           </VoteButton>
           <PostUsername>{username}</PostUsername>
           <fightSymbolStyle>
@@ -211,9 +211,9 @@ function PostD({
               pushLikes(votes, tvotes);
             }}
           >
-            <likeButtonImg
+            <LikeButtonImg
               liked = {Array.from(tvotes).includes(cookies.get("user"))}
-            ></likeButtonImg>
+            ></LikeButtonImg>
           </VoteButton>
           <VoteCount>{tvotes.length}</VoteCount>
           <PostTags>{" " + postTags}</PostTags>
