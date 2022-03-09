@@ -1,7 +1,7 @@
 import { useState, useEffect, React, useRef } from "react";
 import "./HomePage.css";
 import "./HomeCss.css";
-import {db} from "../firebase-config";
+import { db } from "../firebase-config";
 import Logo from "../images/logo.png";
 import Popup from "./Popup";
 import {
@@ -26,14 +26,14 @@ const SearchbarDropdown = (props) => {
   const ulRef = useRef();
   const inputRef = useRef();
   useEffect(() => {
-      inputRef.current.addEventListener('click', (event) => {
-        event.stopPropagation();
-        ulRef.current.style.display = 'flex';
-        onInputChange(event);
-      });
-      document.addEventListener('click', (event) =>{
-        ulRef.current.style.display = 'none';
-      });
+    inputRef.current.addEventListener('click', (event) => {
+      event.stopPropagation();
+      ulRef.current.style.display = 'flex';
+      onInputChange(event);
+    });
+    document.addEventListener('click', (event) => {
+      ulRef.current.style.display = 'none';
+    });
   }, []);
   return (
     <div className="outerleft">
@@ -43,7 +43,9 @@ const SearchbarDropdown = (props) => {
         ref={inputRef}
         onChange={onInputChange}
       />{" "}
-      <SearchButton>Search</SearchButton>
+      <SearchButton
+        onClick={(event) => (props.filterTag(inputRef.current.value))}
+      >Search</SearchButton>
       <ul id="results" ref={ulRef}>
         {options.map((option, index) => {
           return (
@@ -52,10 +54,10 @@ const SearchbarDropdown = (props) => {
               key={index}
               onClick={(e) => {
                 inputRef.current.value = option;
-                }}
+              }}
             >
               {option}
-            </DDButton> 
+            </DDButton>
           );
         })}
       </ul>
@@ -80,18 +82,37 @@ defaultOptions.push(`#handshakes`);
 
 
 
-
+const ShowPosts = (props) => {
+  let arr = props.filtered.map((post) => {
+    console.log(props.filtered);
+    return (
+      <PostD
+        username={post.User}
+        taggedUser={post.TaggedUser}
+        postText={post.Text}
+        postTitle={post.Title}
+        postTags={post.Tags}
+        postComments={post.Comments}
+        postVote_Tagged={post.Vote_Tagged}
+        postVote_User={post.Vote_User}
+      ></PostD>
+    );
+  });
+  return arr;
+}
 
 const Home = () => {
 
   const [posts, setPosts] = useState([]);
+  const [filtered, setFiltered] = useState([]);
   const postsColRef = collection(db, "posts");
 
-  useEffect(()=> {
+  useEffect(() => {
     const getPosts = async () => {
       const q = query(postsColRef, orderBy("createdAt", "desc"));
       const querySnapshot = await getDocs(q);
-      setPosts(querySnapshot.docs.map((doc) => ({...doc.data(), id: doc.id})));
+      setPosts(querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      setFiltered(querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     }
     getPosts();
   }, []);
@@ -110,18 +131,30 @@ const Home = () => {
 
   const [options, setOptions] = useState([]);
   const onInputChange = (event) => {
-    console.log(event.target.value);
     setOptions(
       defaultOptions.filter((option) => option.includes(event.target.value))
     );
   };
 
+  function filterPosts(filterTag) {
+    if (filterTag === "") {
+      setFiltered(posts);
+    }
+    else {
+      let arr = posts.filter(function (post) {
+        return Array.from(post.Tags).includes(filterTag);
+      });
+      setFiltered(arr);
+      // console.log(filtered);
+    }
+  }
+
   return (
     <LandingPage>
       <Popup trigger={buttonPopup} setTrigger={setButtonPopup}></Popup>
       <NavBar>
-        <br/>
-        <SearchbarDropdown options={options} onInputChange={onInputChange} />
+        <br />
+        <SearchbarDropdown options={options} onInputChange={onInputChange} filterTag={filterPosts} />
         <div className="outerrightuser">
           <Text> {cookies.get('user')}</Text>
         </div>
@@ -146,25 +179,13 @@ const Home = () => {
             </marquee>
           </a>
         </div>
-        <br/>
+        <br />
       </NavBar>{" "}
       <p />
       <NavPaddingHome></NavPaddingHome> <p />
-      {posts.map((post) => {
-        return (
-          <PostD
-            username={post.User}
-            taggedUser={post.TaggedUser}
-            postText={post.Text}
-            postTitle={post.Title}
-            postTags={post.Tags}
-            postComments={post.Comments}
-            postVote_Tagged={post.Vote_Tagged}
-            postVote_User={post.Vote_User}
-          ></PostD>
-        );
-        
-      })}
+      <ShowPosts
+        filtered={filtered}
+      ></ShowPosts>
       <p></p>
     </LandingPage>
   );
