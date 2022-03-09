@@ -147,6 +147,7 @@ function PostD({
 
     await updateDoc(postRef, {
       Comments: comments,
+      createdAt: Date.now()
     });
   }
 
