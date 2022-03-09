@@ -12,6 +12,7 @@ import {
   Tags,
   DDTagButton,
   ClearButton,
+  ErrorText
 } from "../pages/style";
 import { db } from "../firebase-config";
 import { collection, addDoc, getDocs } from "firebase/firestore";
@@ -24,7 +25,7 @@ const SearchbarDropdown = (props) => {
   const ulRef = useRef();
 
   function handleMentionClick() {
-    if (tagDropdownFocus == 0 || tagDropdownFocus == 1)
+    if (tagDropdownFocus === 0 || tagDropdownFocus == 1)
       props.updateFocusDropdown(2);
     else props.updateFocusDropdown(0);
   }
@@ -42,7 +43,7 @@ const SearchbarDropdown = (props) => {
       <ul
         id="resultsMentions"
         style={
-          tagDropdownFocus == 2 ? { display: "flex" } : { display: "none" }
+          tagDropdownFocus === 2 ? { display: "flex" } : { display: "none" }
         }
       >
         {options.map((option, index) => {
@@ -69,7 +70,7 @@ const TagsDropdown = (props) => {
   const inputTagRef = useRef();
 
   function handleTagClick() {
-    if (tagDropdownFocus == 0 || tagDropdownFocus == 2)
+    if (tagDropdownFocus === 0 || tagDropdownFocus === 2)
       props.updateFocusDropdown(1);
     else props.updateFocusDropdown(0);
   }
@@ -88,7 +89,7 @@ const TagsDropdown = (props) => {
       <ul
         id="resultsTags"
         style={
-          tagDropdownFocus == 1 ? { display: "flex" } : { display: "none" }
+          tagDropdownFocus === 1 ? { display: "flex" } : { display: "none" }
         }
       >
         {options.map((option, index) => {
@@ -150,6 +151,7 @@ function Popup(props) {
   const [tagInput, updateTagInput] = useState("");
   const [mentionInput, updateMentionInput] = useState("");
   const [taggedList, updateTaggedList] = useState([]);
+  const [postError, setPostError] = useState("");
   
   const onInputChange = (value) => {
     updateMentionInput(value);
@@ -161,7 +163,7 @@ function Popup(props) {
     const getOptions = async () => {
       const  q = await getDocs(usersColRef);
       userNameList = q.docs.map((doc) => (doc.data().user))
-      setOptions(userNameList.filter((option) => option != cookies.get('user')));
+      setOptions(userNameList.filter((option) => option !== cookies.get('user')));
     }
     getOptions();
     setTagOptions(defaultOptions.filter((option) => option.includes(tagInput) && !taggedList.includes(option)));
@@ -172,18 +174,32 @@ function Popup(props) {
   };
 
   const createPost = async () => {
-    await addDoc(postsCollectionRef,{
-      Title: newTitle,
-      Tags: taggedList,
-      Vote_Tagged: [],
-      Vote_User: [],
-      User: cookies.get("user"),
-      Comments: [newContent],
-      TaggedUser: newMentioned,
-      createdAt: Date.now(),
-    });
-    props.setTrigger(false);
-    window.location.reload();
+    if(newTitle.replace(/\s/g, "") === "") {
+      setPostError("Title field can not be empty");
+    }
+    else if(newMentioned === "") {
+      setPostError("Must select a user to beef with");
+    }
+    else if(newContent.replace(/\s/g, "")  === "") {
+      setPostError("Must enter a roast");
+    }
+    else if(taggedList.length === 0) {
+      setPostError("Must select at least one tag");
+    }
+    else {
+      await addDoc(postsCollectionRef,{
+        Title: newTitle,
+        Tags: taggedList,
+        Vote_Tagged: [],
+        Vote_User: [],
+        User: cookies.get("user"),
+        Comments: [newContent],
+        TaggedUser: newMentioned,
+        createdAt: Date.now(),
+      });
+      props.setTrigger(false);
+      window.location.reload();
+    }
   };
 
   return props.trigger ? (
@@ -255,6 +271,7 @@ function Popup(props) {
               updateTaggedList={updateTaggedList}
               taggedList={taggedList}
             />
+            <ErrorText>{postError}</ErrorText>
           </div>
         </div>
         <br></br>

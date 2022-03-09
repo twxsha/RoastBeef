@@ -41,8 +41,8 @@ const DisplayCommenting = (props) => {
     updateComments,
   } = props;
   let turn = postcomments.length;
-  if (turn % 2 == 0) {
-    if (username == postuser) {
+  if (turn % 2 === 0) {
+    if (username === postuser) {
       return (
         <div id="postPadding">
           <CreateComments
@@ -68,7 +68,7 @@ const DisplayCommenting = (props) => {
       return <p />;
     }
   } else {
-    if (username == taggeduser) {
+    if (username === taggeduser) {
       return (
         <div id="postPadding">
           <CreateComments
@@ -173,11 +173,11 @@ function PostD({
           <VoteButton
             onClick={(event) => {
               votes = votes.filter(function (value) {
-                return value != cookies.get("user");
+                return value !== cookies.get("user");
               });
               votes.push(cookies.get("user"));
               tvotes = tvotes.filter(function (value) {
-                return value != cookies.get("user");
+                return value !== cookies.get("user");
               });
               setUserVotes(votes);
               setTaggedVotes(tvotes);
@@ -201,10 +201,10 @@ function PostD({
           <VoteButton
             onClick={(event) => {
               votes = votes.filter(function (value) {
-                return value != cookies.get("user");
+                return value !== cookies.get("user");
               });
               tvotes = tvotes.filter(function (value) {
-                return value != cookies.get("user");
+                return value !== cookies.get("user");
               });
               tvotes.push(cookies.get("user"));
               setUserVotes(votes);
@@ -222,7 +222,7 @@ function PostD({
         {/* post contents: text*/}
         <PostContents>
           {comments.map((post, index) => {
-            if (index % 2 == 0) {
+            if (index % 2 === 0) {
               return <PostTextL>{comments[index]}</PostTextL>;
             } else {
               return <PostTextR>{comments[index]}</PostTextR>;
