@@ -15,7 +15,7 @@ import {
   ErrorText
 } from "../pages/style";
 import { db } from "../firebase-config";
-import { collection, addDoc, getDocs } from "firebase/firestore";
+import { collection, addDoc, getDocs,query,where } from "firebase/firestore";
 import { cookies } from "./SignIn";
 import clearx from "../images/clearx.png";
 
@@ -178,8 +178,14 @@ function Popup(props) {
   };
 
   const createPost = async () => {
+    const h = query(postsCollectionRef, where("Title", "==", newTitle));
+    const querySnapshot = await getDocs(h);
+
     if(newTitle.replace(/\s/g, "") === "") {
       setPostError("Title field can not be empty");
+    }
+    else if(!querySnapshot.empty){
+      setPostError("Title already exists");
     }
     else if(newMentioned === "") {
       setPostError("Must select a user to beef with");
