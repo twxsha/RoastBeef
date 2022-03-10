@@ -172,10 +172,12 @@ function PostD({
           <VoteCount>{votes.length}</VoteCount>
           <VoteButton
             onClick={(event) => {
+              
               votes = votes.filter(function (value) {
                 return value !== cookies.get("user");
               });
               votes.push(cookies.get("user"));
+              
               tvotes = tvotes.filter(function (value) {
                 return value !== cookies.get("user");
               });
