@@ -52,6 +52,9 @@ function SignIn() {
             setPassError("Incorrect password");
             break;
         }
+        if(!newEmail.match(/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/)) {
+          setEmailError("Not a valid email");
+        }
       });
   }
 
