@@ -10,7 +10,7 @@ import {
   LandingPage,
   Text,
   SearchButton,
-  NickyButton,
+  PopupButton,
   SearchBar,
   DDButton,
 } from "../pages/style";
@@ -18,7 +18,6 @@ import PostD from "./Post";
 import "./HomeCss.css";
 import "./Popup";
 import { collection, getDocs, orderBy, query } from "firebase/firestore";
-import { async } from "@firebase/util";
 import { cookies } from "./SignIn"
 
 const SearchbarDropdown = (props) => {
@@ -65,20 +64,29 @@ const SearchbarDropdown = (props) => {
   );
 };
 
-const defaultOptions = []; //should be list of all tags, grabbed from back end
+const defaultOptions = [];
 defaultOptions.push(`#political`);
 defaultOptions.push(`#sports`);
 defaultOptions.push(`#basketball`);
+defaultOptions.push(`#football`);
 defaultOptions.push(`#business`);
 defaultOptions.push(`#entertainment`);
-defaultOptions.push(`#arts`);
-defaultOptions.push(`#history`);
+defaultOptions.push(`#music`);
+defaultOptions.push(`#movies`);
+defaultOptions.push(`#TV`);
+defaultOptions.push(`#food`);
 defaultOptions.push(`#casual`);
+defaultOptions.push(`#school`);
 defaultOptions.push(`#ucla`);
 defaultOptions.push(`#computerscience`);
+defaultOptions.push(`#technology`);
 defaultOptions.push(`#wordle`);
-defaultOptions.push(`#globle`);
-defaultOptions.push(`#handshakes`);
+defaultOptions.push(`#environment`);
+defaultOptions.push(`#fitness`);
+defaultOptions.push(`#travel`);
+defaultOptions.push(`#style`);
+defaultOptions.push(`#environment`);
+defaultOptions.push(`#animals`);
 
 
 
@@ -117,16 +125,6 @@ const Home = () => {
     getPosts();
   }, []);
 
-  // function writeComment(){
-  //   const thisPost = doc(db, "posts", "DC");
-
-  //   // Atomically add a new region to the "regions" array field.
-  //   await updateDoc(thisPost, {
-  //       Comments: arrayUnion("greater_virginia")
-  //   });
-  // }
-
-  const postsCollectionRef = collection(db, "posts");
   const [buttonPopup, setButtonPopup] = useState(false);
 
   const [options, setOptions] = useState([]);
@@ -145,7 +143,6 @@ const Home = () => {
         return Array.from(post.Tags).includes(filterTag);
       });
       setFiltered(arr);
-      // console.log(filtered);
     }
   }
 
@@ -160,10 +157,10 @@ const Home = () => {
         </div>
         <div className="outerright">
           <div>
-            <NickyButton onClick={() => setButtonPopup(true)}>
+            <PopupButton onClick={() => setButtonPopup(true)}>
               {" "}
               Start Beef{" "}
-            </NickyButton>
+            </PopupButton>
           </div>
         </div>
         <div className="stayPutHome">

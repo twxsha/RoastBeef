@@ -9,7 +9,6 @@ import {
   PostTitle,
   PostTags,
   CreateComments,
-  Button,
   CommentButton,
   VoteButton,
   VoteCount,
@@ -111,14 +110,12 @@ const LikeButtonImg = (props) => {
 function PostD({
   username,
   taggedUser,
-  postText,
   postTitle,
   postTags,
   postComments,
   postVote_Tagged,
   postVote_User,
 }) {
-  const [buttonPopup, setButtonPopup] = useState(false);
   const [liked, setLiked] = useState(null);
   const [newTag, setNewTag] = useState("");
   const [comments, setComments] = useState(postComments);
@@ -127,7 +124,6 @@ function PostD({
   const [taggedVotes, setTaggedVotes] = useState(postVote_Tagged);
 
   async function pushLikes(votes, tvotes) {
-    console.log("shr");
     let docID;
     setLiked(!liked);
     const h = query(postCollectionRef, where("Title", "==", postTitle));
@@ -136,9 +132,9 @@ function PostD({
       docID = doc.id;
     });
 
-    const washingtonRef = doc(db, "posts", docID);
+    const docIDRef = doc(db, "posts", docID);
 
-    await updateDoc(washingtonRef, {
+    await updateDoc(docIDRef, {
       Vote_Tagged: tvotes,
       Vote_User: votes,
     });

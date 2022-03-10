@@ -354,7 +354,7 @@ const NextButton = styled.button`
   text-decoration: none;
 `;
 
-const NickyButton = styled.button`
+const PopupButton = styled.button`
   border-radius: 10px;
   border: 0px;
   background: #69404c;
@@ -704,7 +704,7 @@ export {
   TextBox,
   TagsTextBox,
   BiggerTextBox,
-  NickyButton,
+  PopupButton,
   ErrorText,
   Tags,
   CommentButton,
