@@ -6,7 +6,7 @@ import {
   TextBox,
   Text,
   BiggerTextBox,
-  NickyButton,
+  PopupButton,
   DDButton,
   TagsTextBox,
   Tags,
@@ -17,7 +17,6 @@ import {
 import { db } from "../firebase-config";
 import { collection, addDoc, getDocs } from "firebase/firestore";
 import { cookies } from "./SignIn";
-import { prodErrorMap } from "firebase/auth";
 import clearx from "../images/clearx.png";
 
 const SearchbarDropdown = (props) => {
@@ -120,26 +119,31 @@ const defaultOptions = [];
 defaultOptions.push(`#political`);
 defaultOptions.push(`#sports`);
 defaultOptions.push(`#basketball`);
+defaultOptions.push(`#football`);
 defaultOptions.push(`#business`);
 defaultOptions.push(`#entertainment`);
-defaultOptions.push(`#arts`);
-defaultOptions.push(`#history`);
+defaultOptions.push(`#music`);
+defaultOptions.push(`#movies`);
+defaultOptions.push(`#TV`);
+defaultOptions.push(`#food`);
 defaultOptions.push(`#casual`);
+defaultOptions.push(`#school`);
 defaultOptions.push(`#ucla`);
 defaultOptions.push(`#computerscience`);
+defaultOptions.push(`#technology`);
 defaultOptions.push(`#wordle`);
-defaultOptions.push(`#globle`);
-defaultOptions.push(`#handshakes`);
+defaultOptions.push(`#environment`);
+defaultOptions.push(`#fitness`);
+defaultOptions.push(`#travel`);
+defaultOptions.push(`#style`);
+defaultOptions.push(`#environment`);
+defaultOptions.push(`#animals`);
 
-
-function removeTaggedFromOptions(options, tagged) {}
 
 function Popup(props) {
   const [newTitle, setNewTitle] = useState("");
   const [newTag, setNewTag] = useState("");
   const [newContent, setNewContent] = useState("");
-  const [newVote_Tagged, setVote_Tagged] = useState("");
-  const [newVote_User, setVote_User] = useState("");
   const [newMentioned, setMentioned] = useState("");
 
   const [tagDropdownFocus, updateFocusDropdown] = useState(0);
@@ -278,15 +282,15 @@ function Popup(props) {
         <br></br>
         <div class="outer">
           <div>
-            <NickyButton onClick={() => props.setTrigger(false)}>
+            <PopupButton onClick={() => props.setTrigger(false)}>
               {" "}
               Cancel{" "}
-            </NickyButton>
+            </PopupButton>
           </div>
         </div>
 
         <div class="outer2">
-          <NickyButton onClick={createPost}> Post </NickyButton>
+          <PopupButton onClick={createPost}> Post </PopupButton>
         </div>
 
         {props.children}

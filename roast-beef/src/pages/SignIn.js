@@ -14,9 +14,8 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import Logo from "../images/logo.png";
 import { auth } from "../firebase-config";
 import { useHistory } from "react-router-dom";
-import { collection, doc, getDocs, query, where } from "firebase/firestore";
+import { getDocs, query, where } from "firebase/firestore";
 import {usersCollectionRef} from './SignUp';
-import { async } from "@firebase/util";
 import Cookies from 'universal-cookie';
 
 let cookies = new Cookies();
@@ -36,10 +35,8 @@ function SignIn() {
     });
     signInWithEmailAndPassword(auth, newEmail, newPassword)
       .then((userCredential) => {
-        // Signed in
         const user = userCredential.user;
         history.push("/home");
-        // ...
       })
       .catch((error) => {
         setEmailError("");
@@ -51,6 +48,9 @@ function SignIn() {
           case "auth/wrong-password":
             setPassError("Incorrect password");
             break;
+        }
+        if(!newEmail.match(/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/)) {
+          setEmailError("Not a valid email");
         }
       });
   }
