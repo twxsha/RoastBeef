@@ -161,7 +161,7 @@ function PostD({
   useEffect(() => {
     setUserVotes(postVote_User);
     setTaggedVotes(postVote_Tagged);
-  },[]);
+  },[postVote_User, postVote_Tagged]);
 
   return (
     <div className="postD">
