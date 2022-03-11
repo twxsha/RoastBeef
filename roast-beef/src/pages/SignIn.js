@@ -35,12 +35,18 @@ function SignIn() {
     });
     signInWithEmailAndPassword(auth, newEmail, newPassword)
       .then((userCredential) => {
-        const user = userCredential.user;
-        history.push("/home");
+          const user = userCredential.user;
+          history.push("/home");
       })
       .catch((error) => {
         setEmailError("");
         setPassError("");
+        if(newPassword === "") {
+          setPassError("Enter a password")
+        }
+        if(!newEmail.match(/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/)) {
+          setEmailError("Not a valid email");
+        }
         switch (error.code) {
           case "auth/user-not-found":
             setEmailError("No account associated with this email");
@@ -49,9 +55,7 @@ function SignIn() {
             setPassError("Incorrect password");
             break;
         }
-        if(!newEmail.match(/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/)) {
-          setEmailError("Not a valid email");
-        }
+
       });
   }
 
