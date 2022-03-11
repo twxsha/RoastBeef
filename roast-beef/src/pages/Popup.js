@@ -136,7 +136,6 @@ defaultOptions.push(`#environment`);
 defaultOptions.push(`#fitness`);
 defaultOptions.push(`#travel`);
 defaultOptions.push(`#style`);
-defaultOptions.push(`#environment`);
 defaultOptions.push(`#animals`);
 
 

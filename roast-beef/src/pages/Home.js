@@ -85,7 +85,6 @@ defaultOptions.push(`#environment`);
 defaultOptions.push(`#fitness`);
 defaultOptions.push(`#travel`);
 defaultOptions.push(`#style`);
-defaultOptions.push(`#environment`);
 defaultOptions.push(`#animals`);
 
 
@@ -166,7 +165,7 @@ const Home = () => {
         <div className="stayPutHome">
           <a href="/" className="NavLogo">
             <marquee behavior="alternate" width="300">
-              <img
+              <img onClick={() => cookies.remove('user')}
                 src={Logo}
                 alt="Logo"
                 align="left"
