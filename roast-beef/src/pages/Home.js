@@ -1,4 +1,4 @@
-import { useState, useEffect, React, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./HomePage.css";
 import "./HomeCss.css";
 import { db } from "../firebase-config";
