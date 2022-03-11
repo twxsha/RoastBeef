@@ -1,4 +1,5 @@
 import "./App.css";
+import React from "react";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Landing from "./pages/LandingPage";
@@ -10,7 +11,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Switch>
+        <Switch>  
           <Route path="/" exact component={Landing} />
           <Route path="/signIn" exact component={SignIn} />
           <Route path="/signUp" exact component={SignUp} />
