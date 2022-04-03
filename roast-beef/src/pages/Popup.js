@@ -190,7 +190,7 @@ function Popup(props) {
       setPostError("Must select a user to beef with");
     }
     else if(newContent.replace(/\s/g, "")  === "") {
-      setPostError("Must enter a roast");
+      setPostError("Must enter a roast ");
     }
     else if(taggedList.length === 0) {
       setPostError("Must select at least one tag");
