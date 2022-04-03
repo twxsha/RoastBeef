@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Post,
   PostContents,
@@ -56,7 +56,7 @@ const DisplayCommenting = (props) => {
               let c = postcomments;
               c.push(newTag);
               setComments(c);
-              updateComments(newTag);
+              updateComments();
             }}
           >
             Roast
@@ -82,7 +82,7 @@ const DisplayCommenting = (props) => {
               let c = postcomments;
               c.push(newTag);
               setComments(c);
-              updateComments(newTag);
+              updateComments();
             }}
           >
             Roast
@@ -123,7 +123,7 @@ function PostD({
   const [userVotes, setUserVotes] = useState(postVote_User);
   const [taggedVotes, setTaggedVotes] = useState(postVote_Tagged);
 
-  async function pushLikes(votes, tvotes) {
+  async function pushLikes() {
     let docID;
     setLiked(!liked);
     const h = query(postCollectionRef, where("Title", "==", postTitle));
@@ -135,14 +135,14 @@ function PostD({
     const docIDRef = doc(db, "posts", docID);
 
     await updateDoc(docIDRef, {
-      Vote_Tagged: tvotes,
-      Vote_User: votes,
+      Vote_Tagged: postVote_Tagged,
+      Vote_User: postVote_User,
     });
   }
-  var votes = userVotes;
-  var tvotes = taggedVotes;
+  var votes = postVote_User;
+  var tvotes = postVote_Tagged;
 
-  async function updateComments(newTag) {
+  async function updateComments() {
     console.log("shr");
     let docID;
     setLiked(!liked);
@@ -152,12 +152,16 @@ function PostD({
       docID = doc.id;
     });
     const postRef = doc(db, "posts", docID);
-
     await updateDoc(postRef, {
-      Comments: comments,
-      createdAt: Date.now()
+      Comments: postComments,
+      createdAt: Date.now(),
     });
   }
+
+  useEffect(() => {
+    setUserVotes(postVote_User);
+    setTaggedVotes(postVote_Tagged);
+  },[postVote_User, postVote_Tagged]);
 
   return (
     <div className="postD">
@@ -165,25 +169,24 @@ function PostD({
         {/* PostHeader -> @usernames + vote counters + upvote buttons that increase the vote count + title + tags*/}
         <PostHeaderText>
           <PostTitle>{postTitle}</PostTitle>
-          <VoteCount>{votes.length}</VoteCount>
+          <VoteCount>{userVotes.length}</VoteCount>
           <VoteButton
             onClick={(event) => {
-              
-              votes = votes.filter(function (value) {
+              postVote_User = postVote_User.filter(function (value) {
                 return value !== cookies.get("user");
               });
-              votes.push(cookies.get("user"));
-              
-              tvotes = tvotes.filter(function (value) {
+              postVote_User.push(cookies.get("user"));
+
+              postVote_Tagged = postVote_Tagged.filter(function (value) {
                 return value !== cookies.get("user");
               });
-              setUserVotes(votes);
-              setTaggedVotes(tvotes);
-              pushLikes(votes, tvotes);
+              setUserVotes(postVote_User);
+              setTaggedVotes(postVote_Tagged);
+              pushLikes(postVote_User, postVote_Tagged);
             }}
           >
             <LikeButtonImg
-              liked = {Array.from(votes).includes(cookies.get("user"))}
+              liked={Array.from(userVotes).includes(cookies.get("user"))}
             ></LikeButtonImg>
           </VoteButton>
           <PostUsername>{username}</PostUsername>
@@ -198,32 +201,32 @@ function PostD({
           <PostUsername>{taggedUser}</PostUsername>
           <VoteButton
             onClick={(event) => {
-              votes = votes.filter(function (value) {
+              postVote_User = postVote_User.filter(function (value) {
                 return value !== cookies.get("user");
               });
-              tvotes = tvotes.filter(function (value) {
+              postVote_Tagged = postVote_Tagged.filter(function (value) {
                 return value !== cookies.get("user");
               });
-              tvotes.push(cookies.get("user"));
-              setUserVotes(votes);
-              setTaggedVotes(tvotes);
-              pushLikes(votes, tvotes);
+              postVote_Tagged.push(cookies.get("user"));
+              setUserVotes(postVote_User);
+              setTaggedVotes(postVote_Tagged);
+              pushLikes(postVote_User, postVote_Tagged);
             }}
           >
             <LikeButtonImg
-              liked = {Array.from(tvotes).includes(cookies.get("user"))}
+              liked={Array.from(taggedVotes).includes(cookies.get("user"))}
             ></LikeButtonImg>
           </VoteButton>
-          <VoteCount>{tvotes.length}</VoteCount>
+          <VoteCount>{taggedVotes.length}</VoteCount>
           <PostTags>{" " + postTags}</PostTags>
         </PostHeaderText>
         {/* post contents: text*/}
         <PostContents>
-          {comments.map((post, index) => {
+          {postComments.map((post, index) => {
             if (index % 2 === 0) {
-              return <PostTextL>{comments[index]}</PostTextL>;
+              return <PostTextL>{postComments[index]}</PostTextL>;
             } else {
-              return <PostTextR>{comments[index]}</PostTextR>;
+              return <PostTextR>{postComments[index]}</PostTextR>;
             }
           })}
         </PostContents>{" "}
@@ -231,7 +234,7 @@ function PostD({
           username={cookies.get("user")}
           postuser={username}
           taggeduser={taggedUser}
-          postcomments={comments}
+          postcomments={postComments}
           newTag={newTag}
           setNewTag={setNewTag}
           setComments={setComments}

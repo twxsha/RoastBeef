@@ -11,7 +11,7 @@ import {
   ErrorText,
 } from "../pages/style";
 import Logo from "../images/logo.png";
-import { collection, getDocs, addDoc } from "firebase/firestore";
+import { collection, getDocs, addDoc,query,where } from "firebase/firestore";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { db, auth } from "../firebase-config";
 import { useHistory } from "react-router-dom";
@@ -30,17 +30,45 @@ function SignUp() {
 
   const createUser = async () => {
     try {
-      let res = await createUserWithEmailAndPassword(auth, newEmail, newPass);
-      history.push("/signIn");
-      res = await addDoc(usersCollectionRef, {
-        name: newName,
-        email: newEmail,
-        user: "@" + newUser,
-        pass: newPass,
-      });
+      const h5 = query(usersCollectionRef, where("user", "==", "@" + newUser));
+      console.log(newUser);
+      const querySnapshot5 = await getDocs(h5);
+
+      if(newName === "")
+      {
+        setEmailError("Enter a name")
+        setPassError("")
+      }
+      else if(newUser === "")
+      {
+        setEmailError("Enter a username")
+        setPassError("")
+      }
+      else if(querySnapshot5.empty){
+        let res = await createUserWithEmailAndPassword(auth, newEmail, newPass);
+        res = await addDoc(usersCollectionRef, {
+          name: newName,
+          email: newEmail,
+          user: "@" + newUser,
+          pass: newPass,
+        });
+        history.push("/signIn");
+      }
+      else {
+        setEmailError("Username already exists");
+        setPassError("")
+      }
     } catch (error) {
       setEmailError("");
       setPassError("");
+      if(newEmail === "")
+      {
+        setEmailError("Enter an email")
+      }
+      if(newPass === "")
+      {
+        setPassError("Enter a password")
+      }
       switch (error.code) {
         case "auth/email-already-in-use":
         case "auth/invalid-email":
